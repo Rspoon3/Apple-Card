@@ -31,6 +31,8 @@
 		E080F8DA2250694E004AF19F /* TopTransactionDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E080F8D92250694E004AF19F /* TopTransactionDetailCell.swift */; };
 		E080F8DC22507222004AF19F /* TransactionDetailMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E080F8DB22507222004AF19F /* TransactionDetailMapCell.swift */; };
 		E080F8DE225079FE004AF19F /* HeroImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E080F8DD225079FE004AF19F /* HeroImageView.swift */; };
+		E080F8E022508AA7004AF19F /* TransactionHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E080F8DF22508AA7004AF19F /* TransactionHistoryCell.swift */; };
+		E080F8E222508AFB004AF19F /* TransactionHistoryTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E080F8E122508AFB004AF19F /* TransactionHistoryTableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +62,8 @@
 		E080F8D92250694E004AF19F /* TopTransactionDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTransactionDetailCell.swift; sourceTree = "<group>"; };
 		E080F8DB22507222004AF19F /* TransactionDetailMapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailMapCell.swift; sourceTree = "<group>"; };
 		E080F8DD225079FE004AF19F /* HeroImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroImageView.swift; sourceTree = "<group>"; };
+		E080F8DF22508AA7004AF19F /* TransactionHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistoryCell.swift; sourceTree = "<group>"; };
+		E080F8E122508AFB004AF19F /* TransactionHistoryTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistoryTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,10 +157,12 @@
 			isa = PBXGroup;
 			children = (
 				E080F8BC224FB44B004AF19F /* TransactionCell.swift */,
+				E080F8DF22508AA7004AF19F /* TransactionHistoryCell.swift */,
 				E080F8D92250694E004AF19F /* TopTransactionDetailCell.swift */,
 				E080F8DB22507222004AF19F /* TransactionDetailMapCell.swift */,
 				E080F8C0224FC413004AF19F /* TransactionTableView.swift */,
 				E080F8D42250541E004AF19F /* TransactionMapTableView.swift */,
+				E080F8E122508AFB004AF19F /* TransactionHistoryTableView.swift */,
 			);
 			path = TableViews;
 			sourceTree = "<group>";
@@ -234,7 +240,9 @@
 			files = (
 				E080F8BF224FBED7004AF19F /* TableStackView.swift in Sources */,
 				E080F8B7224FB3FE004AF19F /* BlankNavController.swift in Sources */,
+				E080F8E222508AFB004AF19F /* TransactionHistoryTableView.swift in Sources */,
 				E080F8DE225079FE004AF19F /* HeroImageView.swift in Sources */,
+				E080F8E022508AA7004AF19F /* TransactionHistoryCell.swift in Sources */,
 				E080F8C7224FE544004AF19F /* MainViewController.swift in Sources */,
 				E080F8A5224F02DD004AF19F /* CategoryController.swift in Sources */,
 				E080F8D52250541E004AF19F /* TransactionMapTableView.swift in Sources */,

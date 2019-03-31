@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SafariServices
 
-class TransactionDetailsVC: UIViewController {
+class TransactionDetailsVC: UIViewController, SFSafariViewControllerDelegate{
     
     lazy var phoneBarButton : UIButton = {
         let button = UIButton(type: .system)
@@ -35,13 +36,17 @@ class TransactionDetailsVC: UIViewController {
     
     lazy var infoCirleButton : UIButton = {
         let button = UIButton(type: .system)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(getMoreInfo))
+        tap.numberOfTapsRequired = 1
+        
         button.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
         button.layer.cornerRadius = 15
         button.layer.masksToBounds = true
-        
+
         let blurEffect = UIBlurEffect(style: .regular)
         let blurredEffectView = UIVisualEffectView(effect: blurEffect)
         blurredEffectView.frame = CGRect(x: -5, y: -5, width: 40, height: 40)
+        blurredEffectView.addGestureRecognizer(tap)
         button.addSubview(blurredEffectView)
         
         let imageView = UIImageView()
@@ -53,7 +58,7 @@ class TransactionDetailsVC: UIViewController {
         imageView.frame = CGRect(x: 5, y: 5, width: 20, height: 20)
         imageView.contentMode = .scaleAspectFit
         button.addSubview(imageView)
-        return button
+            return button
     }()
     
     var transaction: Transaction!
@@ -62,16 +67,17 @@ class TransactionDetailsVC: UIViewController {
         super.viewDidLoad()
         let phoneBarButtonItem : UIBarButtonItem = .init(customView: phoneBarButton)
         let infoCirleButtonItem : UIBarButtonItem = .init(customView: infoCirleButton)
-
+        
         view.backgroundColor = .bgColor
-        navigationController?.navigationBar.tintColor = UIColor.white
         navigationController?.navigationBar.topItem?.title = ""
         navigationItem.rightBarButtonItems = [infoCirleButtonItem, phoneBarButtonItem]
         
         let bottomView = BottomView(frame: view.frame, amount: transaction.price)
-        let tableView = TransactionMapTableView(frame: view.frame, style: .plain, transaction: transaction)
+        let mapTableView = TransactionMapTableView(frame: view.frame, style: .plain, transaction: transaction)
         let heroImage = HeroImageView(frame: view.frame, transaction: transaction)
-        [heroImage, tableView, bottomView].forEach({view.addSubview($0)})
+        let transactionHistoryTableView = TransactionHistoryTableView(frame: view.frame, style: .plain, transaction: transaction)
+        let tableStackView = TableStackView(frame: view.frame, table: transactionHistoryTableView, title: "Transaction History")
+        [heroImage, mapTableView, tableStackView, bottomView].forEach({view.addSubview($0)})
         
         let constriants = [
             heroImage.topAnchor.constraint(equalTo: view.topAnchor),
@@ -79,10 +85,15 @@ class TransactionDetailsVC: UIViewController {
             heroImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             heroImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
-            tableView.topAnchor.constraint(equalTo: heroImage.bottomAnchor, constant: 50),
-            tableView.heightAnchor.constraint(equalToConstant: 324),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            mapTableView.topAnchor.constraint(equalTo: heroImage.bottomAnchor, constant: 50),
+            mapTableView.heightAnchor.constraint(equalToConstant: 324),
+            mapTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            mapTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            tableStackView.topAnchor.constraint(equalTo: mapTableView.bottomAnchor, constant: 20),
+            tableStackView.heightAnchor.constraint(equalToConstant: 300),
+            tableStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            tableStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
             bottomView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: (1/6)),
             bottomView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -94,5 +105,34 @@ class TransactionDetailsVC: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.navigationBar.tintColor = view.tintColor
+        self.navigationController?.navigationBar.barStyle = .default
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationController?.navigationBar.barStyle = .black
+    }
+    
+    @objc func getMoreInfo(){
+        let searchTerm = transaction.title
+        let newString = searchTerm.replacingOccurrences(of: " ", with: "+", options: .literal, range: nil)
+        var urlString = "http://www.google.com/search?q=" + (newString)
+        
+        if let city = transaction.city{
+            if let state = transaction.state{
+                urlString += "+\(city),+\(state)"
+            }
+        }
+    
+        let url = NSURL(string: urlString)! as URL
+        let config = SFSafariViewController.Configuration()
+        config.entersReaderIfAvailable = false
+        
+        let vc = SFSafariViewController(url: url, configuration: config)
+        present(vc, animated: true)
+    }
+    
+    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        dismiss(animated: true)
     }
 }
