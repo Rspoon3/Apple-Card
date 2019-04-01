@@ -52,24 +52,16 @@ class TransactionCell: UITableViewCell {
         self.imageView?.layer.cornerRadius = self.frame.height / 15
     }
     
-    func image( _ image:UIImage, withSize newSize:CGSize) -> UIImage {
-        UIGraphicsBeginImageContext(newSize)
-        image.draw(in: CGRect(x: 0,y: 0,width: newSize.width,height: newSize.height))
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return newImage!.withRenderingMode(.alwaysOriginal)
-    }
-    
     func updateCell(){
         let numberFormatter = NumberFormatter()
-        let myimage = image(transaction!.image, withSize: CGSize(width: frame.height / 1.5, height: frame.height / 1.5))
+        let myimage = transaction!.image.resizedImage(newSize: CGSize(width: frame.height / 1.5, height: frame.height / 1.5))
         var detailText = ""
 
         numberFormatter.minimumFractionDigits = 2
         if let price = transaction?.price{
             if let num = numberFormatter.string(from: NSNumber(value: price)){
                 priceLabel.text = "$\(String(describing: num))"
-                if transaction?.image == UIImage(imageLiteralResourceName: "daily cash"){
+                if transaction?.image == UIImage(imageLiteralResourceName: "dailyCash"){
                     priceLabel.text?.insert("+", at: priceLabel.text!.startIndex)
                 }
                 if price < 1{
@@ -107,3 +99,4 @@ class TransactionCell: UITableViewCell {
         NSLayoutConstraint.activate(constraints)
     }
 }
+

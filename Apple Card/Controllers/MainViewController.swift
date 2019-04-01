@@ -20,7 +20,7 @@ class MainViewController: UIViewController, TransactionCellDelegate{
         
         Transaction(title: "Goodman Theatre", city: "Chicago", state: "IL", date: "Yesterday", price: 48.67, image: #imageLiteral(resourceName: "Screen Shot 2019-03-30 at 2.38.35 AM")),
         Transaction(title: "Whirlyball", city: "Chicago", state: "IL", date: "3 days ago", price: 42.88, image: #imageLiteral(resourceName: "Screen Shot 2019-03-30 at 2.38.42 AM")),
-        Transaction(title: "Fandango", city: nil, state: nil, date: "3/9/19", price: 29.80, image: #imageLiteral(resourceName: "Screen Shot 2019-03-30 at 2.38.58 AM")),
+        Transaction(title: "Fandango", city: nil, state: nil, date: "3/9/19", price: 29.80, image: #imageLiteral(resourceName: "Entertainment")),
         Transaction(title: "The Second City", city: "Chicago", state: "IL", date: "3/16/19", price: 52.64, image: #imageLiteral(resourceName: "Screen Shot 2019-03-30 at 2.38.50 AM")),
     ]
     
@@ -68,7 +68,7 @@ class MainViewController: UIViewController, TransactionCellDelegate{
         
         let imageView = UIImageView()
         if let myImage = UIImage(named: "3dots") {
-            let tintableImage = myImage.withRenderingMode(.alwaysTemplate)
+            let tintableImage = myImage.withRenderingMode(.alwaysTemplate) //has to be alwaysTemplate 
             imageView.image = tintableImage
             imageView.tintColor = .white
         }
@@ -142,9 +142,14 @@ class MainViewController: UIViewController, TransactionCellDelegate{
         let categories = UIAlertAction(title: "Categories", style: .default) { action in
             self.navigationController?.pushViewController(CategoryController(), animated: true)
         }
+        
+        let support = UIAlertAction(title: "Support", style: .default) { action in
+            self.navigationController?.pushViewController(CardInfoViewController(), animated: true)
+        }
 
         actionSheet.addAction(dailyCash)
         actionSheet.addAction(categories)
+        actionSheet.addAction(support)
         actionSheet.addAction(cancel)
 
         present(actionSheet, animated: true, completion: nil)

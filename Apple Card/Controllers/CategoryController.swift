@@ -11,16 +11,16 @@ import UIKit
 class CategoryController: UIViewController, TransactionCellDelegate  {
     
     let transactions = [
-        Transaction(title: "Goodman Theatre", city: "Chicago", state: "IL", date: "Yesterday", price: 48.67, image: #imageLiteral(resourceName: "Screen Shot 2019-03-30 at 2.38.35 AM")),
-        Transaction(title: "Whirlyball", city: "Chicago", state: "IL", date: "3 days ago", price: 42.88, image: #imageLiteral(resourceName: "Screen Shot 2019-03-30 at 2.38.42 AM")),
-        Transaction(title: "Game Room", city: "Chicago", state: "IL", date: "6 days ago", price: 45.71, image: #imageLiteral(resourceName: "Entertainment")),
-        Transaction(title: "The Second City", city: "Chicago", state: "IL", date: "3/16/19", price: 52.64, image: #imageLiteral(resourceName: "Screen Shot 2019-03-30 at 2.38.50 AM")),
-        Transaction(title: "Fandango", city: nil, state: nil, date: "3/9/19", price: 29.80, image: #imageLiteral(resourceName: "Screen Shot 2019-03-30 at 2.38.58 AM")),
+        Transaction(title: "Goodman Theatre", city: "Chicago", state: "IL", date: "Yesterday", price: 48.67, image: #imageLiteral(resourceName: "dailyCash")),
+        Transaction(title: "Whirlyball", city: "Chicago", state: "IL", date: "3 days ago", price: 42.88, image: #imageLiteral(resourceName: "dailyCash")),
+        Transaction(title: "Game Room", city: "Chicago", state: "IL", date: "6 days ago", price: 45.71, image: #imageLiteral(resourceName: "dailyCash")),
+        Transaction(title: "The Second City", city: "Chicago", state: "IL", date: "3/16/19", price: 52.64, image: #imageLiteral(resourceName: "dailyCash")),
+        Transaction(title: "Fandango", city: nil, state: nil, date: "3/9/19", price: 29.80, image: #imageLiteral(resourceName: "dailyCash")),
 
-        Transaction(title: "Goodman Theatre", city: "Chicago", state: "IL", date: "Yesterday", price: 48.67, image: #imageLiteral(resourceName: "Screen Shot 2019-03-30 at 2.38.35 AM")),
-        Transaction(title: "Whirlyball", city: "Chicago", state: "IL", date: "3 days ago", price: 42.88, image: #imageLiteral(resourceName: "Screen Shot 2019-03-30 at 2.38.42 AM")),
-        Transaction(title: "Fandango", city: nil, state: nil, date: "3/9/19", price: 29.80, image: #imageLiteral(resourceName: "Screen Shot 2019-03-30 at 2.38.58 AM")),
-        Transaction(title: "The Second City", city: "Chicago", state: "IL", date: "3/16/19", price: 52.64, image: #imageLiteral(resourceName: "Screen Shot 2019-03-30 at 2.38.50 AM")),
+        Transaction(title: "Goodman Theatre", city: "Chicago", state: "IL", date: "Yesterday", price: 48.67, image: #imageLiteral(resourceName: "dailyCash")),
+        Transaction(title: "Whirlyball", city: "Chicago", state: "IL", date: "3 days ago", price: 42.88, image: #imageLiteral(resourceName: "dailyCash")),
+        Transaction(title: "Fandango", city: nil, state: nil, date: "3/9/19", price: 29.80, image: #imageLiteral(resourceName: "dailyCash")),
+        Transaction(title: "The Second City", city: "Chicago", state: "IL", date: "3/16/19", price: 52.64, image: #imageLiteral(resourceName: "dailyCash")),
     ]
     
     func push(indexPath: IndexPath) {

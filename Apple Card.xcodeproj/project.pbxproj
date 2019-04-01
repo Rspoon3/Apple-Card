@@ -33,6 +33,15 @@
 		E080F8DE225079FE004AF19F /* HeroImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E080F8DD225079FE004AF19F /* HeroImageView.swift */; };
 		E080F8E022508AA7004AF19F /* TransactionHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E080F8DF22508AA7004AF19F /* TransactionHistoryCell.swift */; };
 		E080F8E222508AFB004AF19F /* TransactionHistoryTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E080F8E122508AFB004AF19F /* TransactionHistoryTableView.swift */; };
+		E09190152251895000184A00 /* CardInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09190142251895000184A00 /* CardInfoViewController.swift */; };
+		E091901722519EE300184A00 /* CardInfoTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E091901622519EE300184A00 /* CardInfoTableView.swift */; };
+		E09190192251B49500184A00 /* CardInfoButtonsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09190182251B49500184A00 /* CardInfoButtonsStackView.swift */; };
+		E091901B2251B4AF00184A00 /* CardInfoTopImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E091901A2251B4AF00184A00 /* CardInfoTopImageView.swift */; };
+		E091901D2251C10700184A00 /* dialing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E091901C2251C10700184A00 /* dialing.mp3 */; };
+		E09190202251C60400184A00 /* supportCall.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E091901F2251C60400184A00 /* supportCall.mp3 */; };
+		E09190222251C93000184A00 /* SupportMessagesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09190212251C93000184A00 /* SupportMessagesCollectionViewController.swift */; };
+		E09190242251CAC900184A00 /* SupportMessagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09190232251CAC900184A00 /* SupportMessagesCell.swift */; };
+		E09190262251D43800184A00 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09190252251D43800184A00 /* BaseCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +73,15 @@
 		E080F8DD225079FE004AF19F /* HeroImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroImageView.swift; sourceTree = "<group>"; };
 		E080F8DF22508AA7004AF19F /* TransactionHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistoryCell.swift; sourceTree = "<group>"; };
 		E080F8E122508AFB004AF19F /* TransactionHistoryTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistoryTableView.swift; sourceTree = "<group>"; };
+		E09190142251895000184A00 /* CardInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoViewController.swift; sourceTree = "<group>"; };
+		E091901622519EE300184A00 /* CardInfoTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoTableView.swift; sourceTree = "<group>"; };
+		E09190182251B49500184A00 /* CardInfoButtonsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoButtonsStackView.swift; sourceTree = "<group>"; };
+		E091901A2251B4AF00184A00 /* CardInfoTopImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoTopImageView.swift; sourceTree = "<group>"; };
+		E091901C2251C10700184A00 /* dialing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dialing.mp3; sourceTree = "<group>"; };
+		E091901F2251C60400184A00 /* supportCall.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = supportCall.mp3; sourceTree = "<group>"; };
+		E09190212251C93000184A00 /* SupportMessagesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportMessagesCollectionViewController.swift; sourceTree = "<group>"; };
+		E09190232251CAC900184A00 /* SupportMessagesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportMessagesCell.swift; sourceTree = "<group>"; };
+		E09190252251D43800184A00 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +131,8 @@
 			isa = PBXGroup;
 			children = (
 				E080F8DD225079FE004AF19F /* HeroImageView.swift */,
+				E091901A2251B4AF00184A00 /* CardInfoTopImageView.swift */,
+				E09190182251B49500184A00 /* CardInfoButtonsStackView.swift */,
 				E080F8BA224FB43F004AF19F /* BottomView.swift */,
 				E080F8B4224FB3E3004AF19F /* HeaderView.swift */,
 				E080F8C8224FF7BD004AF19F /* MainPaymentStackView.swift */,
@@ -138,7 +158,9 @@
 				E080F8B6224FB3FE004AF19F /* BlankNavController.swift */,
 				E080F8A4224F02DD004AF19F /* CategoryController.swift */,
 				E080F8C4224FD7A6004AF19F /* DailyCashController.swift */,
+				E09190142251895000184A00 /* CardInfoViewController.swift */,
 				E080F8C6224FE544004AF19F /* MainViewController.swift */,
+				E09190212251C93000184A00 /* SupportMessagesCollectionViewController.swift */,
 				E080F8D7225056B1004AF19F /* TransactionDetailsVC.swift */,
 			);
 			path = Controllers;
@@ -147,7 +169,11 @@
 		E080F8D322505301004AF19F /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				E09190232251CAC900184A00 /* SupportMessagesCell.swift */,
+				E09190252251D43800184A00 /* BaseCollectionViewCell.swift */,
 				E080F8A2224F02DD004AF19F /* AppDelegate.swift */,
+				E091901F2251C60400184A00 /* supportCall.mp3 */,
+				E091901C2251C10700184A00 /* dialing.mp3 */,
 				E080F8C2224FD28F004AF19F /* Extensions.swift */,
 			);
 			path = Misc;
@@ -156,6 +182,7 @@
 		E080F8D622505497004AF19F /* TableViews */ = {
 			isa = PBXGroup;
 			children = (
+				E091901622519EE300184A00 /* CardInfoTableView.swift */,
 				E080F8BC224FB44B004AF19F /* TransactionCell.swift */,
 				E080F8DF22508AA7004AF19F /* TransactionHistoryCell.swift */,
 				E080F8D92250694E004AF19F /* TopTransactionDetailCell.swift */,
@@ -225,6 +252,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E09190202251C60400184A00 /* supportCall.mp3 in Resources */,
+				E091901D2251C10700184A00 /* dialing.mp3 in Resources */,
 				E080F8AD224F02E0004AF19F /* LaunchScreen.storyboard in Resources */,
 				E080F8AA224F02E0004AF19F /* Assets.xcassets in Resources */,
 				E080F8A8224F02DD004AF19F /* Main.storyboard in Resources */,
@@ -243,22 +272,29 @@
 				E080F8E222508AFB004AF19F /* TransactionHistoryTableView.swift in Sources */,
 				E080F8DE225079FE004AF19F /* HeroImageView.swift in Sources */,
 				E080F8E022508AA7004AF19F /* TransactionHistoryCell.swift in Sources */,
+				E09190262251D43800184A00 /* BaseCollectionViewCell.swift in Sources */,
 				E080F8C7224FE544004AF19F /* MainViewController.swift in Sources */,
 				E080F8A5224F02DD004AF19F /* CategoryController.swift in Sources */,
 				E080F8D52250541E004AF19F /* TransactionMapTableView.swift in Sources */,
 				E080F8B5224FB3E3004AF19F /* HeaderView.swift in Sources */,
 				E080F8BB224FB43F004AF19F /* BottomView.swift in Sources */,
 				E080F8CF22500020004AF19F /* PaymentDueView.swift in Sources */,
+				E091901722519EE300184A00 /* CardInfoTableView.swift in Sources */,
 				E080F8DC22507222004AF19F /* TransactionDetailMapCell.swift in Sources */,
 				E080F8C3224FD28F004AF19F /* Extensions.swift in Sources */,
 				E080F8C1224FC413004AF19F /* TransactionTableView.swift in Sources */,
 				E080F8DA2250694E004AF19F /* TopTransactionDetailCell.swift in Sources */,
+				E09190222251C93000184A00 /* SupportMessagesCollectionViewController.swift in Sources */,
 				E080F8C5224FD7A6004AF19F /* DailyCashController.swift in Sources */,
 				E080F8CD224FFC33004AF19F /* SmallChartView.swift in Sources */,
 				E080F8D8225056B1004AF19F /* TransactionDetailsVC.swift in Sources */,
 				E080F8C9224FF7BD004AF19F /* MainPaymentStackView.swift in Sources */,
+				E09190152251895000184A00 /* CardInfoViewController.swift in Sources */,
+				E09190192251B49500184A00 /* CardInfoButtonsStackView.swift in Sources */,
+				E09190242251CAC900184A00 /* SupportMessagesCell.swift in Sources */,
 				E080F8CB224FF9EF004AF19F /* TotalBalanceView.swift in Sources */,
 				E080F8A3224F02DD004AF19F /* AppDelegate.swift in Sources */,
+				E091901B2251B4AF00184A00 /* CardInfoTopImageView.swift in Sources */,
 				E080F8B9224FB417004AF19F /* Transaction.swift in Sources */,
 				E080F8BD224FB44B004AF19F /* TransactionCell.swift in Sources */,
 			);
