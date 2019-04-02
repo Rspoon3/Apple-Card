@@ -17,7 +17,7 @@ class CardInfoViewController: UIViewController, CardInfoButtonsStackViewDelegate
 
     
     func openSupportMessages() {
-        self.navigationController?.pushViewController(SupportMessagesCollectionViewController.init(collectionViewLayout: UICollectionViewFlowLayout()), animated: true)
+        self.navigationController?.pushViewController(SupportMessagesCollectionViewController(), animated: true)
     }
     
     fileprivate func playSound(fileName: String) {
@@ -90,7 +90,7 @@ class CardInfoViewController: UIViewController, CardInfoButtonsStackViewDelegate
             tableView.topAnchor.constraint(equalTo: cardInfoButtonsStackView.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ]
         NSLayoutConstraint.activate(constraints)
     }

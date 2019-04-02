@@ -14,8 +14,9 @@ class SupportMessagesCell: BaseCollectionViewCell {
     
     let messageView : UITextView = {
         let view = UITextView()
-        view.font = UIFont.systemFont(ofSize: 16)
+        view.font = UIFont.systemFont(ofSize: 18)
         view.backgroundColor = .clear
+        view.isEditable = false
         return view
     }()
     

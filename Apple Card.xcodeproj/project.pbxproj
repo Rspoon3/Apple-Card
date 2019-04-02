@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E04EF4DA2252C32C0026F1FE /* VerticallyCenteredTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04EF4D92252C32C0026F1FE /* VerticallyCenteredTextView.swift */; };
+		E04EF4DC2252C3590026F1FE /* SupportMessageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04EF4DB2252C3590026F1FE /* SupportMessageHeader.swift */; };
 		E080F8A3224F02DD004AF19F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E080F8A2224F02DD004AF19F /* AppDelegate.swift */; };
 		E080F8A5224F02DD004AF19F /* CategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E080F8A4224F02DD004AF19F /* CategoryController.swift */; };
 		E080F8A8224F02DD004AF19F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E080F8A6224F02DD004AF19F /* Main.storyboard */; };
@@ -33,6 +35,7 @@
 		E080F8DE225079FE004AF19F /* HeroImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E080F8DD225079FE004AF19F /* HeroImageView.swift */; };
 		E080F8E022508AA7004AF19F /* TransactionHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E080F8DF22508AA7004AF19F /* TransactionHistoryCell.swift */; };
 		E080F8E222508AFB004AF19F /* TransactionHistoryTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E080F8E122508AFB004AF19F /* TransactionHistoryTableView.swift */; };
+		E08F31632253837A007BA64D /* SupportMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F31622253837A007BA64D /* SupportMessage.swift */; };
 		E09190152251895000184A00 /* CardInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09190142251895000184A00 /* CardInfoViewController.swift */; };
 		E091901722519EE300184A00 /* CardInfoTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E091901622519EE300184A00 /* CardInfoTableView.swift */; };
 		E09190192251B49500184A00 /* CardInfoButtonsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09190182251B49500184A00 /* CardInfoButtonsStackView.swift */; };
@@ -42,9 +45,13 @@
 		E09190222251C93000184A00 /* SupportMessagesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09190212251C93000184A00 /* SupportMessagesCollectionViewController.swift */; };
 		E09190242251CAC900184A00 /* SupportMessagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09190232251CAC900184A00 /* SupportMessagesCell.swift */; };
 		E09190262251D43800184A00 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09190252251D43800184A00 /* BaseCollectionViewCell.swift */; };
+		E0DED4102252989800C99CFF /* KeyboardTextViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DED40F2252989800C99CFF /* KeyboardTextViewContainer.swift */; };
+		E0DED4122252991000C99CFF /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DED4112252991000C99CFF /* BaseView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E04EF4D92252C32C0026F1FE /* VerticallyCenteredTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticallyCenteredTextView.swift; sourceTree = "<group>"; };
+		E04EF4DB2252C3590026F1FE /* SupportMessageHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportMessageHeader.swift; sourceTree = "<group>"; };
 		E080F89F224F02DD004AF19F /* Apple Card.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Apple Card.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E080F8A2224F02DD004AF19F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E080F8A4224F02DD004AF19F /* CategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryController.swift; sourceTree = "<group>"; };
@@ -73,6 +80,7 @@
 		E080F8DD225079FE004AF19F /* HeroImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroImageView.swift; sourceTree = "<group>"; };
 		E080F8DF22508AA7004AF19F /* TransactionHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistoryCell.swift; sourceTree = "<group>"; };
 		E080F8E122508AFB004AF19F /* TransactionHistoryTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistoryTableView.swift; sourceTree = "<group>"; };
+		E08F31622253837A007BA64D /* SupportMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportMessage.swift; sourceTree = "<group>"; };
 		E09190142251895000184A00 /* CardInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoViewController.swift; sourceTree = "<group>"; };
 		E091901622519EE300184A00 /* CardInfoTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoTableView.swift; sourceTree = "<group>"; };
 		E09190182251B49500184A00 /* CardInfoButtonsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoButtonsStackView.swift; sourceTree = "<group>"; };
@@ -82,6 +90,8 @@
 		E09190212251C93000184A00 /* SupportMessagesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportMessagesCollectionViewController.swift; sourceTree = "<group>"; };
 		E09190232251CAC900184A00 /* SupportMessagesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportMessagesCell.swift; sourceTree = "<group>"; };
 		E09190252251D43800184A00 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		E0DED40F2252989800C99CFF /* KeyboardTextViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardTextViewContainer.swift; sourceTree = "<group>"; };
+		E0DED4112252991000C99CFF /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,12 +140,15 @@
 		E080F8D0225052AB004AF19F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E0DED40F2252989800C99CFF /* KeyboardTextViewContainer.swift */,
+				E04EF4DB2252C3590026F1FE /* SupportMessageHeader.swift */,
 				E080F8DD225079FE004AF19F /* HeroImageView.swift */,
 				E091901A2251B4AF00184A00 /* CardInfoTopImageView.swift */,
 				E09190182251B49500184A00 /* CardInfoButtonsStackView.swift */,
 				E080F8BA224FB43F004AF19F /* BottomView.swift */,
 				E080F8B4224FB3E3004AF19F /* HeaderView.swift */,
 				E080F8C8224FF7BD004AF19F /* MainPaymentStackView.swift */,
+				E0DED4112252991000C99CFF /* BaseView.swift */,
 				E080F8CE22500020004AF19F /* PaymentDueView.swift */,
 				E080F8CC224FFC33004AF19F /* SmallChartView.swift */,
 				E080F8BE224FBED7004AF19F /* TableStackView.swift */,
@@ -148,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				E080F8B8224FB417004AF19F /* Transaction.swift */,
+				E08F31622253837A007BA64D /* SupportMessage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -171,6 +185,7 @@
 			children = (
 				E09190232251CAC900184A00 /* SupportMessagesCell.swift */,
 				E09190252251D43800184A00 /* BaseCollectionViewCell.swift */,
+				E04EF4D92252C32C0026F1FE /* VerticallyCenteredTextView.swift */,
 				E080F8A2224F02DD004AF19F /* AppDelegate.swift */,
 				E091901F2251C60400184A00 /* supportCall.mp3 */,
 				E091901C2251C10700184A00 /* dialing.mp3 */,
@@ -267,11 +282,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E04EF4DA2252C32C0026F1FE /* VerticallyCenteredTextView.swift in Sources */,
 				E080F8BF224FBED7004AF19F /* TableStackView.swift in Sources */,
 				E080F8B7224FB3FE004AF19F /* BlankNavController.swift in Sources */,
 				E080F8E222508AFB004AF19F /* TransactionHistoryTableView.swift in Sources */,
 				E080F8DE225079FE004AF19F /* HeroImageView.swift in Sources */,
 				E080F8E022508AA7004AF19F /* TransactionHistoryCell.swift in Sources */,
+				E0DED4102252989800C99CFF /* KeyboardTextViewContainer.swift in Sources */,
 				E09190262251D43800184A00 /* BaseCollectionViewCell.swift in Sources */,
 				E080F8C7224FE544004AF19F /* MainViewController.swift in Sources */,
 				E080F8A5224F02DD004AF19F /* CategoryController.swift in Sources */,
@@ -280,7 +297,9 @@
 				E080F8BB224FB43F004AF19F /* BottomView.swift in Sources */,
 				E080F8CF22500020004AF19F /* PaymentDueView.swift in Sources */,
 				E091901722519EE300184A00 /* CardInfoTableView.swift in Sources */,
+				E08F31632253837A007BA64D /* SupportMessage.swift in Sources */,
 				E080F8DC22507222004AF19F /* TransactionDetailMapCell.swift in Sources */,
+				E04EF4DC2252C3590026F1FE /* SupportMessageHeader.swift in Sources */,
 				E080F8C3224FD28F004AF19F /* Extensions.swift in Sources */,
 				E080F8C1224FC413004AF19F /* TransactionTableView.swift in Sources */,
 				E080F8DA2250694E004AF19F /* TopTransactionDetailCell.swift in Sources */,
@@ -297,6 +316,7 @@
 				E091901B2251B4AF00184A00 /* CardInfoTopImageView.swift in Sources */,
 				E080F8B9224FB417004AF19F /* Transaction.swift in Sources */,
 				E080F8BD224FB44B004AF19F /* TransactionCell.swift in Sources */,
+				E0DED4122252991000C99CFF /* BaseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
