@@ -10,6 +10,14 @@ import UIKit
 
 extension UIColor{
     static let bgColor = #colorLiteral(red: 0.9541429877, green: 0.9484686255, blue: 0.9746612906, alpha: 1)
+    
+    convenience public init(r: CGFloat, g: CGFloat, b: CGFloat) {
+        self.init(r: r, g: g, b: b, a: 1)
+    }
+    
+    convenience public init(r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) {
+        self.init(red: r/255, green: g/255, blue: b/255, alpha: a)
+    }
 }
 
 
