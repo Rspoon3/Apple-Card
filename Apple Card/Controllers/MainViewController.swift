@@ -92,33 +92,18 @@ class MainViewController: UIViewController, TransactionCellDelegate{
         view.backgroundColor = UIColor.bgColor
         tableView.mydelegate = self
         
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(scrollView)
+        scrollView.fillSuperview()
 
         [containerHeaderView, miniViewsStack, tableStackView].forEach({scrollView.addSubview($0)})
-        NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            
-            containerHeaderView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 10),
-            containerHeaderView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -sidePadding * 2),
-            containerHeaderView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: sidePadding),
-            containerHeaderView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -sidePadding),
-            containerHeaderView.heightAnchor.constraint(equalTo: scrollView.heightAnchor, multiplier: 0.25),
+        
+        containerHeaderView.anchor(top: scrollView.topAnchor, bottom: nil, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor, constant: .init(top: 10, left: sidePadding, bottom: 0, right: 0))
+        containerHeaderView.anchorHegihtWidth(height: scrollView.heightAnchor, heightConstant: nil, heightMulitplier: 0.25, width: scrollView.widthAnchor, widthConstant: -sidePadding * 2 , widthMulitplier: nil)
+        
+        miniViewsStack.anchor(top: containerHeaderView.bottomAnchor, bottom: nil, leading: containerHeaderView.leadingAnchor, trailing: scrollView.trailingAnchor, constant: .init(top: 20, left: 0, bottom: 0, right: 0))
+        miniViewsStack.anchorHegihtWidth(height: scrollView.heightAnchor, heightConstant: nil, heightMulitplier: 0.2, width: nil, widthConstant: nil, widthMulitplier: nil)
 
-            miniViewsStack.topAnchor.constraint(equalTo: containerHeaderView.bottomAnchor, constant: 20),
-            miniViewsStack.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -sidePadding * 2),
-            miniViewsStack.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: sidePadding),
-            miniViewsStack.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -sidePadding),
-            miniViewsStack.heightAnchor.constraint(equalTo: scrollView.heightAnchor, multiplier: 0.2),
-
-            tableStackView.topAnchor.constraint(equalTo: miniViewsStack.bottomAnchor, constant: 30),
-            tableStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: sidePadding),
-            tableStackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -sidePadding),
-            tableStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -sidePadding * 2),
-        ])
+        tableStackView.anchor(top: miniViewsStack.bottomAnchor, bottom: nil, leading: containerHeaderView.leadingAnchor, trailing: scrollView.trailingAnchor, constant: .init(top: 20, left: 0, bottom: 0, right: 0))
 
     }
 
