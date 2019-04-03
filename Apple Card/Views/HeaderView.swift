@@ -37,8 +37,7 @@ class HeaderView : UIView{
         text.append(attributedText2)
         
         mainImageView = UIImageView(image: image)
-        mainImageView.layer.cornerRadius = 10
-        mainImageView.layer.masksToBounds = true
+        mainImageView.roundCorners(radius: 10)
         mainImageView.translatesAutoresizingMaskIntoConstraints = false
         
         let label = UILabel()

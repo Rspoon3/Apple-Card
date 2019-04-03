@@ -23,8 +23,7 @@ class CardInfoTopImageView : UIView{
         let text = NSMutableAttributedString()
         let imageView = UIImageView(image: #imageLiteral(resourceName: "theCard"))
         
-        imageView.layer.cornerRadius = 3
-        imageView.layer.masksToBounds = true
+        imageView.roundCorners(radius: 3)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         let attr1 : [NSAttributedString.Key: Any] = [

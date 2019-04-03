@@ -99,8 +99,7 @@ class KeyboardTextViewContainer : BaseView, UITextViewDelegate{
     }
     
     override func layoutSubviews() {
-        textViewSendButtonContainer.layer.cornerRadius = textViewSendButtonContainer.frame.height / 2
-        textViewSendButtonContainer.layer.masksToBounds = true
+        textViewSendButtonContainer.roundCorners(radius: textViewSendButtonContainer.frame.height / 2)
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {

@@ -67,8 +67,7 @@ class CardInfoButtonsStackView: UIStackView {
             NSLayoutConstraint.activate(constraints)
             
             view.translatesAutoresizingMaskIntoConstraints = false
-            view.layer.masksToBounds = true
-            view.layer.cornerRadius = 10
+            view.roundCorners(radius: 10)
             view.backgroundColor = .white
             addArrangedSubview(view)
         }

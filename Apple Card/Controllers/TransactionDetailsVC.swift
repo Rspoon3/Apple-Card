@@ -14,8 +14,7 @@ class TransactionDetailsVC: UIViewController, SFSafariViewControllerDelegate{
     lazy var phoneBarButton : UIButton = {
         let button = UIButton(type: .system)
         button.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
-        button.layer.cornerRadius = 15
-        button.layer.masksToBounds = true
+        button.roundCorners(radius: 15)
         
         let blurEffect = UIBlurEffect(style: .regular)
         let blurredEffectView = UIVisualEffectView(effect: blurEffect)
@@ -40,8 +39,7 @@ class TransactionDetailsVC: UIViewController, SFSafariViewControllerDelegate{
         tap.numberOfTapsRequired = 1
         
         button.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
-        button.layer.cornerRadius = 15
-        button.layer.masksToBounds = true
+        button.roundCorners(radius: 15)
         
         let blurEffect = UIBlurEffect(style: .regular)
         let blurredEffectView = UIVisualEffectView(effect: blurEffect)
@@ -76,7 +74,6 @@ class TransactionDetailsVC: UIViewController, SFSafariViewControllerDelegate{
         let mapTableView = TransactionMapTableView(frame: view.frame, style: .plain, transaction: transaction)
         let heroImage = HeroImageView(frame: view.frame, transaction: transaction)
         let transactionHistoryTableView = TransactionHistoryTableView(frame: view.frame, style: .plain, transaction: transaction)
-        let tableStackView = TableStackView(frame: view.frame, table: transactionHistoryTableView, title: "Transaction History")
         let scrollView = UIScrollView(frame: .zero)
         let tableViewHeight : CGFloat = 105
         let mapTableViewHeight = view.frame.height * 0.2
@@ -89,7 +86,7 @@ class TransactionDetailsVC: UIViewController, SFSafariViewControllerDelegate{
         scrollView.addSubview(containerView)
         
         view.addSubview(heroImage)
-        [mapTableView, tableStackView, bottomView].forEach({containerView.addSubview($0)})
+        [mapTableView, transactionHistoryTableView, bottomView].forEach({containerView.addSubview($0)})
         
         let constriants = [
             scrollView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -107,10 +104,10 @@ class TransactionDetailsVC: UIViewController, SFSafariViewControllerDelegate{
             mapTableView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
             mapTableView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
             
-            tableStackView.topAnchor.constraint(equalTo: mapTableView.bottomAnchor, constant: 20),
-            tableStackView.heightAnchor.constraint(equalToConstant: tableViewHeight),
-            tableStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
-            tableStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
+            transactionHistoryTableView.topAnchor.constraint(equalTo: mapTableView.bottomAnchor, constant: 20),
+            transactionHistoryTableView.heightAnchor.constraint(equalToConstant: tableViewHeight),
+            transactionHistoryTableView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
+            transactionHistoryTableView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
             
             bottomView.heightAnchor.constraint(equalTo: containerView.heightAnchor, multiplier: (1/6)),
             bottomView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),

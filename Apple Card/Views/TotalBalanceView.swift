@@ -14,8 +14,7 @@ class TotalBalanceView : UIView{
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .white
-        layer.masksToBounds = true
-        layer.cornerRadius = 10
+        roundCorners(radius: 10)
         
         let text = NSMutableAttributedString()
         let attr1 : [NSAttributedString.Key: Any] = [

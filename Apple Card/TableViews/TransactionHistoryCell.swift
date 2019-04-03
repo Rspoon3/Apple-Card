@@ -41,8 +41,7 @@ class TransactionHistoryCell: UITableViewCell {
         label.text = "2%"
         label.textAlignment = .center
         label.backgroundColor = UIColor.lightGray.withAlphaComponent(0.15)
-        label.layer.cornerRadius = 5
-        label.layer.masksToBounds = true
+        label.roundCorners(radius: 5)
         return label
     }()
     

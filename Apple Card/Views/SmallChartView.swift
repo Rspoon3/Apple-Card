@@ -14,8 +14,7 @@ class SmallChartView : UIView{
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .white
-        layer.masksToBounds = true
-        layer.cornerRadius = 10
+        roundCorners(radius: 10)
         
         let label = UILabel()
         label.text = "Weekly Activity"

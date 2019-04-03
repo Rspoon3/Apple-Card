@@ -48,8 +48,7 @@ class TransactionCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.imageView?.layer.masksToBounds = true
-        self.imageView?.layer.cornerRadius = self.frame.height / 15
+        self.imageView?.roundCorners(radius: self.frame.height / 15)
     }
     
     func updateCell(){

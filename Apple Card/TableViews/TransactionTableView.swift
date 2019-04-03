@@ -18,12 +18,13 @@ class TransactionTableView: UITableView, UITableViewDelegate, UITableViewDataSou
     var mydelegate : TransactionCellDelegate!
     
     let transactions : [Transaction]!
+    var sectionName : String!
     
-    init(frame: CGRect, style: UITableView.Style, transactions: [Transaction]) {
+    init(frame: CGRect, style: UITableView.Style, transactions: [Transaction], sectionName: String) {
         self.transactions = transactions
+        self.sectionName = sectionName
         super.init(frame: frame, style: .plain)
-        layer.cornerRadius = 10
-        layer.masksToBounds = true
+        roundCorners(radius: 10)
         translatesAutoresizingMaskIntoConstraints = false
         delegate = self
         dataSource = self
@@ -42,6 +43,9 @@ class TransactionTableView: UITableView, UITableViewDelegate, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TransactionCell.cellID, for: indexPath) as! TransactionCell
+        if indexPath.row == 0{
+            cell.roundTopCorners(radius: 10)
+        }
         cell.transaction = transactions[indexPath.row]
         return cell
     }
@@ -53,6 +57,23 @@ class TransactionTableView: UITableView, UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         mydelegate.push(indexPath: indexPath)
     }
+    
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
+    
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 25)
+        label.sizeToFit()
+        label.text = sectionName
+        backgroundColor = .clear
+        return label
+    }
+    
+
     
 }
 

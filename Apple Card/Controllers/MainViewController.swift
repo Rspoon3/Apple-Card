@@ -51,8 +51,7 @@ class MainViewController: UIViewController, TransactionCellDelegate{
     let headerImageView : UIImageView = {
         let view = UIImageView()
         view.image = #imageLiteral(resourceName: "theCard")
-        view.layer.cornerRadius = 10
-        view.layer.masksToBounds = true
+        view.roundCorners(radius: 10)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -61,8 +60,7 @@ class MainViewController: UIViewController, TransactionCellDelegate{
         let button = UIButton(type: .system)
         button.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
         button.backgroundColor = .black
-        button.layer.cornerRadius = 15
-        button.layer.masksToBounds = true
+        button.roundCorners(radius: 15)
         button.addTarget(self, action: #selector(actionSheet), for: .touchUpInside)
         
         let imageView = UIImageView()
@@ -77,8 +75,7 @@ class MainViewController: UIViewController, TransactionCellDelegate{
         return button
     }()
     
-    lazy var tableView = TransactionTableView(frame: view.frame, style: .plain, transactions: transactions)
-    lazy var tableStackView = TableStackView(frame: view.frame, table: tableView, title: "Latest Transactions")
+    lazy var tableView = TransactionTableView(frame: view.frame, style: .plain, transactions: transactions, sectionName: "Latest Transactions")
     lazy var miniViewsStack = MainPaymentStackView() //the three charts
     let scrollView = UIScrollView()
 
@@ -93,24 +90,23 @@ class MainViewController: UIViewController, TransactionCellDelegate{
         tableView.mydelegate = self
         
         self.view.addSubview(scrollView)
-        scrollView.fillSuperview()
+        scrollView.fillSafeSuperview(safeTop: true, safeBottom: false, safeLeading: false, safeTrialing: false)
 
-        [containerHeaderView, miniViewsStack, tableStackView].forEach({scrollView.addSubview($0)})
+        [containerHeaderView, miniViewsStack, tableView].forEach({scrollView.addSubview($0)})
         
         containerHeaderView.anchor(top: scrollView.topAnchor, bottom: nil, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor, constant: .init(top: 10, left: sidePadding, bottom: 0, right: 0))
-        containerHeaderView.anchorHegihtWidth(height: scrollView.heightAnchor, heightConstant: nil, heightMulitplier: 0.25, width: scrollView.widthAnchor, widthConstant: -sidePadding * 2 , widthMulitplier: nil)
+        containerHeaderView.anchorHegihtWidth(height: view.heightAnchor, heightConstant: nil, heightMulitplier: 0.25, width: scrollView.widthAnchor, widthConstant: -sidePadding * 2 , widthMulitplier: nil)
         
         miniViewsStack.anchor(top: containerHeaderView.bottomAnchor, bottom: nil, leading: containerHeaderView.leadingAnchor, trailing: scrollView.trailingAnchor, constant: .init(top: 20, left: 0, bottom: 0, right: 0))
         miniViewsStack.anchorHegihtWidth(height: scrollView.heightAnchor, heightConstant: nil, heightMulitplier: 0.2, width: nil, widthConstant: nil, widthMulitplier: nil)
 
-        tableStackView.anchor(top: miniViewsStack.bottomAnchor, bottom: nil, leading: containerHeaderView.leadingAnchor, trailing: scrollView.trailingAnchor, constant: .init(top: 20, left: 0, bottom: 0, right: 0))
+        tableView.anchor(top: miniViewsStack.bottomAnchor, bottom: nil, leading: containerHeaderView.leadingAnchor, trailing: scrollView.trailingAnchor, constant: .init(top: 20, left: 0, bottom: 0, right: 0))
 
     }
 
     override func viewWillLayoutSubviews() {
         let tableHeight = 44.0 * 1.9 * CGFloat(transactions.count) + 36
-        tableStackView.heightAnchor.constraint(equalToConstant: tableHeight).isActive = true
-        tableStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+        tableView.anchor(top: nil, bottom: scrollView.bottomAnchor, leading: nil, trailing: nil, size: CGSize(width: 0, height: tableHeight))
     }
 
     @objc func push(){

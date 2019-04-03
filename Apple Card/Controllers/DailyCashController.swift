@@ -28,10 +28,9 @@ class DailyCashController: UIViewController, TransactionCellDelegate  {
     override func viewDidLoad() {
         super.viewDidLoad()
         let totalPrice = transactions.reduce(0, {$0 + $1.price})
-        let tableView = TransactionTableView(frame: view.frame, style: .plain, transactions: transactions)
+        let tableView = TransactionTableView(frame: view.frame, style: .plain, transactions: transactions, sectionName: "March 2019")
         let headerView = HeaderView(frame: view.frame, image: #imageLiteral(resourceName: "dailyCash"), title: "Daily Cash", subTitle: "Apple Card")
         let bottomView = BottomView(frame: view.frame, amount: totalPrice)
-        let stack = TableStackView(frame: view.frame, table: tableView, title: "March 2019")
         let scrollView = UIScrollView(frame: .zero)
         let tableViewHeight : CGFloat = (CGFloat(transactions.count) * 2.04 * 44.0)
         tableView.mydelegate = self
@@ -43,7 +42,7 @@ class DailyCashController: UIViewController, TransactionCellDelegate  {
         containerView.frame = view.bounds
         scrollView.addSubview(containerView)
         
-        [headerView, stack, bottomView].forEach({containerView.addSubview($0)})
+        [headerView, tableView, bottomView].forEach({containerView.addSubview($0)})
         view.backgroundColor = UIColor.bgColor
         
         let constraints = [
@@ -57,10 +56,10 @@ class DailyCashController: UIViewController, TransactionCellDelegate  {
             headerView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
             headerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: (1/5.5)),
             
-            stack.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 20),
-            stack.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
-            stack.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant:  -20),
-            stack.heightAnchor.constraint(equalToConstant: tableViewHeight),
+            tableView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 20),
+            tableView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
+            tableView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant:  -20),
+            tableView.heightAnchor.constraint(equalToConstant: tableViewHeight),
 
             bottomView.heightAnchor.constraint(equalTo: containerView.heightAnchor, multiplier: (1/6)),
             bottomView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),

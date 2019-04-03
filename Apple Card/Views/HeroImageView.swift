@@ -51,8 +51,7 @@ class HeroImageView : UIView{
         
         let logoImageView = UIImageView(image: transaction.image)
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
-        logoImageView.layer.masksToBounds = true
-        logoImageView.layer.cornerRadius = 10
+        logoImageView.roundCorners(radius: 10)
 
         [label, heroImageView, logoImageView, label].forEach({addSubview($0)})
         

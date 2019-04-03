@@ -48,8 +48,47 @@ extension UIImage {
 
 extension UIView {
     
+    func roundCorners(radius: CGFloat){
+        layer.masksToBounds = true
+        layer.cornerRadius = radius
+    }
+    
+    func roundTopCorners(radius: CGFloat){
+        layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        layer.masksToBounds = true
+        layer.cornerRadius = radius
+    }
+    
+    func roundBottomCorners(radius: CGFloat){
+        layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+        layer.masksToBounds = true
+        layer.cornerRadius = radius
+    }
+    
     func fillSuperview() {
         anchor(top: superview?.topAnchor, bottom: superview?.bottomAnchor, leading: superview?.leadingAnchor, trailing: superview?.trailingAnchor)
+    }
+    
+    func fillSafeSuperview(safeTop: Bool, safeBottom: Bool, safeLeading: Bool, safeTrialing: Bool) {
+        var topAnchor = superview?.topAnchor
+        var bottomAnchor = superview?.bottomAnchor
+        var leadingAnchor = superview?.leadingAnchor
+        var trailingAnchor = superview?.trailingAnchor
+        
+        if safeTop{
+            topAnchor = superview?.safeAreaLayoutGuide.topAnchor
+        }
+        if safeBottom{
+            bottomAnchor = superview?.safeAreaLayoutGuide.bottomAnchor
+        }
+        if safeLeading{
+            leadingAnchor = superview?.safeAreaLayoutGuide.leadingAnchor
+        }
+        if safeTrialing{
+            trailingAnchor = superview?.safeAreaLayoutGuide.trailingAnchor
+        }
+
+        anchor(top: topAnchor, bottom: bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor)
     }
     
     func anchorSize(to view: UIView) {

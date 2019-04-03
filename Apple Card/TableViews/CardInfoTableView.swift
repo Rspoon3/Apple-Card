@@ -13,8 +13,7 @@ class CardInfoTableView: UITableView, UITableViewDelegate, UITableViewDataSource
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: .grouped)
-        layer.cornerRadius = 10
-        layer.masksToBounds = true
+        roundCorners(radius: 10)
         translatesAutoresizingMaskIntoConstraints = false
         delegate = self
         dataSource = self
@@ -60,8 +59,7 @@ class CardInfoTableView: UITableView, UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: cellID)
-        cell.layer.cornerRadius = 10
-        cell.layer.masksToBounds = true
+        cell.roundCorners(radius: 10)
         cell.selectionStyle = .none
         tableView.separatorStyle = .none
         
@@ -71,21 +69,21 @@ class CardInfoTableView: UITableView, UITableViewDelegate, UITableViewDataSource
                 cell.textLabel?.text = "Scheduled Payments"
                 cell.detailTextLabel?.text = "None"
                 cell.accessoryType = .disclosureIndicator
-                cell.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+                cell.roundTopCorners(radius: 10)
             } else{
                 cell.textLabel?.text = "Make Payment"
                 cell.textLabel?.textColor = self.tintColor
-                cell.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+                cell.roundBottomCorners(radius: 10)
             }
         case 1:
             if indexPath.row == 0{
                 cell.textLabel?.text = "Credit Limit"
                 cell.detailTextLabel?.text = "$10,000.00"
-                cell.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+                cell.roundTopCorners(radius: 10)
             } else{
                 cell.textLabel?.text = "Avaliable Credit"
                 cell.detailTextLabel?.text = "$8,317.45"
-                cell.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+                cell.roundBottomCorners(radius: 10)
             }
         case 2:
             cell.textLabel?.text = "Card Infromation"

@@ -48,8 +48,7 @@ class SupportMessagesCell: BaseCollectionViewCell {
     }()
     
     override func layoutSubviews() {
-        textBubbleView.layer.cornerRadius = 15
-        textBubbleView.layer.masksToBounds = true
+        textBubbleView.roundCorners(radius: 15)
     }
 
     override func setupViews() {

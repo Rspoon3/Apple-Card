@@ -29,8 +29,7 @@ class PaymentDueView : UIView{
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .white
-        layer.masksToBounds = true
-        layer.cornerRadius = 10
+        roundCorners(radius: 10)
 
         let text = NSMutableAttributedString()
         let attr1 : [NSAttributedString.Key: Any] = [
@@ -69,8 +68,7 @@ class PaymentDueView : UIView{
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        button.layer.masksToBounds = true
-        button.layer.cornerRadius = button.frame.height / 2
+        button.roundCorners(radius: button.frame.height / 2)
     }
     
     required init(coder: NSCoder) {

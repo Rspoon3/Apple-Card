@@ -15,8 +15,7 @@ class TransactionHistoryTableView: UITableView, UITableViewDelegate, UITableView
     init(frame: CGRect, style: UITableView.Style, transaction: Transaction) {
         self.transaction = transaction
         super.init(frame: frame, style: .plain)
-        layer.cornerRadius = 10
-        layer.masksToBounds = true
+        roundCorners(radius: 10)
         translatesAutoresizingMaskIntoConstraints = false
         delegate = self
         dataSource = self
