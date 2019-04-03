@@ -36,6 +36,7 @@
 		E080F8E022508AA7004AF19F /* TransactionHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E080F8DF22508AA7004AF19F /* TransactionHistoryCell.swift */; };
 		E080F8E222508AFB004AF19F /* TransactionHistoryTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E080F8E122508AFB004AF19F /* TransactionHistoryTableView.swift */; };
 		E08F31632253837A007BA64D /* SupportMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F31622253837A007BA64D /* SupportMessage.swift */; };
+		E08F31652253AEFD007BA64D /* TintableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F31642253AEFD007BA64D /* TintableButton.swift */; };
 		E09190152251895000184A00 /* CardInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09190142251895000184A00 /* CardInfoViewController.swift */; };
 		E091901722519EE300184A00 /* CardInfoTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E091901622519EE300184A00 /* CardInfoTableView.swift */; };
 		E09190192251B49500184A00 /* CardInfoButtonsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09190182251B49500184A00 /* CardInfoButtonsStackView.swift */; };
@@ -81,6 +82,7 @@
 		E080F8DF22508AA7004AF19F /* TransactionHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistoryCell.swift; sourceTree = "<group>"; };
 		E080F8E122508AFB004AF19F /* TransactionHistoryTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistoryTableView.swift; sourceTree = "<group>"; };
 		E08F31622253837A007BA64D /* SupportMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportMessage.swift; sourceTree = "<group>"; };
+		E08F31642253AEFD007BA64D /* TintableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TintableButton.swift; sourceTree = "<group>"; };
 		E09190142251895000184A00 /* CardInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoViewController.swift; sourceTree = "<group>"; };
 		E091901622519EE300184A00 /* CardInfoTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoTableView.swift; sourceTree = "<group>"; };
 		E09190182251B49500184A00 /* CardInfoButtonsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoButtonsStackView.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 		E080F8D322505301004AF19F /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				E08F31642253AEFD007BA64D /* TintableButton.swift */,
 				E09190232251CAC900184A00 /* SupportMessagesCell.swift */,
 				E09190252251D43800184A00 /* BaseCollectionViewCell.swift */,
 				E04EF4D92252C32C0026F1FE /* VerticallyCenteredTextView.swift */,
@@ -312,6 +315,7 @@
 				E09190192251B49500184A00 /* CardInfoButtonsStackView.swift in Sources */,
 				E09190242251CAC900184A00 /* SupportMessagesCell.swift in Sources */,
 				E080F8CB224FF9EF004AF19F /* TotalBalanceView.swift in Sources */,
+				E08F31652253AEFD007BA64D /* TintableButton.swift in Sources */,
 				E080F8A3224F02DD004AF19F /* AppDelegate.swift in Sources */,
 				E091901B2251B4AF00184A00 /* CardInfoTopImageView.swift in Sources */,
 				E080F8B9224FB417004AF19F /* Transaction.swift in Sources */,

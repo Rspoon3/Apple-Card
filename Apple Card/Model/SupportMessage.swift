@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct SupportMesage {
+struct SupportMessage {
     let message : String
     let isSender: Bool
     let dateSent: Date

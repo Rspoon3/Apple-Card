@@ -53,7 +53,7 @@ class TransactionTableView: UITableView, UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         mydelegate.push(indexPath: indexPath)
     }
-
+    
 }
 
 

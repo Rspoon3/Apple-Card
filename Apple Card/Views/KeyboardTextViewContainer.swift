@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol SendMessageDelegate {
+    func sendMessage(message: String)
+}
+
 class KeyboardTextViewContainer : BaseView, UITextViewDelegate{
+    
+    var sendMessageDelegate : SendMessageDelegate?
     
     let everythingContainer : UIView = {
         let view = UIView()
@@ -16,7 +22,9 @@ class KeyboardTextViewContainer : BaseView, UITextViewDelegate{
         view.translatesAutoresizingMaskIntoConstraints  = false
         return view
     }()
-    
+    @objc func scrollToDismissKeyboard(){
+        
+    }
     let textViewSendButtonContainer : UIView = {
         let view = UIView()
         view.backgroundColor = .clear
@@ -25,40 +33,34 @@ class KeyboardTextViewContainer : BaseView, UITextViewDelegate{
         view.translatesAutoresizingMaskIntoConstraints  = false
         return view
     }()
+    let placeHolderText = "To: Apple"
     
-    let textView : VerticallyCenteredTextView = {
+    lazy var textView : VerticallyCenteredTextView = {
         let view = VerticallyCenteredTextView()
         view.isUserInteractionEnabled = true
         view.translatesAutoresizingMaskIntoConstraints  = false
         view.backgroundColor = .white
-        view.text = "Placeholder"
+        view.text = placeHolderText
         view.textColor = .lightGray
         view.font = UIFont.systemFont(ofSize: 18)
         return view
     }()
     
-    let sendButton : UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Send", for: .normal)
-        button.setTitleColor(UIView().tintColor, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .clear
-        return button
-    }()
-    
-    let buttonStack : UIStackView = {
-        let cameraButton = UIButton(type: .detailDisclosure)
-        let infoButton = UIButton(type: .infoLight)
-        let stack = UIStackView(arrangedSubviews: [infoButton, cameraButton])
+    lazy var buttonStack : UIStackView = {
+        let color = #colorLiteral(red: 0.4650884271, green: 0.4987065196, blue: 0.5242561102, alpha: 1)
+        let cameraButton = TintableButton(frame: frame, image: #imageLiteral(resourceName: "camera"), color: color, size: CGSize(width: 30, height: 30))
+        let appStoreButton = TintableButton(frame: frame, image: #imageLiteral(resourceName: "appStoreIcon"), color: color, size: CGSize(width: 26, height: 26))
+        let stack = UIStackView(arrangedSubviews: [cameraButton, appStoreButton])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
         stack.distribution = .fillEqually
+        stack.backgroundColor = .red
         return stack
     }()
     
-
-    
     override func setupViews() {
+        let sendButton = TintableButton(frame: frame, image: #imageLiteral(resourceName: "iMessageSendButton"), color: #colorLiteral(red: 0.4650884271, green: 0.4987065196, blue: 0.5242561102, alpha: 1), size: CGSize(width: 30, height: 30))
+        sendButton.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
         translatesAutoresizingMaskIntoConstraints = false
         textView.delegate = self
         
@@ -81,22 +83,20 @@ class KeyboardTextViewContainer : BaseView, UITextViewDelegate{
             
             buttonStack.topAnchor.constraint(equalTo: everythingContainer.topAnchor, constant: 5),
             buttonStack.bottomAnchor.constraint(equalTo: everythingContainer.bottomAnchor),
-            buttonStack.trailingAnchor.constraint(equalTo: textViewSendButtonContainer.leadingAnchor, constant: 10),
+            buttonStack.trailingAnchor.constraint(equalTo: textViewSendButtonContainer.leadingAnchor, constant: -10),
             buttonStack.leadingAnchor.constraint(equalTo:  everythingContainer.leadingAnchor),
             
             textView.topAnchor.constraint(equalTo: topAnchor),
             textView.bottomAnchor.constraint(equalTo: textViewSendButtonContainer.bottomAnchor),
             textView.leadingAnchor.constraint(equalTo: textViewSendButtonContainer.leadingAnchor, constant: 10),
-            textView.trailingAnchor.constraint(equalTo: textViewSendButtonContainer.trailingAnchor, constant: -75),
+            textView.trailingAnchor.constraint(equalTo: sendButton.leadingAnchor, constant: -10),
             
             sendButton.topAnchor.constraint(equalTo: topAnchor),
             sendButton.bottomAnchor.constraint(equalTo: textViewSendButtonContainer.bottomAnchor),
-            sendButton.leadingAnchor.constraint(equalTo: textView.trailingAnchor, constant: 5),
-            sendButton.trailingAnchor.constraint(equalTo: textViewSendButtonContainer.trailingAnchor),
+            sendButton.trailingAnchor.constraint(equalTo: textViewSendButtonContainer.trailingAnchor, constant: -5),
         ]
         NSLayoutConstraint.activate(constraints)
     }
-    
     
     override func layoutSubviews() {
         textViewSendButtonContainer.layer.cornerRadius = textViewSendButtonContainer.frame.height / 2
@@ -107,6 +107,14 @@ class KeyboardTextViewContainer : BaseView, UITextViewDelegate{
         textView.becomeFirstResponder()
         textView.textColor = .black
         textView.text = nil
+    }
+    
+    @objc func handleSend(){
+        if textView.text != ""{
+            if textView.text != placeHolderText{
+                sendMessageDelegate?.sendMessage(message: textView.text)
+            }
+        }
     }
 
 }

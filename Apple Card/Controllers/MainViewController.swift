@@ -30,7 +30,6 @@ class MainViewController: UIViewController, TransactionCellDelegate{
         self.navigationController?.pushViewController(destinationVC, animated: true)
     }
     
-    
     lazy var containerHeaderView : UIView = {
         let view = UIView()
         view.layer.shadowColor = UIColor.gray.cgColor
@@ -78,55 +77,57 @@ class MainViewController: UIViewController, TransactionCellDelegate{
         return button
     }()
     
-    
+    lazy var tableView = TransactionTableView(frame: view.frame, style: .plain, transactions: transactions)
+    lazy var tableStackView = TableStackView(frame: view.frame, table: tableView, title: "Latest Transactions")
+    lazy var miniViewsStack = MainPaymentStackView() //the three charts
+    let scrollView = UIScrollView()
+
     override func viewDidLoad() {
+        let sidePadding : CGFloat = 20
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(actionSheet), name: NSNotification.Name(rawValue: "actionSheet"), object: nil)
         navigationItem.rightBarButtonItem = .init(customView: custuomBarButton)
         navigationItem.leftBarButtonItem = .init(barButtonSystemItem: .done, target: self, action: nil)
         navigationItem.leftBarButtonItem?.tintColor = .black
-        let tableView = TransactionTableView(frame: view.frame, style: .plain, transactions: transactions)
-        let tableStackView = TableStackView(frame: view.frame, table: tableView, title: "Latest Transactions")
-        let stack = MainPaymentStackView()
-        let scrollView = UIScrollView(frame: .zero)
-        let tableViewHeight : CGFloat = (CGFloat(transactions.count) * 1.99 * 44.0)
-        
-        tableView.mydelegate = self
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 350)
-        view.addSubview(scrollView)
-        
-        let containerView = UIView()
-        containerView.frame = view.bounds
-        scrollView.addSubview(containerView)
-        
-        [containerHeaderView, stack, tableStackView].forEach({containerView.addSubview($0)})
         view.backgroundColor = UIColor.bgColor
+        tableView.mydelegate = self
         
-        let constraints = [
-            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(scrollView)
+
+        [containerHeaderView, miniViewsStack, tableStackView].forEach({scrollView.addSubview($0)})
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
-            containerHeaderView.topAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.topAnchor, constant: 10),
-            containerHeaderView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
-            containerHeaderView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
-            containerHeaderView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.25),
+            containerHeaderView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 10),
+            containerHeaderView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -sidePadding * 2),
+            containerHeaderView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: sidePadding),
+            containerHeaderView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -sidePadding),
+            containerHeaderView.heightAnchor.constraint(equalTo: scrollView.heightAnchor, multiplier: 0.25),
 
-            stack.topAnchor.constraint(equalTo: containerHeaderView.bottomAnchor, constant: 20),
-            stack.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
-            stack.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant:  -20),
-            stack.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2),
+            miniViewsStack.topAnchor.constraint(equalTo: containerHeaderView.bottomAnchor, constant: 20),
+            miniViewsStack.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -sidePadding * 2),
+            miniViewsStack.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: sidePadding),
+            miniViewsStack.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -sidePadding),
+            miniViewsStack.heightAnchor.constraint(equalTo: scrollView.heightAnchor, multiplier: 0.2),
 
-            tableStackView.topAnchor.constraint(equalTo: stack.bottomAnchor, constant: 30),
-            tableStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
-            tableStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
-            tableStackView.heightAnchor.constraint(equalToConstant: tableViewHeight),
-        ]
-        NSLayoutConstraint.activate(constraints)
+            tableStackView.topAnchor.constraint(equalTo: miniViewsStack.bottomAnchor, constant: 30),
+            tableStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: sidePadding),
+            tableStackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -sidePadding),
+            tableStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -sidePadding * 2),
+        ])
+
     }
-    
+
+    override func viewWillLayoutSubviews() {
+        let tableHeight = 44.0 * 1.9 * CGFloat(transactions.count) + 36
+        tableStackView.heightAnchor.constraint(equalToConstant: tableHeight).isActive = true
+        tableStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+    }
+
     @objc func push(){
         self.navigationController?.pushViewController(CategoryController(), animated: true)
     }

@@ -28,14 +28,14 @@ class CardInfoTopImageView : UIView{
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         let attr1 : [NSAttributedString.Key: Any] = [
-            .font: UIFont.boldSystemFont(ofSize: 30)
+            .font: UIFont.boldSystemFont(ofSize: frame.height * 0.03)
         ]
         let attributedText1 = NSMutableAttributedString(string: "Apple Card", attributes: attr1)
         text.append(attributedText1)
         
         let attr2 : [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor.gray,
-            .font: UIFont.systemFont(ofSize: 16),
+            .font: UIFont.systemFont(ofSize: frame.height * 0.02)
         ]
         let attributedText2 = NSMutableAttributedString(string: "\nPayment Card", attributes: attr2)
         text.append(attributedText2)

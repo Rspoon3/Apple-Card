@@ -13,13 +13,51 @@ import AVFoundation
 //intern
 class CardInfoViewController: UIViewController, CardInfoButtonsStackViewDelegate {
     
+    //MARK: ivar
     var audioPlayer = AVAudioPlayer()
+    lazy var tableView = CardInfoTableView(frame: view.frame, style: .grouped)
+    lazy var scrollView = UIScrollView(frame: view.frame)
+    lazy var headerImageView = CardInfoTopImageView(frame: view.frame)
+    lazy var cardInfoButtonsStackView = CardInfoButtonsStackView(frame: view.frame)
+    let containerView = UIView()
 
-    
-    func openSupportMessages() {
-        self.navigationController?.pushViewController(SupportMessagesCollectionViewController(), animated: true)
+    override func viewDidLayoutSubviews() {
+        let scrollHeight = view.frame.height - tableView.bounds.height - headerImageView.bounds.height - cardInfoButtonsStackView.bounds.height
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + scrollHeight)
     }
     
+    //MARK: view functions
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationController?.navigationBar.topItem?.title = ""
+        view.backgroundColor = .bgColor
+        view.addSubview(scrollView)
+        
+        containerView.frame = view.bounds
+        scrollView.addSubview(containerView)
+        [tableView, headerImageView, cardInfoButtonsStackView].forEach({containerView.addSubview($0)})
+        cardInfoButtonsStackView.mydelegate = self
+        
+        let constraints = [
+            headerImageView.topAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.topAnchor),
+            headerImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
+            headerImageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
+            headerImageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: (1/7)),
+            
+            cardInfoButtonsStackView.topAnchor.constraint(equalTo: headerImageView.bottomAnchor, constant: 15),
+            cardInfoButtonsStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
+            cardInfoButtonsStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
+            cardInfoButtonsStackView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: (1/15)),
+            
+            tableView.topAnchor.constraint(equalTo: cardInfoButtonsStackView.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
+            tableView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
+            tableView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+        ]
+        NSLayoutConstraint.activate(constraints)
+    }
+    
+    //MARK: private helper functions
     fileprivate func playSound(fileName: String) {
         let sound = Bundle.main.path(forResource: fileName, ofType: "mp3")
         do {
@@ -28,6 +66,11 @@ class CardInfoViewController: UIViewController, CardInfoButtonsStackViewDelegate
         } catch {
             print("Can not dial: \(error)")
         }
+    }
+
+    //MARK: Delegate Functions
+    func openSupportMessages() {
+        self.navigationController?.pushViewController(SupportMessagesCollectionViewController(), animated: true)
     }
     
     func callSupport() {
@@ -52,7 +95,6 @@ class CardInfoViewController: UIViewController, CardInfoButtonsStackViewDelegate
         }
     }
     
-    
     func openSupportWebsite() {
         let urlString = "https://support.apple.com"
         let url = NSURL(string: urlString)! as URL
@@ -63,35 +105,4 @@ class CardInfoViewController: UIViewController, CardInfoButtonsStackViewDelegate
         present(vc, animated: true)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        let tableView = CardInfoTableView(frame: view.frame, style: .grouped)
-        let headerImageView = CardInfoTopImageView(frame: view.frame)
-        let cardInfoButtonsStackView = CardInfoButtonsStackView(frame: view.frame)
-        
-        navigationController?.navigationBar.topItem?.title = ""
-        view.addSubview(tableView)
-        view.addSubview(headerImageView)
-        view.addSubview(cardInfoButtonsStackView)
-        view.backgroundColor = UIColor.bgColor
-        cardInfoButtonsStackView.mydelegate = self
-        
-        let constraints = [
-            headerImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            headerImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            headerImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            headerImageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: (1/7)),
-            
-            cardInfoButtonsStackView.topAnchor.constraint(equalTo: headerImageView.bottomAnchor, constant: 15),
-            cardInfoButtonsStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            cardInfoButtonsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            cardInfoButtonsStackView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: (1/15)),
-            
-            tableView.topAnchor.constraint(equalTo: cardInfoButtonsStackView.bottomAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-        ]
-        NSLayoutConstraint.activate(constraints)
-    }
 }

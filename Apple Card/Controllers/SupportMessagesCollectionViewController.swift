@@ -10,22 +10,46 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class SupportMessagesCollectionViewController:  UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
+class SupportMessagesCollectionViewController:  UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, SendMessageDelegate{
     
-    let sampleMessages = [
-        SupportMesage(message: "Hi. How are you today?", isSender: true, dateSent: Date()),
-        SupportMesage(message: "I think I lost my physical card. Do you know if I can get a new one? If so do I have to pay for it?", isSender: true, dateSent: Date()),
-        SupportMesage(message: "We can just send you one.", isSender: false, dateSent: Date()),
-        SupportMesage(message: "Really?!", isSender: true, dateSent: Date()),
-        SupportMesage(message: "Yeah dont worry about it. Its on us.", isSender: false, dateSent: Date()),
-        SupportMesage(message: "I just put in the request for you.", isSender: false, dateSent: Date()),
-        SupportMesage(message: "Thanks this is really great news!", isSender: true, dateSent: Date()),
-        SupportMesage(message: "Hours 7: I don’t know how long I’ve been stuck staring at this page. The blinking cursor represents an eternity. I’m starting to think that I’ll never escape practical 5. I know I just need to type about 200 words and then I’m don’t but I can’t. I’m too run down. Between the words and obnoxious amount of figures I’ve run out of steam. I think this is the end.?", isSender: true, dateSent: Date()),
-        SupportMesage(message: "Sorry wrong person.", isSender: true, dateSent: Date()),
-        SupportMesage(message: "What I meant to say was that my card is lost.", isSender: true, dateSent: Date()),
-        SupportMesage(message: "Can we send you another one right away.", isSender: false, dateSent: Date()),
-        SupportMesage(message: "Awesome thanks!", isSender: true, dateSent: Date()),
+    let automaticReplyMessages = [
+        SupportMessage(message: "Sorry I'm out of the office. I will see this when I return.\n\nThis is an auotmated response.", isSender: false, dateSent: Date()),
+        SupportMessage(message: "Receipents status is: On vacation. They will see this when they return.\n\nThis is an auotmated response.", isSender: false, dateSent: Date()),
+        SupportMessage(message: "Im not here right now. I will get back to you later.\n\nThis is an auotmated response.", isSender: false, dateSent: Date()),
+        SupportMessage(message: "Im gone.\n\nThis is an auotmated response.", isSender: false, dateSent: Date()),
+        SupportMessage(message: "I can't help with that at the moment because I not around\n\nThis is an auotmated response.", isSender: false, dateSent: Date()),
+        SupportMessage(message: "I'll help you when I get back into town.\n\nThis is an auotmated response.", isSender: false, dateSent: Date()),
+    ]
+    
+    var sampleMessages = [
+        SupportMessage(message: "Hi. When will I receive my titanium card?", isSender: true, dateSent: Date()),
+        SupportMessage(message: "One momenet let me check.", isSender: false, dateSent: Date()),
+        SupportMessage(message: "I can see that it was shipped this morning. It should be there in about three days.", isSender: false, dateSent: Date()),
+        SupportMessage(message: "Okay thank you.", isSender: true, dateSent: Date()),
+        SupportMessage(message: "No problem. Is there anything else I can do to help you?", isSender: false, dateSent: Date()),
+        SupportMessage(message: "Not today", isSender: true, dateSent: Date()),
 ]
+    
+    func sendMessage(message: String) {
+        let newMessage = SupportMessage(message: message, isSender: true, dateSent: Date())
+        sendNewMessage(message: newMessage)
+        keyboardTextView.textView.text = nil
+        
+        let random = Double.random(in: 1.2...3.0)
+        DispatchQueue.main.asyncAfter(deadline: .now() + random) {
+            if let randomRely = self.automaticReplyMessages.randomElement(){
+                self.sendNewMessage(message: randomRely)
+            }
+        }
+    }
+    
+    fileprivate func sendNewMessage(message: SupportMessage){
+        sampleMessages.append(message)
+        let item = sampleMessages.count - 1
+        let insertionIndex : IndexPath = IndexPath(item: item, section: 0)
+        collectionView.insertItems(at: [insertionIndex])
+        collectionView.scrollToItem(at: insertionIndex, at: .bottom, animated: true)
+    }
 
     let supportMessagesCell = SupportMessagesCell()
     var keyboardTextView : KeyboardTextViewContainer!
@@ -40,6 +64,7 @@ class SupportMessagesCollectionViewController:  UIViewController, UICollectionVi
         collectionView.backgroundColor = .white
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.keyboardDismissMode = .interactive
         collectionView.register(SupportMessagesCell.self, forCellWithReuseIdentifier: supportMessagesCell.cellID)
         view.addSubview(collectionView)
         navigationController?.navigationBar.tintColor = .white
@@ -54,14 +79,40 @@ class SupportMessagesCollectionViewController:  UIViewController, UICollectionVi
         appleLogoView.contentMode = .scaleAspectFit
         navigationItem.titleView = appleLogoView
         self.navigationItem.title = "Your Title"
+        
+        
+        let text = NSMutableAttributedString()
+        
+        let attr1 : [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.white,
+            .font: UIFont.systemFont(ofSize: 14)
+        ]
+        let attributedText1 = NSMutableAttributedString(string: "Apple ", attributes: attr1)
+        text.append(attributedText1)
+        
+        // create our NSTextAttachment
+        let image1Attachment = NSTextAttachment()
+        image1Attachment.image = #imageLiteral(resourceName: "supportMessageCheckMark-1").resizedImage(newSize: CGSize(width: 10, height: 10))
+        let imageString = NSAttributedString(attachment: image1Attachment)
+        text.append(imageString)
+        
+        let attributedText2 = NSMutableAttributedString(string: " ")
+        text.append(attributedText2)
+        
+        let image2Attachment = NSTextAttachment()
+        image2Attachment.image = #imageLiteral(resourceName: "rightArrow").resizedImage(newSize: CGSize(width: 10, height: 10))
+        let imageString2 = NSAttributedString(attachment: image2Attachment)
+        text.append(imageString2)
+
+        
         let label = UILabel()
-        label.text = "Apple"
-        label.textColor = .white
+        label.attributedText = text
         label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()
         view.addSubview(label)
         
         keyboardTextView = KeyboardTextViewContainer(frame: view.frame)
+        keyboardTextView.sendMessageDelegate = self
         view.addSubview(keyboardTextView)
         bottomConstraint = keyboardTextView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         bottomConstraint?.isActive = true
@@ -91,19 +142,29 @@ class SupportMessagesCollectionViewController:  UIViewController, UICollectionVi
             name: UIResponder.keyboardWillShowNotification,
             object: nil
         )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.001) {
             self.scrollToBottom()
         }
 
     }
     
-   
+    @objc func keyboardWillHide(_ notification: Notification){
+        updateConstraints(height: 0, moveUp: false, duration: 0.3)
+    }
     
     @objc func keyboardWillShow(_ notification: Notification) {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
-            updateConstraints(height: keyboardHeight, moveUp: true)
+            updateConstraints(height: keyboardHeight, moveUp: true, duration: 0)
         }
     }
 
@@ -112,7 +173,7 @@ class SupportMessagesCollectionViewController:  UIViewController, UICollectionVi
         self.collectionView.scrollToItem(at: indexPath, at: .bottom, animated: true)
     }
     
-    func updateConstraints(height: CGFloat, moveUp: Bool){
+    func updateConstraints(height: CGFloat, moveUp: Bool, duration: Double){
         bottomConstraint?.isActive = false
         if moveUp{
             bottomConstraint = keyboardTextView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -height - 5)
@@ -121,7 +182,7 @@ class SupportMessagesCollectionViewController:  UIViewController, UICollectionVi
         }
         bottomConstraint?.isActive = true
         
-        UIView.animate(withDuration: 0, delay: 0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: {
             self.view.layoutIfNeeded()
         }, completion: { (completed) in
             if moveUp{
@@ -150,17 +211,14 @@ class SupportMessagesCollectionViewController:  UIViewController, UICollectionVi
 
         if sampleMessages[indexPath.item].isSender{
            //us
-            cell.messageView.frame = CGRect(x:  view.frame.width - estimatedFrame.width - 16 - 16 - 8, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 20)
+            cell.isSender = true
+            cell.messageView.frame = CGRect(x:  view.frame.width - estimatedFrame.width - 16 - 8 - 19, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 20)
             cell.textBubbleView.frame = CGRect(x: UIScreen.main.bounds.width - estimatedFrame.width - 16 - 8 - 19 - 10, y: -4, width: estimatedFrame.width + 16 + 8 + 10, height: estimatedFrame.height + 20 + 6)
-            cell.messageView.textColor = .white
-            cell.bubbleImageView.image = SupportMessagesCell.sendingBubble
-            cell.bubbleImageView.tintColor = .gray
         } else {
             //apple support
+            cell.isSender = false
             cell.messageView.frame = CGRect(x: 19 + 8, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 20)
             cell.textBubbleView.frame = CGRect(x: 19 - 10, y: -4, width: estimatedFrame.width + 16 + 8 + 16, height: estimatedFrame.height + 20 + 6)
-            cell.messageView.textColor = .black
-            cell.bubbleImageView.image = SupportMessagesCell.receivingBubble
         }
 
         return cell
@@ -184,14 +242,12 @@ class SupportMessagesCollectionViewController:  UIViewController, UICollectionVi
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        updateConstraints(height: 0, moveUp: false)
+        updateConstraints(height: 0, moveUp: false, duration: 0.3)
         keyboardTextView.endEditing(true)
     }
-    
-    func textFieldShouldReturn(textField: UITextField!) -> Bool {
-        updateConstraints(height: 0, moveUp: false)
-        keyboardTextView.resignFirstResponder()
-        return true
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.width, height: 50)
     }
 
 }

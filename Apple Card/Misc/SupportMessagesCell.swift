@@ -10,7 +10,21 @@ import UIKit
 
 class SupportMessagesCell: BaseCollectionViewCell {
     
+    var isSender : Bool!{
+        didSet{
+            if self.isSender{
+                updateCell(image: SupportMessagesCell.sendingBubble, textColor: .white, backgroundColor: .gray)
+            } else {
+                updateCell(image: SupportMessagesCell.receivingBubble, textColor: .black, backgroundColor: UIColor.init(white: 0.95, alpha: 1))
+            }
+        }
+    }
+    
     let cellID = "SupportMessagesCell"
+    
+    static let sendingBubble = #imageLiteral(resourceName: "bubbleSent").resizableImage(withCapInsets: UIEdgeInsets(top: 22, left: 26, bottom: 22, right: 26), resizingMode: .stretch).withRenderingMode(.alwaysTemplate)
+    
+    static let receivingBubble = #imageLiteral(resourceName: "bubbleReceived").resizableImage(withCapInsets: UIEdgeInsets(top: 22, left: 26, bottom: 22, right: 26), resizingMode: .stretch).withRenderingMode(.alwaysTemplate)
     
     let messageView : UITextView = {
         let view = UITextView()
@@ -24,10 +38,6 @@ class SupportMessagesCell: BaseCollectionViewCell {
         let view = UIView()
         return view
     }()
-    
-    static let sendingBubble = #imageLiteral(resourceName: "bubbleSent").resizableImage(withCapInsets: UIEdgeInsets(top: 22, left: 26, bottom: 22, right: 26), resizingMode: .stretch).withRenderingMode(.alwaysTemplate)
-    
-    static let receivingBubble = #imageLiteral(resourceName: "bubbleReceived").resizableImage(withCapInsets: UIEdgeInsets(top: 22, left: 26, bottom: 22, right: 26), resizingMode: .stretch).withRenderingMode(.alwaysTemplate)
     
     let bubbleImageView : UIImageView = {
         let view = UIImageView()
@@ -57,6 +67,11 @@ class SupportMessagesCell: BaseCollectionViewCell {
         NSLayoutConstraint.activate(constraints)
     }
 
+    func updateCell(image: UIImage, textColor: UIColor, backgroundColor: UIColor) {
+        bubbleImageView.image = image
+        messageView.textColor = textColor
+        bubbleImageView.tintColor = backgroundColor
+    }
     
  
 }
