@@ -57,6 +57,10 @@ class CardInfoViewController: UIViewController, CardInfoButtonsStackViewDelegate
         NSLayoutConstraint.activate(constraints)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.tintColor = UIView().tintColor
+    }
+    
     //MARK: private helper functions
     fileprivate func playSound(fileName: String) {
         let sound = Bundle.main.path(forResource: fileName, ofType: "mp3")

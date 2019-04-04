@@ -20,7 +20,6 @@ extension UIColor{
     }
 }
 
-
 extension UIImage {
     
     /// Returns a image that fills in newSize

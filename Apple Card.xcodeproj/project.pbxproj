@@ -34,6 +34,9 @@
 		E080F8DE225079FE004AF19F /* HeroImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E080F8DD225079FE004AF19F /* HeroImageView.swift */; };
 		E080F8E022508AA7004AF19F /* TransactionHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E080F8DF22508AA7004AF19F /* TransactionHistoryCell.swift */; };
 		E080F8E222508AFB004AF19F /* TransactionHistoryTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E080F8E122508AFB004AF19F /* TransactionHistoryTableView.swift */; };
+		E0828EA92256ABA80034CD41 /* PaymentRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0828EA82256ABA80034CD41 /* PaymentRingView.swift */; };
+		E0828EAB2256AC150034CD41 /* CircularLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0828EAA2256AC150034CD41 /* CircularLabel.swift */; };
+		E0828EAD2256AD4B0034CD41 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0828EAC2256AD4B0034CD41 /* PaymentViewController.swift */; };
 		E08F31632253837A007BA64D /* SupportMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F31622253837A007BA64D /* SupportMessage.swift */; };
 		E08F31652253AEFD007BA64D /* TintableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F31642253AEFD007BA64D /* TintableButton.swift */; };
 		E09190152251895000184A00 /* CardInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09190142251895000184A00 /* CardInfoViewController.swift */; };
@@ -79,6 +82,9 @@
 		E080F8DD225079FE004AF19F /* HeroImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroImageView.swift; sourceTree = "<group>"; };
 		E080F8DF22508AA7004AF19F /* TransactionHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistoryCell.swift; sourceTree = "<group>"; };
 		E080F8E122508AFB004AF19F /* TransactionHistoryTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistoryTableView.swift; sourceTree = "<group>"; };
+		E0828EA82256ABA80034CD41 /* PaymentRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentRingView.swift; sourceTree = "<group>"; };
+		E0828EAA2256AC150034CD41 /* CircularLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularLabel.swift; sourceTree = "<group>"; };
+		E0828EAC2256AD4B0034CD41 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		E08F31622253837A007BA64D /* SupportMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportMessage.swift; sourceTree = "<group>"; };
 		E08F31642253AEFD007BA64D /* TintableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TintableButton.swift; sourceTree = "<group>"; };
 		E09190142251895000184A00 /* CardInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +114,7 @@
 		E080F896224F02DD004AF19F = {
 			isa = PBXGroup;
 			children = (
+				E0828EAA2256AC150034CD41 /* CircularLabel.swift */,
 				E080F8A1224F02DD004AF19F /* Apple Card */,
 				E080F8A0224F02DD004AF19F /* Products */,
 			);
@@ -140,6 +147,7 @@
 		E080F8D0225052AB004AF19F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E0828EA82256ABA80034CD41 /* PaymentRingView.swift */,
 				E0DED40F2252989800C99CFF /* KeyboardTextViewContainer.swift */,
 				E04EF4DB2252C3590026F1FE /* SupportMessageHeader.swift */,
 				E080F8DD225079FE004AF19F /* HeroImageView.swift */,
@@ -172,6 +180,7 @@
 				E080F8A4224F02DD004AF19F /* CategoryController.swift */,
 				E080F8C4224FD7A6004AF19F /* DailyCashController.swift */,
 				E09190142251895000184A00 /* CardInfoViewController.swift */,
+				E0828EAC2256AD4B0034CD41 /* PaymentViewController.swift */,
 				E080F8C6224FE544004AF19F /* MainViewController.swift */,
 				E09190212251C93000184A00 /* SupportMessagesCollectionViewController.swift */,
 				E080F8D7225056B1004AF19F /* TransactionDetailsVC.swift */,
@@ -294,6 +303,7 @@
 				E080F8D52250541E004AF19F /* TransactionMapTableView.swift in Sources */,
 				E080F8B5224FB3E3004AF19F /* HeaderView.swift in Sources */,
 				E080F8BB224FB43F004AF19F /* BottomView.swift in Sources */,
+				E0828EAB2256AC150034CD41 /* CircularLabel.swift in Sources */,
 				E080F8CF22500020004AF19F /* PaymentDueView.swift in Sources */,
 				E091901722519EE300184A00 /* CardInfoTableView.swift in Sources */,
 				E08F31632253837A007BA64D /* SupportMessage.swift in Sources */,
@@ -302,6 +312,7 @@
 				E080F8C3224FD28F004AF19F /* Extensions.swift in Sources */,
 				E080F8C1224FC413004AF19F /* TransactionTableView.swift in Sources */,
 				E080F8DA2250694E004AF19F /* TopTransactionDetailCell.swift in Sources */,
+				E0828EAD2256AD4B0034CD41 /* PaymentViewController.swift in Sources */,
 				E09190222251C93000184A00 /* SupportMessagesCollectionViewController.swift in Sources */,
 				E080F8C5224FD7A6004AF19F /* DailyCashController.swift in Sources */,
 				E080F8CD224FFC33004AF19F /* SmallChartView.swift in Sources */,
@@ -316,6 +327,7 @@
 				E091901B2251B4AF00184A00 /* CardInfoTopImageView.swift in Sources */,
 				E080F8B9224FB417004AF19F /* Transaction.swift in Sources */,
 				E080F8BD224FB44B004AF19F /* TransactionCell.swift in Sources */,
+				E0828EA92256ABA80034CD41 /* PaymentRingView.swift in Sources */,
 				E0DED4122252991000C99CFF /* BaseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

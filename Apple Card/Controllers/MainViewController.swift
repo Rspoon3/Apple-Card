@@ -24,12 +24,6 @@ class MainViewController: UIViewController, TransactionCellDelegate{
         Transaction(title: "The Second City", city: "Chicago", state: "IL", date: "3/16/19", price: 52.64, image: #imageLiteral(resourceName: "Screen Shot 2019-03-30 at 2.38.50 AM")),
     ]
     
-    func push(indexPath: IndexPath) {
-        let destinationVC = TransactionDetailsVC()
-        destinationVC.transaction = transactions[indexPath.row]
-        self.navigationController?.pushViewController(destinationVC, animated: true)
-    }
-    
     lazy var containerHeaderView : UIView = {
         let view = UIView()
         view.layer.shadowColor = UIColor.gray.cgColor
@@ -78,20 +72,17 @@ class MainViewController: UIViewController, TransactionCellDelegate{
     lazy var tableView = TransactionTableView(frame: view.frame, style: .plain, transactions: transactions, sectionName: "Latest Transactions")
     lazy var miniViewsStack = MainPaymentStackView() //the three charts
     let scrollView = UIScrollView()
-
-    override func viewDidLoad() {
-        let sidePadding : CGFloat = 20
-        super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(actionSheet), name: NSNotification.Name(rawValue: "actionSheet"), object: nil)
+    
+    fileprivate func setupNavigationItem(){
         navigationItem.rightBarButtonItem = .init(customView: custuomBarButton)
         navigationItem.leftBarButtonItem = .init(barButtonSystemItem: .done, target: self, action: nil)
         navigationItem.leftBarButtonItem?.tintColor = .black
-        view.backgroundColor = UIColor.bgColor
-        tableView.mydelegate = self
-        
+    }
+
+    fileprivate func addViewsAndConstraints(_ sidePadding: CGFloat) {
         self.view.addSubview(scrollView)
         scrollView.fillSafeSuperview(safeTop: true, safeBottom: false, safeLeading: false, safeTrialing: false)
-
+        
         [containerHeaderView, miniViewsStack, tableView].forEach({scrollView.addSubview($0)})
         
         containerHeaderView.anchor(top: scrollView.topAnchor, bottom: nil, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor, constant: .init(top: 10, left: sidePadding, bottom: 0, right: 0))
@@ -99,18 +90,33 @@ class MainViewController: UIViewController, TransactionCellDelegate{
         
         miniViewsStack.anchor(top: containerHeaderView.bottomAnchor, bottom: nil, leading: containerHeaderView.leadingAnchor, trailing: scrollView.trailingAnchor, constant: .init(top: 20, left: 0, bottom: 0, right: 0))
         miniViewsStack.anchorHegihtWidth(height: scrollView.heightAnchor, heightConstant: nil, heightMulitplier: 0.2, width: nil, widthConstant: nil, widthMulitplier: nil)
-
+        
         tableView.anchor(top: miniViewsStack.bottomAnchor, bottom: nil, leading: containerHeaderView.leadingAnchor, trailing: scrollView.trailingAnchor, constant: .init(top: 20, left: 0, bottom: 0, right: 0))
-
+    }
+    
+    override func viewDidLoad() {
+        let sidePadding : CGFloat = 20
+        super.viewDidLoad()
+        view.backgroundColor = UIColor.bgColor
+        NotificationCenter.default.addObserver(self, selector: #selector(actionSheet), name: NSNotification.Name(rawValue: "actionSheet"), object: nil)
+        setupNavigationItem()
+        tableView.mydelegate = self
+        addViewsAndConstraints(sidePadding)
     }
 
     override func viewWillLayoutSubviews() {
-        let tableHeight = 44.0 * 1.9 * CGFloat(transactions.count) + 36
+        let tableHeight = 44.0 * 1.9 * CGFloat(transactions.count) + 45
         tableView.anchor(top: nil, bottom: scrollView.bottomAnchor, leading: nil, trailing: nil, size: CGSize(width: 0, height: tableHeight))
     }
 
     @objc func push(){
         self.navigationController?.pushViewController(CategoryController(), animated: true)
+    }
+    
+    func push(indexPath: IndexPath) {
+        let destinationVC = TransactionDetailsVC()
+        destinationVC.transaction = transactions[indexPath.row]
+        self.navigationController?.pushViewController(destinationVC, animated: true)
     }
     
     @objc func actionSheet(){
