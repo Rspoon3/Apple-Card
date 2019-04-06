@@ -60,12 +60,13 @@ class TransactionCell: UITableViewCell {
         if let price = transaction?.price{
             if let num = numberFormatter.string(from: NSNumber(value: price)){
                 priceLabel.text = "$\(String(describing: num))"
-                if transaction?.logo == UIImage(imageLiteralResourceName: "dailyCash"){
+                if price < 15 {
                     priceLabel.text?.insert("+", at: priceLabel.text!.startIndex)
+                    if price < 1{
+                        priceLabel.text?.insert("0", at: priceLabel.text!.index(priceLabel.text!.startIndex, offsetBy: 2))
+                    }
                 }
-                if price < 1{
-                    priceLabel.text?.insert("0", at: priceLabel.text!.index(priceLabel.text!.startIndex, offsetBy: 2))
-                }
+                
             }
         }
         imageView?.image = myimage

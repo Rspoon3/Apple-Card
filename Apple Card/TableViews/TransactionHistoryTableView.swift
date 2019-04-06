@@ -8,9 +8,14 @@
 
 import UIKit
 
+protocol TransactionHistoryTableViewDelgate {
+    func updateTotalAmount(price: Double)
+}
+
 class TransactionHistoryTableView: UITableView, UITableViewDelegate, UITableViewDataSource{
     
     var transaction : Transaction!
+    var hisotryDelegate : TransactionHistoryTableViewDelgate!
     
     init(frame: CGRect, style: UITableView.Style, transaction: Transaction) {
         self.transaction = transaction
@@ -35,17 +40,20 @@ class TransactionHistoryTableView: UITableView, UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: TransactionHistoryCell.cellID, for: indexPath) as! TransactionHistoryCell
         if indexPath.row == 0{
             cell.transaction = transaction
+            hisotryDelegate.updateTotalAmount(price: transaction!.price)
             return cell
         } else if indexPath.row == 1{
             transaction.date = "\(Int.random(in: 2...6)) Days Ago"
             transaction.price = transaction.price * 0.75
             cell.dailyCashPercentage.text = "1%"
             cell.transaction = transaction
+            hisotryDelegate.updateTotalAmount(price: transaction!.price)
             return cell
         } else {
             transaction.date = "A Week Ago"
             transaction.price = transaction.price * 0.88
             cell.transaction = transaction
+            hisotryDelegate.updateTotalAmount(price: transaction!.price)
             return cell
         }
     }

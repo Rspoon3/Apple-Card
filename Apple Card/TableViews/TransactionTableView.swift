@@ -63,7 +63,6 @@ class TransactionTableView: UITableView, UITableViewDelegate, UITableViewDataSou
         return 50
     }
     
-    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 25)

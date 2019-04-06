@@ -9,12 +9,12 @@
 import UIKit
 
 struct Transaction {
-    let title : String
-    let city: String?
+    var title : String
+    var city: String?
     let state: String?
     var date: String
     var price: Double
-    let logo: UIImage
+    var logo: UIImage
     let heroImage : UIImage
     let category : String
 }

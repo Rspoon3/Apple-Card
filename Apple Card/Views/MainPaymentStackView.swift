@@ -10,10 +10,11 @@ import UIKit
 
 class MainPaymentStackView : UIStackView{
     
+    lazy var smallChartView = SmallChartView(frame: frame)
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         let totalBalance = TotalBalanceView(frame: frame, amount: 1682.55)
-        let smallChartView = SmallChartView(frame: frame)
         let paymentDueView = PaymentDueView(frame: frame)
         let subStack = UIStackView(arrangedSubviews: [totalBalance, smallChartView])
         subStack.axis = .vertical

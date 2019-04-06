@@ -17,12 +17,10 @@ class MainViewController: UIViewController, TransactionCellDelegate{
         Transaction(title: "Game Room", city: "Chicago", state: "IL", date: "6 days ago", price: 45.71, logo: #imageLiteral(resourceName: "Entertainment"), heroImage: #imageLiteral(resourceName: "Image-1"), category: "ENTERTAINMENT"),
         Transaction(title: "The Second City", city: "Chicago", state: "IL", date: "3/16/19", price: 52.64, logo: #imageLiteral(resourceName: "Screen Shot 2019-03-30 at 2.38.50 AM"), heroImage: #imageLiteral(resourceName: "Image-2"), category: "ENTERTAINMENT"),
         Transaction(title: "Fandango", city: nil, state: nil, date: "3/9/19", price: 29.80, logo: #imageLiteral(resourceName: "Screen Shot 2019-03-30 at 2.38.58 AM"), heroImage: #imageLiteral(resourceName: "Image-3"), category: "MOVIES"),
-        
-        
         Transaction(title: "Shell", city: "Chicago", state: "IL", date: "3/2/19", price: 38.67, logo: #imageLiteral(resourceName: "Image-11"), heroImage: #imageLiteral(resourceName: "Image-7"), category: "GAS"),
         Transaction(title: "Wegmans", city: "Chicago", state: "IL", date: "3/2/19", price: 242.88, logo: #imageLiteral(resourceName: "Image-8"), heroImage: #imageLiteral(resourceName: "Image-5"), category: "GROCERYS"),
-        Transaction(title: "Wendys", city: nil, state: nil, date: "2/28/19", price: 9.35, logo: #imageLiteral(resourceName: "Image-9"),heroImage: #imageLiteral(resourceName: "Image-4"), category: "ENTERTAINMENT"),
-        Transaction(title: "Macys", city: "Chicago", state: "IL", date: "2/16/19", price: 152.64, logo: #imageLiteral(resourceName: "Image-10"), heroImage: #imageLiteral(resourceName: "Image-6"), category: "CLOTHING"),
+        Transaction(title: "Wendys", city: "Chicago", state: "IL", date: "3/1/19", price: 15.35, logo: #imageLiteral(resourceName: "Image-9"),heroImage: #imageLiteral(resourceName: "Image-4"), category: "FOOD & DRINK"),
+        Transaction(title: "Macys", city: "Chicago", state: "IL", date: "3/1/19", price: 152.64, logo: #imageLiteral(resourceName: "Image-10"), heroImage: #imageLiteral(resourceName: "Image-6"), category: "CLOTHING"),
     ]
     
     lazy var containerHeaderView : UIView = {
@@ -103,6 +101,16 @@ class MainViewController: UIViewController, TransactionCellDelegate{
         setupNavigationItem()
         tableView.mydelegate = self
         addViewsAndConstraints(sidePadding)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(presentSpendingVC))
+        tap.numberOfTapsRequired = 1
+        miniViewsStack.smallChartView.addGestureRecognizer(tap)
+    }
+    
+    @objc func presentSpendingVC(){
+        let desitinationVC = SpendingViewController()
+        desitinationVC.mainTransactions = transactions
+        self.navigationController?.pushViewController(desitinationVC, animated: true)
     }
 
     override func viewWillLayoutSubviews() {
@@ -125,11 +133,15 @@ class MainViewController: UIViewController, TransactionCellDelegate{
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
 
         let dailyCash = UIAlertAction(title: "Daily Cash", style: .default) { action in
-            self.navigationController?.pushViewController(DailyCashController(), animated: true)
+            let vc = DailyCashController()
+            vc.transactions = self.transactions
+            self.navigationController?.pushViewController(vc, animated: true)
         }
 
         let categories = UIAlertAction(title: "Categories", style: .default) { action in
-            self.navigationController?.pushViewController(CategoryController(), animated: true)
+            let vc = CategoryController()
+            vc.transactions = self.transactions
+            self.navigationController?.pushViewController(vc, animated: true)
         }
         
         let support = UIAlertAction(title: "Support", style: .default) { action in

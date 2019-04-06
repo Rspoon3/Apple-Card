@@ -46,6 +46,7 @@ class TransactionMapTableView: UITableView, UITableViewDelegate, UITableViewData
             return cell
         default:
             let cell = UITableViewCell()
+            cell.isUserInteractionEnabled = false
             if let city = transaction.city{
                 cell.textLabel?.text = "\(transaction.title), \(city)"
             } else {

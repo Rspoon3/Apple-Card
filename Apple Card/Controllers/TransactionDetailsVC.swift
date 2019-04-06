@@ -33,6 +33,8 @@ class TransactionDetailsVC: UIViewController, SFSafariViewControllerDelegate{
         return button
     }()
     
+    var totalPrice = 0.0
+    
     lazy var infoCirleButton : UIButton = {
         let button = UIButton(type: .system)
         let tap = UITapGestureRecognizer(target: self, action: #selector(getMoreInfo))
@@ -61,6 +63,8 @@ class TransactionDetailsVC: UIViewController, SFSafariViewControllerDelegate{
     
     var transaction: Transaction!
     let scrollView = UIScrollView()
+    lazy var bottomView = BottomView(frame: view.frame)
+
 
     lazy var transactionHistoryTableView = TransactionHistoryTableView(frame: view.frame, style: .plain, transaction: transaction)
 
@@ -68,12 +72,13 @@ class TransactionDetailsVC: UIViewController, SFSafariViewControllerDelegate{
         super.viewDidLoad()
         let phoneBarButtonItem : UIBarButtonItem = .init(customView: phoneBarButton)
         let infoCirleButtonItem : UIBarButtonItem = .init(customView: infoCirleButton)
+        bottomView.amount = transaction.price
+        transactionHistoryTableView.hisotryDelegate = self
         
         view.backgroundColor = .bgColor
         navigationController?.navigationBar.topItem?.title = ""
         navigationItem.rightBarButtonItems = [infoCirleButtonItem, phoneBarButtonItem]
         
-        let bottomView = BottomView(frame: view.frame, amount: transaction.price)
         let mapTableView = TransactionMapTableView(frame: view.frame, style: .plain, transaction: transaction)
         let heroImage = HeroImageView(frame: view.frame, transaction: transaction)
         let mapTableViewHeight = view.frame.height * 0.2
@@ -136,3 +141,14 @@ class TransactionDetailsVC: UIViewController, SFSafariViewControllerDelegate{
         dismiss(animated: true)
     }
 }
+
+
+extension TransactionDetailsVC: TransactionHistoryTableViewDelgate{
+    func updateTotalAmount(price: Double) {
+        totalPrice += price
+        bottomView.amount = totalPrice
+    }
+}
+
+
+

@@ -101,16 +101,9 @@ class CardInfoTableView: UITableView, UITableViewDelegate, UITableViewDataSource
         
         if (indexPath.section == 0 && indexPath.row == 0) || (indexPath.section == 1 && indexPath.row == 0){
             let mySeperator = UIView()
-            mySeperator.translatesAutoresizingMaskIntoConstraints = false
             mySeperator.backgroundColor = tableView.separatorColor
             cell.addSubview(mySeperator)
-            let constraints = [
-                mySeperator.heightAnchor.constraint(equalToConstant: 0.3),
-                mySeperator.bottomAnchor.constraint(equalTo: cell.bottomAnchor),
-                mySeperator.leadingAnchor.constraint(equalTo: cell.leadingAnchor, constant: 20),
-                mySeperator.trailingAnchor.constraint(equalTo: cell.trailingAnchor, constant: -20),
-            ]
-            NSLayoutConstraint.activate(constraints)
+            mySeperator.anchor(top: nil, bottom: cell.bottomAnchor, leading: cell.leadingAnchor, trailing: cell.trailingAnchor, constant: .init(top: 0, left: 20, bottom: 0, right: -20), size: .init(width: 0, height: 0.3))
         }
         
         return cell
