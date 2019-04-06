@@ -114,7 +114,6 @@
 		E080F896224F02DD004AF19F = {
 			isa = PBXGroup;
 			children = (
-				E0828EAA2256AC150034CD41 /* CircularLabel.swift */,
 				E080F8A1224F02DD004AF19F /* Apple Card */,
 				E080F8A0224F02DD004AF19F /* Products */,
 			);
@@ -176,6 +175,7 @@
 		E080F8D2225052E9004AF19F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E0828EAA2256AC150034CD41 /* CircularLabel.swift */,
 				E080F8B6224FB3FE004AF19F /* BlankNavController.swift */,
 				E080F8A4224F02DD004AF19F /* CategoryController.swift */,
 				E080F8C4224FD7A6004AF19F /* DailyCashController.swift */,

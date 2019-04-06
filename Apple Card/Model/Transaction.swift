@@ -12,7 +12,9 @@ struct Transaction {
     let title : String
     let city: String?
     let state: String?
-    let date: String
-    let price: Double
-    let image: UIImage
+    var date: String
+    var price: Double
+    let logo: UIImage
+    let heroImage : UIImage
+    let category : String
 }

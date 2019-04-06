@@ -11,16 +11,16 @@ import UIKit
 class CategoryController: UIViewController, TransactionCellDelegate  {
     
     let transactions = [
-        Transaction(title: "Goodman Theatre", city: "Chicago", state: "IL", date: "Yesterday", price: 48.67, image: #imageLiteral(resourceName: "dailyCash")),
-        Transaction(title: "Whirlyball", city: "Chicago", state: "IL", date: "3 days ago", price: 42.88, image: #imageLiteral(resourceName: "dailyCash")),
-        Transaction(title: "Game Room", city: "Chicago", state: "IL", date: "6 days ago", price: 45.71, image: #imageLiteral(resourceName: "dailyCash")),
-        Transaction(title: "The Second City", city: "Chicago", state: "IL", date: "3/16/19", price: 52.64, image: #imageLiteral(resourceName: "dailyCash")),
-        Transaction(title: "Fandango", city: nil, state: nil, date: "3/9/19", price: 29.80, image: #imageLiteral(resourceName: "dailyCash")),
+        Transaction(title: "Goodman Theatre", city: "Chicago", state: "IL", date: "Yesterday", price: 48.67, logo: #imageLiteral(resourceName: "dailyCash"), heroImage: #imageLiteral(resourceName: "expressoHero"), category: "Entertainment"),
+        Transaction(title: "Whirlyball", city: "Chicago", state: "IL", date: "3 days ago", price: 42.88, logo: #imageLiteral(resourceName: "dailyCash"), heroImage: #imageLiteral(resourceName: "expressoHero"), category: "Entertainment"),
+        Transaction(title: "Game Room", city: "Chicago", state: "IL", date: "6 days ago", price: 45.71, logo: #imageLiteral(resourceName: "dailyCash"), heroImage: #imageLiteral(resourceName: "expressoHero"), category: "Entertainment"),
+        Transaction(title: "The Second City", city: "Chicago", state: "IL", date: "3/16/19", price: 52.64, logo: #imageLiteral(resourceName: "dailyCash"), heroImage: #imageLiteral(resourceName: "expressoHero"), category: "Entertainment"),
+        Transaction(title: "Fandango", city: nil, state: nil, date: "3/9/19", price: 29.80, logo: #imageLiteral(resourceName: "dailyCash"), heroImage: #imageLiteral(resourceName: "expressoHero"), category: "Entertainment"),
 
-        Transaction(title: "Goodman Theatre", city: "Chicago", state: "IL", date: "Yesterday", price: 48.67, image: #imageLiteral(resourceName: "dailyCash")),
-        Transaction(title: "Whirlyball", city: "Chicago", state: "IL", date: "3 days ago", price: 42.88, image: #imageLiteral(resourceName: "dailyCash")),
-        Transaction(title: "Fandango", city: nil, state: nil, date: "3/9/19", price: 29.80, image: #imageLiteral(resourceName: "dailyCash")),
-        Transaction(title: "The Second City", city: "Chicago", state: "IL", date: "3/16/19", price: 52.64, image: #imageLiteral(resourceName: "dailyCash")),
+        Transaction(title: "Goodman Theatre", city: "Chicago", state: "IL", date: "Yesterday", price: 48.67, logo: #imageLiteral(resourceName: "dailyCash"), heroImage: #imageLiteral(resourceName: "expressoHero"), category: "Entertainment"),
+        Transaction(title: "Whirlyball", city: "Chicago", state: "IL", date: "3 days ago", price: 42.88, logo: #imageLiteral(resourceName: "dailyCash"), heroImage: #imageLiteral(resourceName: "expressoHero"), category: "Entertainment"),
+        Transaction(title: "Fandango", city: nil, state: nil, date: "3/9/19", price: 29.80, logo: #imageLiteral(resourceName: "dailyCash"), heroImage: #imageLiteral(resourceName: "expressoHero"), category: "Entertainment"),
+        Transaction(title: "The Second City", city: "Chicago", state: "IL", date: "3/16/19", price: 52.64, logo: #imageLiteral(resourceName: "dailyCash"), heroImage: #imageLiteral(resourceName: "expressoHero"), category: "Entertainment"),
     ]
     
     func push(indexPath: IndexPath) {

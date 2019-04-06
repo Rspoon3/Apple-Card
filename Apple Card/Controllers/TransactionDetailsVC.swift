@@ -60,7 +60,10 @@ class TransactionDetailsVC: UIViewController, SFSafariViewControllerDelegate{
     }()
     
     var transaction: Transaction!
-    
+    let scrollView = UIScrollView()
+
+    lazy var transactionHistoryTableView = TransactionHistoryTableView(frame: view.frame, style: .plain, transaction: transaction)
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let phoneBarButtonItem : UIBarButtonItem = .init(customView: phoneBarButton)
@@ -73,48 +76,31 @@ class TransactionDetailsVC: UIViewController, SFSafariViewControllerDelegate{
         let bottomView = BottomView(frame: view.frame, amount: transaction.price)
         let mapTableView = TransactionMapTableView(frame: view.frame, style: .plain, transaction: transaction)
         let heroImage = HeroImageView(frame: view.frame, transaction: transaction)
-        let transactionHistoryTableView = TransactionHistoryTableView(frame: view.frame, style: .plain, transaction: transaction)
-        let scrollView = UIScrollView(frame: .zero)
-        let tableViewHeight : CGFloat = 105
         let mapTableViewHeight = view.frame.height * 0.2
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height)
+        let sidePadding : CGFloat = 20
         view.addSubview(scrollView)
-        
-        let containerView = UIView()
-        containerView.frame = view.bounds
-        scrollView.addSubview(containerView)
-        
         view.addSubview(heroImage)
-        [mapTableView, transactionHistoryTableView, bottomView].forEach({containerView.addSubview($0)})
+        view.addSubview(bottomView)
         
-        let constriants = [
-            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            
-            heroImage.topAnchor.constraint(equalTo: view.topAnchor),
-            heroImage.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: (1/4)),
-            heroImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            heroImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            
-            mapTableView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: mapTableViewHeight),
-            mapTableView.heightAnchor.constraint(equalToConstant: 324),
-            mapTableView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
-            mapTableView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
-            
-            transactionHistoryTableView.topAnchor.constraint(equalTo: mapTableView.bottomAnchor, constant: 20),
-            transactionHistoryTableView.heightAnchor.constraint(equalToConstant: tableViewHeight),
-            transactionHistoryTableView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
-            transactionHistoryTableView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
-            
-            bottomView.heightAnchor.constraint(equalTo: containerView.heightAnchor, multiplier: (1/6)),
-            bottomView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-            bottomView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            bottomView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-        ]
-        NSLayoutConstraint.activate(constriants)
+        [mapTableView, transactionHistoryTableView].forEach({scrollView.addSubview($0)})
+        
+        scrollView.anchor(top: heroImage.topAnchor, bottom: bottomView.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor)
+        
+        mapTableView.anchor(top: scrollView.topAnchor, bottom: nil, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor, constant: .init(top: mapTableViewHeight, left: sidePadding, bottom: 0, right: sidePadding), size: CGSize(width: view.frame.width - 2 * sidePadding, height: view.frame.height * 0.39))
+    
+        
+        transactionHistoryTableView.anchor(top: mapTableView.bottomAnchor, bottom: nil, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor, constant: .init(top: sidePadding, left: sidePadding, bottom: 0, right: sidePadding))
+       
+        
+        bottomView.anchor(top: nil, bottom: view.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, size: CGSize(width: 0, height: view.frame.height * (1/6)))
+        
+        heroImage.anchor(top: view.topAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, size: CGSize(width: 0, height: view.frame.height * 0.25))
+    
+    }
+    
+    override func viewWillLayoutSubviews() {
+        let tableHeight = 44.0 * 1.9 * CGFloat(3)
+        transactionHistoryTableView.anchor(top: nil, bottom: scrollView.bottomAnchor, leading: nil, trailing: nil, size: CGSize(width: 0, height: tableHeight))
     }
     
     override func viewWillDisappear(_ animated: Bool) {

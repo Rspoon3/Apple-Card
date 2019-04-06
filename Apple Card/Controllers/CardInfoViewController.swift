@@ -32,7 +32,7 @@ class CardInfoViewController: UIViewController, CardInfoButtonsStackViewDelegate
         navigationController?.navigationBar.topItem?.title = ""
         view.backgroundColor = .bgColor
         view.addSubview(scrollView)
-        
+        tableView.payDelegate = self
         containerView.frame = view.bounds
         scrollView.addSubview(containerView)
         [tableView, headerImageView, cardInfoButtonsStackView].forEach({containerView.addSubview($0)})
@@ -109,4 +109,11 @@ class CardInfoViewController: UIViewController, CardInfoButtonsStackViewDelegate
         present(vc, animated: true)
     }
     
+}
+
+
+extension CardInfoViewController: PayDelegate{
+    func pushToPaymentScreen() {
+        present(PaymentViewController(), animated: true, completion: nil)
+    }
 }

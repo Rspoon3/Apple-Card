@@ -15,7 +15,6 @@ class MainPaymentStackView : UIStackView{
         let totalBalance = TotalBalanceView(frame: frame, amount: 1682.55)
         let smallChartView = SmallChartView(frame: frame)
         let paymentDueView = PaymentDueView(frame: frame)
-
         let subStack = UIStackView(arrangedSubviews: [totalBalance, smallChartView])
         subStack.axis = .vertical
         subStack.distribution = .fillEqually

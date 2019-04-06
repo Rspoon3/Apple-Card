@@ -19,5 +19,6 @@ class BaseView: UIView {
     }
     
     func setupViews() {
+        translatesAutoresizingMaskIntoConstraints = false
     }
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable
-class CircularLabel: UILabel {
+class CurvedLabel: UILabel {
     // *******************************************************
     //https://stackoverflow.com/questions/32771864/draw-text-along-circular-path-in-swift-for-ios
     // DEFINITIONS (Because I'm not brilliant and I'll forget most this tomorrow.)

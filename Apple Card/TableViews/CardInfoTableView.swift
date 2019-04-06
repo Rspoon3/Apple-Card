@@ -8,8 +8,14 @@
 
 import UIKit
 
+protocol PayDelegate {
+    func pushToPaymentScreen()
+}
+
 class CardInfoTableView: UITableView, UITableViewDelegate, UITableViewDataSource{
     let cellID = "CardInfoTableView"
+    
+    var payDelegate : PayDelegate!
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: .grouped)
@@ -108,6 +114,12 @@ class CardInfoTableView: UITableView, UITableViewDelegate, UITableViewDataSource
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 1 && indexPath.section == 0{
+           payDelegate.pushToPaymentScreen()
+        }
     }
     
 }

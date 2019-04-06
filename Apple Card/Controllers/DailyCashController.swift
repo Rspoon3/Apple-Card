@@ -11,12 +11,12 @@ import UIKit
 class DailyCashController: UIViewController, TransactionCellDelegate  {
     
     let transactions = [
-        Transaction(title: "Bloomingdale's", city: "Chicago", state: "IL", date: "Just now", price: 15.78, image: #imageLiteral(resourceName: "dailyCash")),
-        Transaction(title: "South Loop Market", city: "Chicago", state: "IL", date: "Just now", price: 2.71, image: #imageLiteral(resourceName: "dailyCash")),
-        Transaction(title: "La Colombe Coffee", city: "Chicago", state: "IL", date: "Just now", price: 0.37, image: #imageLiteral(resourceName: "dailyCash")),
-        Transaction(title: "Apple Store", city: "Chicago", state: "IL", date: "Yesterday", price: 17.34, image: #imageLiteral(resourceName: "dailyCash")),
-        Transaction(title: "Walgreens", city: "Chicago", state: "IL", date: "Yesterday", price: 1.60, image: #imageLiteral(resourceName: "dailyCash")),
-        Transaction(title: "Macys", city: "Chicago", state: "IL", date: "Yesterday", price: 8.47, image: #imageLiteral(resourceName: "dailyCash")),
+        Transaction(title: "Bloomingdale's", city: "Chicago", state: "IL", date: "Just now", price: 15.78, logo: #imageLiteral(resourceName: "dailyCash"), heroImage: #imageLiteral(resourceName: "expressoHero2"), category: "Entertainment"),
+        Transaction(title: "South Loop Market", city: "Chicago", state: "IL", date: "Just now", price: 2.71, logo: #imageLiteral(resourceName: "dailyCash"), heroImage: #imageLiteral(resourceName: "expressoHero2"), category: "Entertainment"),
+        Transaction(title: "La Colombe Coffee", city: "Chicago", state: "IL", date: "Just now", price: 0.37, logo: #imageLiteral(resourceName: "dailyCash"), heroImage: #imageLiteral(resourceName: "expressoHero2"), category: "Entertainment"),
+        Transaction(title: "Apple Store", city: "Chicago", state: "IL", date: "Yesterday", price: 17.34, logo: #imageLiteral(resourceName: "dailyCash"), heroImage: #imageLiteral(resourceName: "expressoHero2"), category: "Entertainment"),
+        Transaction(title: "Walgreens", city: "Chicago", state: "IL", date: "Yesterday", price: 1.60, logo: #imageLiteral(resourceName: "dailyCash"), heroImage: #imageLiteral(resourceName: "expressoHero2"), category: "Entertainment"),
+        Transaction(title: "Macys", city: "Chicago", state: "IL", date: "Yesterday", price: 8.47, logo: #imageLiteral(resourceName: "dailyCash"), heroImage: #imageLiteral(resourceName: "expressoHero2"), category: "Entertainment"),
     ]
     
     func push(indexPath: IndexPath) {

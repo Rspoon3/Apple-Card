@@ -11,8 +11,8 @@ import MapKit
 
 class TransactionDetailMapCell: UITableViewCell, MKMapViewDelegate {
     static let cellID = "TransactionDetailMapCell"
-    var lat = Double.random(in: 39.5...41)
-    var long = Double.random(in: 73.9...74.3)
+    var lat = Double.random(in: 41.8...41.92)
+    var long = Double.random(in: 87.6...87.65)
     
     var transaction : Transaction?{
         didSet{

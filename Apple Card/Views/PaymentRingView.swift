@@ -8,12 +8,18 @@
 
 import UIKit
 
+protocol RingDelegate {
+    func changeText(color: String)
+    func updatePercent(percent: CGFloat)
+}
+
+//boss
 class PaymentRingView: UIView {
+ 
+    var ringDelegate : RingDelegate!
     
-   // lazy var container = UIView()
-    
-    lazy var midViewX = self.frame.midX
-    lazy var midViewY = self.frame.midY
+    lazy var midViewX : CGFloat = self.frame.midX
+    lazy var midViewY : CGFloat = self.frame.midY
     
     var mainPath = UIBezierPath()
     let mainLayer = CAShapeLayer()
@@ -39,6 +45,12 @@ class PaymentRingView: UIView {
     
     let label = UILabel()
     
+    let checkmarkView : UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = #imageLiteral(resourceName: "icons8-checkmark-filled-50-2")
+        return imageView
+    }()
+    
     fileprivate func rad2deg(_ number: CGFloat) -> CGFloat {
         return number * 180 / .pi
     }
@@ -54,6 +66,7 @@ class PaymentRingView: UIView {
         layer.lineWidth = lineWidth
         layer.lineCap = .round
         self.layer.addSublayer(layer)
+        
     }
     
     fileprivate func addGrayDots(ballXOffset: CGFloat, ballYOffset:CGFloat) {
@@ -65,7 +78,7 @@ class PaymentRingView: UIView {
             let dotWidth: CGFloat = 15
             
             let dot = UIView()
-            dot.backgroundColor = .gray
+            dot.backgroundColor = #colorLiteral(red: 0.7412623763, green: 0.7410697341, blue: 0.749704659, alpha: 1)
             dot.layer.cornerRadius = dotWidth / 2
             dot.layer.masksToBounds = true
             dot.frame = CGRect(x: ballX - ballXOffset, y: ballY - ballYOffset, width: dotWidth, height: dotWidth)
@@ -74,13 +87,19 @@ class PaymentRingView: UIView {
             if i == 0{
                 dot.isHidden = true
             }
+            if i == dotPositions.count - 2{
+                let size = frame.height * 0.09
+                checkmarkView.frame = CGRect(x: ballX - ballXOffset*2, y: ballY - ballYOffset*2, width: size, height: size)
+                checkmarkView.isHidden = true
+                self.addSubview(checkmarkView)
+            }
         }
     }
     
     fileprivate func setupLayers() {
-        setupLayer(layer: trackOutlineLayer, path: trackPath, fillColor: .clear, strokeColor: .white, lineWidth: trackLineWidth + 3)
+        setupLayer(layer: trackOutlineLayer, path: trackPath, fillColor: .clear, strokeColor: .white, lineWidth: trackLineWidth + 5)
         setupLayer(layer: trackLayer, path: trackPath, fillColor: .clear, strokeColor: #colorLiteral(red: 0.8067814708, green: 0.3228612542, blue: 0.3160231709, alpha: 1), lineWidth: trackLineWidth)
-        setupLayer(layer: mainLayer, path: mainPath, fillColor: .clear, strokeColor: UIColor.lightGray, lineWidth: trackLineWidth)
+        setupLayer(layer: mainLayer, path: mainPath, fillColor: .clear, strokeColor: #colorLiteral(red: 0.9057936072, green: 0.9059275985, blue: 0.905775249, alpha: 1), lineWidth: trackLineWidth)
         setupLayer(layer: ballLayer, path: ballPath, fillColor: #colorLiteral(red: 0.8067814708, green: 0.3228612542, blue: 0.3160231709, alpha: 1), strokeColor: .white, lineWidth: 3)
     }
     
@@ -113,27 +132,6 @@ class PaymentRingView: UIView {
         setupLayers()
         addGrayDots(ballXOffset: ballXOffset, ballYOffset: ballYOffset)
         self.addGestureRecognizer(dragBall)
-        
-        //        let percent = ((dotPositions[0]/360) * 100)
-        //        label.sizeToFit()
-        //        label.frame = view.frame
-        //        label.textAlignment = .center
-        //        label.textColor = .white
-        //        label.text = "\(Int(percent))%"
-        //        label.font = UIFont.systemFont(ofSize: 30)
-        //        view.addSubview(label)
-        
-        
-        let test = CircularLabel()
-        test.frame = self.frame
-        test.text = "Im hoping that this works for me"
-        test.clockwise = false
-        test.angle = -1.5
-        test.radius = 77
-        self.addSubview(test)
-        
-        //addSubview(container)
-        //container.anchorCenterSuperview()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -160,13 +158,33 @@ class PaymentRingView: UIView {
         mainLayer.path = mainPath.cgPath
     }
     
-    fileprivate func updateColors(color: UIColor) {
+    fileprivate func updateColors(color: UIColor, degrees : CGFloat) {
+        let range: CGFloat = 15
+
         trackLayer.strokeColor = color.cgColor
         ballLayer.fillColor = color.cgColor
+        
+        if case (dotPositions[0])...(dotPositions[1] - range) = degrees{
+            self.subviews.forEach({if($0.tag == Int(dotPositions[0])){$0.backgroundColor = #colorLiteral(red: 0.8449262381, green: 0.3321549892, blue: 0.3358672261, alpha: 1)}})
+            self.subviews.forEach({if($0.tag == Int(dotPositions[1])){$0.backgroundColor = #colorLiteral(red: 0.7412623763, green: 0.7410697341, blue: 0.749704659, alpha: 1)}})
+            self.subviews.forEach({if($0.tag == Int(dotPositions[2])){$0.backgroundColor = #colorLiteral(red: 0.7412623763, green: 0.7410697341, blue: 0.749704659, alpha: 1)}})
+        } else if case (dotPositions[1]) - range...(dotPositions[2] - range) = degrees{
+            self.subviews.forEach({if($0.tag == Int(dotPositions[0])){$0.backgroundColor = #colorLiteral(red: 0.7815472484, green: 0.5635029078, blue: 0.1209950522, alpha: 1)}})
+            self.subviews.forEach({if($0.tag == Int(dotPositions[1])){$0.backgroundColor = #colorLiteral(red: 0.7815472484, green: 0.5635029078, blue: 0.1209950522, alpha: 1)}})
+            self.subviews.forEach({if($0.tag == Int(dotPositions[2])){$0.backgroundColor = #colorLiteral(red: 0.7412623763, green: 0.7410697341, blue: 0.749704659, alpha: 1)}})
+        } else if case (dotPositions[2]) - range...(dotPositions[3] - range) = degrees{
+            self.subviews.forEach({if($0.tag == Int(dotPositions[0])){$0.backgroundColor = #colorLiteral(red: 0.3991627395, green: 0.7090520263, blue: 0.3940577507, alpha: 1)}})
+            self.subviews.forEach({if($0.tag == Int(dotPositions[1])){$0.backgroundColor = #colorLiteral(red: 0.3991627395, green: 0.7090520263, blue: 0.3940577507, alpha: 1)}})
+            self.subviews.forEach({if($0.tag == Int(dotPositions[2])){$0.backgroundColor = #colorLiteral(red: 0.3991627395, green: 0.7090520263, blue: 0.3940577507, alpha: 1)}})
+        } else{
+            self.subviews.forEach({if($0.tag == Int(dotPositions[0])){$0.backgroundColor = #colorLiteral(red: 0.7412623763, green: 0.7410697341, blue: 0.749704659, alpha: 1)}})
+            self.subviews.forEach({if($0.tag == Int(dotPositions[1])){$0.backgroundColor = #colorLiteral(red: 0.7412623763, green: 0.7410697341, blue: 0.749704659, alpha: 1)}})
+            self.subviews.forEach({if($0.tag == Int(dotPositions[2])){$0.backgroundColor = #colorLiteral(red: 0.7412623763, green: 0.7410697341, blue: 0.749704659, alpha: 1)}})
+        }
     }
     
     fileprivate func inRangeOfDot(_ degrees: inout CGFloat, dotPositionNum : Int, color: UIColor) {
-        updateColors(color: color)
+        updateColors(color: color, degrees: degrees)
         updatePathsNearDot(&degrees, dotPosition: dotPositions[dotPositionNum])
         self.subviews.forEach({if($0.tag == Int(dotPositions[dotPositionNum])){$0.isHidden = true}})
     }
@@ -190,30 +208,50 @@ class PaymentRingView: UIView {
             degrees = degrees + 360
         }
         let percent = ((degrees/360) * 100)
-        //label.text = "\(Int(percent))%"
+        ringDelegate.updatePercent(percent: percent)
         
         if case (dotPositions[0] - range)...(dotPositions[0] + range) = degrees{
             inRangeOfDot(&degrees, dotPositionNum: 0, color: dotColors[0])
+            ringDelegate.changeText(color: "Red")
         } else if case (dotPositions[1] - range)...(dotPositions[1] + range) = degrees{
             inRangeOfDot(&degrees, dotPositionNum: 1, color: dotColors[1])
+            ringDelegate.changeText(color: "Yellow")
         } else if case (dotPositions[2] - range)...(dotPositions[2] + range) = degrees{
+            ringDelegate.changeText(color: "Green")
             inRangeOfDot(&degrees, dotPositionNum: 2, color: dotColors[2])
         }  else {
             updatePathsAwayFromDots(ballX2, ballY2, angle)
             self.subviews.forEach({$0.isHidden = false})
             if case 0...dotPositions[1] = degrees{
-                updateColors(color: dotColors[0])
+                updateColors(color: dotColors[0], degrees: degrees)
             } else if case dotPositions[1]...dotPositions[2] = degrees{
-                updateColors(color: dotColors[1])
+                updateColors(color: dotColors[1], degrees: degrees)
             } else if case dotPositions[2]...360 = degrees{
-                updateColors(color: dotColors[2])
+                updateColors(color: dotColors[2], degrees: degrees)
             }
             if degrees < range || degrees > 360 - range{
                 self.subviews.forEach({if($0.tag == 360){$0.isHidden = true}})
             }
-            
         }
         
+        addCheckmark(degrees, range, ballX2, ballY2)
+        
+    }
+    
+    fileprivate func addCheckmark(_ degrees: CGFloat, _ range: CGFloat, _ ballX2: CGFloat, _ ballY2: CGFloat){
+        if case (dotPositions[2] - range)...(dotPositions[2] + range) = degrees{
+            self.checkmarkView.isHidden = false
+            UIView.animate(withDuration: 0.25) {
+                self.checkmarkView.transform = CGAffineTransform.init(scaleX: 1.1, y: 1.1)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25, execute: {
+                    UIView.animate(withDuration: 0.25) {
+                    self.checkmarkView.transform = CGAffineTransform.init(scaleX: 1, y: 1)
+                    }
+                })
+            }
+        } else {
+            checkmarkView.isHidden = true
+        }
     }
         
         

@@ -83,7 +83,13 @@ class TransactionHistoryCell: UITableViewCell {
         detailTextLabel?.numberOfLines = 0
         detailTextLabel?.textColor = .gray
         textLabel?.text = transaction?.date
-        detailTextLabel?.text = (transaction?.city ?? "") + "," + (transaction?.state ?? "")
+        if let city = transaction?.city{
+            if let state = transaction?.state{
+                detailTextLabel?.text = ("\(city), \(state)")
+            }
+        } else{
+            detailTextLabel?.text = ("Online")
+        }
     }
     
     func setupViews(){

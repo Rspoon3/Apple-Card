@@ -20,7 +20,7 @@ class HeroImageView : UIView{
             .foregroundColor: UIColor.white,
             .font: UIFont.systemFont(ofSize: 15)
         ]
-        let attributedText1 = NSMutableAttributedString(string: "FOOD & DRINK", attributes: attr1)
+        let attributedText1 = NSMutableAttributedString(string: transaction.category, attributes: attr1)
         text.append(attributedText1)
         
         let attr2 : [NSAttributedString.Key: Any] = [
@@ -45,11 +45,11 @@ class HeroImageView : UIView{
         label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints = false
         
-        let heroImageView = UIImageView(image: #imageLiteral(resourceName: "expressoHero2"))
+        let heroImageView = UIImageView(image: transaction.heroImage)
         heroImageView.translatesAutoresizingMaskIntoConstraints = false
         heroImageView.contentMode = .scaleAspectFill
         
-        let logoImageView = UIImageView(image: transaction.image)
+        let logoImageView = UIImageView(image: transaction.logo)
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
         logoImageView.roundCorners(radius: 10)
 

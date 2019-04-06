@@ -53,14 +53,14 @@ class TransactionCell: UITableViewCell {
     
     func updateCell(){
         let numberFormatter = NumberFormatter()
-        let myimage = transaction!.image.resizedImage(newSize: CGSize(width: frame.height / 1.5, height: frame.height / 1.5))
+        let myimage = transaction!.logo.resizedImage(newSize: CGSize(width: frame.height / 1.5, height: frame.height / 1.5))
         var detailText = ""
 
         numberFormatter.minimumFractionDigits = 2
         if let price = transaction?.price{
             if let num = numberFormatter.string(from: NSNumber(value: price)){
                 priceLabel.text = "$\(String(describing: num))"
-                if transaction?.image == UIImage(imageLiteralResourceName: "dailyCash"){
+                if transaction?.logo == UIImage(imageLiteralResourceName: "dailyCash"){
                     priceLabel.text?.insert("+", at: priceLabel.text!.startIndex)
                 }
                 if price < 1{

@@ -10,9 +10,10 @@ import UIKit
 
 class PaymentDueView : UIView{
     
-    @objc func notify(){
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "actionSheet"), object: nil)
+    @objc func pay(){
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "payFromMainScreen"), object: nil)
     }
+    
     
     lazy var button : UIButton = {
         let button = UIButton(type: .system)
@@ -21,7 +22,7 @@ class PaymentDueView : UIView{
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .black
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        button.addTarget(self, action: #selector(notify), for: .touchUpInside)
+        button.addTarget(self, action: #selector(pay), for: .touchUpInside)
         return button
     }()
     
