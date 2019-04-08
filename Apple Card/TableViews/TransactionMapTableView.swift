@@ -33,7 +33,6 @@ class TransactionMapTableView: UITableView, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         switch indexPath.row {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: TopTransactionDetailCell.cellID, for: indexPath) as! TopTransactionDetailCell
@@ -48,7 +47,9 @@ class TransactionMapTableView: UITableView, UITableViewDelegate, UITableViewData
             let cell = UITableViewCell()
             cell.isUserInteractionEnabled = false
             if let city = transaction.city{
-                cell.textLabel?.text = "\(transaction.title), \(city)"
+                if let state = transaction.state{
+                    cell.textLabel?.text = "\(city), \(state)"
+                }
             } else {
                 cell.textLabel?.text = "\(transaction.title)"
             }

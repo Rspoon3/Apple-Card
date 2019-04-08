@@ -1,5 +1,5 @@
 //
-//  TintableButton.swift
+//  TintableImageButton.swift
 //  Apple Card
 //
 //  Created by Richard Witherspoon on 4/2/19.
@@ -8,14 +8,12 @@
 
 import UIKit
 
-class TintableButton: UIButton{
+class TintableImageButton: UIButton{
     init(frame: CGRect , image: UIImage, color: UIColor, size: CGSize? ) {
         super.init(frame: frame)
-        var newImage : UIImage
+        var newImage = image
         if let unwrappedSize = size{
             newImage = image.resizedImage(newSize: unwrappedSize)
-        } else {
-            newImage = image
         }
         let tintableImage = newImage.withRenderingMode(.alwaysTemplate) //has to be alwaysTemplate
         tintColor = color
@@ -27,5 +25,3 @@ class TintableButton: UIButton{
         fatalError("init(coder:) has not been implemented")
     }
 }
-
-

@@ -48,8 +48,8 @@ class KeyboardTextViewContainer : BaseView, UITextViewDelegate{
     
     lazy var buttonStack : UIStackView = {
         let color = #colorLiteral(red: 0.4650884271, green: 0.4987065196, blue: 0.5242561102, alpha: 1)
-        let cameraButton = TintableButton(frame: frame, image: #imageLiteral(resourceName: "camera"), color: color, size: CGSize(width: 30, height: 30))
-        let appStoreButton = TintableButton(frame: frame, image: #imageLiteral(resourceName: "appStoreIcon"), color: color, size: CGSize(width: 26, height: 26))
+        let cameraButton = TintableImageButton(frame: frame, image: #imageLiteral(resourceName: "camera"), color: color, size: CGSize(width: 30, height: 30))
+        let appStoreButton = TintableImageButton(frame: frame, image: #imageLiteral(resourceName: "appStoreIcon"), color: color, size: CGSize(width: 26, height: 26))
         let stack = UIStackView(arrangedSubviews: [cameraButton, appStoreButton])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
@@ -59,7 +59,7 @@ class KeyboardTextViewContainer : BaseView, UITextViewDelegate{
     }()
     
     override func setupViews() {
-        let sendButton = TintableButton(frame: frame, image: #imageLiteral(resourceName: "iMessageSendButton"), color: #colorLiteral(red: 0.4650884271, green: 0.4987065196, blue: 0.5242561102, alpha: 1), size: CGSize(width: 30, height: 30))
+        let sendButton = TintableImageButton(frame: frame, image: #imageLiteral(resourceName: "iMessageSendButton"), color: #colorLiteral(red: 0.4650884271, green: 0.4987065196, blue: 0.5242561102, alpha: 1), size: CGSize(width: 30, height: 30))
         sendButton.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
         translatesAutoresizingMaskIntoConstraints = false
         textView.delegate = self

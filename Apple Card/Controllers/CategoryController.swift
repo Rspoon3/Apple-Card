@@ -28,6 +28,7 @@ class CategoryController: UIViewController, TransactionCellDelegate  {
         let bottomView = BottomView(frame: view.frame)
         let padding : CGFloat = 20
 
+        bottomView.text = "Total This Month"
         bottomView.amount = totalPrice
         tableView.mydelegate = self
         

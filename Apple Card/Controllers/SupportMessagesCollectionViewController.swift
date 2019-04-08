@@ -192,7 +192,6 @@ class SupportMessagesCollectionViewController:  UIViewController, UICollectionVi
         })
     }
 
-
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }

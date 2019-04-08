@@ -47,7 +47,7 @@ class HeroImageView : UIView{
         
         let heroImageView = UIImageView(image: transaction.heroImage)
         heroImageView.translatesAutoresizingMaskIntoConstraints = false
-        heroImageView.contentMode = .scaleAspectFill
+        heroImageView.contentMode = .scaleToFill
         
         let logoImageView = UIImageView(image: transaction.logo)
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -56,7 +56,7 @@ class HeroImageView : UIView{
         [label, heroImageView, logoImageView, label].forEach({addSubview($0)})
         
         let constraints = [
-            label.bottomAnchor.constraint(equalTo: bottomAnchor),
+            label.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
             label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
 
             heroImageView.topAnchor.constraint(equalTo: topAnchor),
@@ -64,7 +64,7 @@ class HeroImageView : UIView{
             heroImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             heroImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             
-            logoImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            logoImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
             logoImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             logoImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: (1/3.5)),
             logoImageView.widthAnchor.constraint(equalTo: heightAnchor, multiplier: (1/3.5)),

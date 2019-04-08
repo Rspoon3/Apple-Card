@@ -8,60 +8,7 @@
 
 import UIKit
 
-extension UIColor{
-    static let bgColor = #colorLiteral(red: 0.9541429877, green: 0.9484686255, blue: 0.9746612906, alpha: 1)
-    
-    convenience public init(r: CGFloat, g: CGFloat, b: CGFloat) {
-        self.init(r: r, g: g, b: b, a: 1)
-    }
-    
-    convenience public init(r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) {
-        self.init(red: r/255, green: g/255, blue: b/255, alpha: a)
-    }
-    
-    struct Apple {
-        static let red = UIColor(displayP3Red: 255.0/255.0, green: 59.0/255.0, blue: 48.0/255.0, alpha: 1)
-        static let orange = UIColor(displayP3Red: 255.0/255.0, green: 149.0/255.0, blue: 0, alpha: 1)
-        static let yellow = UIColor(displayP3Red: 255.0/255.0, green: 204.0/255.0, blue: 0, alpha: 1)
-        static let green = UIColor(displayP3Red: 76.0/255.0, green: 217.0/255.0, blue: 100.0/255.0, alpha: 1)
-        static let tealBlue = UIColor(displayP3Red: 90.0/255.0, green: 200.0/255.0, blue: 250.0/255.0, alpha: 1)
-        static let blue = UIColor(displayP3Red: 0, green: 122.0/255.0, blue: 255.0/255.0, alpha: 1)
-        static let purple = UIColor(displayP3Red: 88.0/255.0, green: 86.0/255.0, blue: 214.0/255.0, alpha: 1)
-        static let pink = UIColor(displayP3Red: 255.0/255.0, green: 45.0/255.0, blue: 85.0/255.0, alpha: 1)
-    }
-}
 
-extension UIImage {
-    
-    /// Returns a image that fills in newSize
-    func resizedImage(newSize: CGSize) -> UIImage {
-        // Guard newSize is different
-        guard self.size != newSize else { return self }
-        
-        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0);
-        self.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
-        let newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        return newImage
-    }
-    
-    /// Returns a resized image that fits in rectSize, keeping it's aspect ratio
-    /// Note that the new image size is not rectSize, but within it.
-    func resizedImageWithinRect(rectSize: CGSize) -> UIImage {
-        let widthFactor = size.width / rectSize.width
-        let heightFactor = size.height / rectSize.height
-        
-        var resizeFactor = widthFactor
-        if size.height > size.width {
-            resizeFactor = heightFactor
-        }
-        
-        let newSize = CGSize(width: size.width/resizeFactor, height: size.height/resizeFactor)
-        let resized = resizedImage(newSize: newSize)
-        return resized
-    }
-    
-}
 
 
 extension UIView {
@@ -83,6 +30,8 @@ extension UIView {
         layer.cornerRadius = radius
     }
     
+    
+    //MARK: Anchor extensions
     func fillSuperview() {
         anchor(top: superview?.topAnchor, bottom: superview?.bottomAnchor, leading: superview?.leadingAnchor, trailing: superview?.trailingAnchor)
     }

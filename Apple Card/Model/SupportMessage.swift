@@ -9,7 +9,7 @@
 import Foundation
 
 struct SupportMessage {
-    let message : String
-    let isSender: Bool
-    let dateSent: Date
+    let message  : String
+    let isSender : Bool
+    let dateSent : Date
 }

@@ -57,18 +57,12 @@ class SupportMessagesCell: BaseCollectionViewCell {
         addSubview(messageView)
         
         textBubbleView.addSubview(bubbleImageView)
-        let constraints = [
-            bubbleImageView.topAnchor.constraint(equalTo: textBubbleView.topAnchor),
-            bubbleImageView.bottomAnchor.constraint(equalTo: textBubbleView.bottomAnchor),
-            bubbleImageView.leadingAnchor.constraint(equalTo: textBubbleView.leadingAnchor),
-            bubbleImageView.trailingAnchor.constraint(equalTo: textBubbleView.trailingAnchor),
-        ]
-        NSLayoutConstraint.activate(constraints)
+        bubbleImageView.fillSuperview()
     }
 
     func updateCell(image: UIImage, textColor: UIColor, backgroundColor: UIColor) {
-        bubbleImageView.image = image
-        messageView.textColor = textColor
+        bubbleImageView.image     = image
+        messageView.textColor     = textColor
         bubbleImageView.tintColor = backgroundColor
     }
     

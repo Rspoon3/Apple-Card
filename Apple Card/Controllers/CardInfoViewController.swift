@@ -1,5 +1,5 @@
 //
-//  CardInfoTableViewController.swift
+//  CardInfoViewController.swift
 //  Apple Card
 //
 //  Created by Richard Witherspoon on 3/31/19.
@@ -20,6 +20,8 @@ class CardInfoViewController: UIViewController, CardInfoButtonsStackViewDelegate
     lazy var headerImageView = CardInfoTopImageView(frame: view.frame)
     lazy var cardInfoButtonsStackView = CardInfoButtonsStackView(frame: view.frame)
     let containerView = UIView()
+    let phoneCallView = UIImageView(image: #imageLiteral(resourceName: "supportCallScreen"))
+    var continuePlaying = true
 
     override func viewDidLayoutSubviews() {
         let scrollHeight = view.frame.height - tableView.bounds.height - headerImageView.bounds.height - cardInfoButtonsStackView.bounds.height
@@ -76,27 +78,42 @@ class CardInfoViewController: UIViewController, CardInfoButtonsStackViewDelegate
     func openSupportMessages() {
         self.navigationController?.pushViewController(SupportMessagesCollectionViewController(), animated: true)
     }
-    
+
     func callSupport() {
-        let phoneCallView = UIImageView(image: #imageLiteral(resourceName: "supportCallScreen"))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hangupPhoneCall))
+        tap.numberOfTapsRequired = 1
 
         view.addSubview(phoneCallView)
         phoneCallView.contentMode = .scaleAspectFit
         phoneCallView.frame = CGRect(x: view.center.x, y: view.center.y, width: 0, height: 0)
-        
+        continuePlaying = true
+
         UIView.animate(withDuration: 0.2) {
-            phoneCallView.frame = self.view.frame
+            self.phoneCallView.frame = self.view.frame
+            self.phoneCallView.isUserInteractionEnabled = true
+            self.phoneCallView.addGestureRecognizer(tap)
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.playSound(fileName: "dialing")
         }
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1 + 3) {
-            self.playSound(fileName: "supportCall")
+            if self.continuePlaying{
+                self.playSound(fileName: "supportCall")
+            }
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1 + 3 + 12.5) {
-            self.audioPlayer.stop()
-            phoneCallView.removeFromSuperview()
+            if self.continuePlaying{
+                self.audioPlayer.stop()
+                self.phoneCallView.removeFromSuperview()
+            }
         }
+    }
+    
+    @objc func hangupPhoneCall(){
+        continuePlaying = false
+        self.audioPlayer.stop()
+        phoneCallView.removeFromSuperview()
     }
     
     func openSupportWebsite() {

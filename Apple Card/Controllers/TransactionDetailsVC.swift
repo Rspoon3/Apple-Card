@@ -72,6 +72,7 @@ class TransactionDetailsVC: UIViewController, SFSafariViewControllerDelegate{
         super.viewDidLoad()
         let phoneBarButtonItem : UIBarButtonItem = .init(customView: phoneBarButton)
         let infoCirleButtonItem : UIBarButtonItem = .init(customView: infoCirleButton)
+        bottomView.text = "Total This Month"
         bottomView.amount = transaction.price
         transactionHistoryTableView.hisotryDelegate = self
         
@@ -81,7 +82,6 @@ class TransactionDetailsVC: UIViewController, SFSafariViewControllerDelegate{
         
         let mapTableView = TransactionMapTableView(frame: view.frame, style: .plain, transaction: transaction)
         let heroImage = HeroImageView(frame: view.frame, transaction: transaction)
-        let mapTableViewHeight = view.frame.height * 0.2
         let sidePadding : CGFloat = 20
         view.addSubview(scrollView)
         view.addSubview(heroImage)
@@ -89,9 +89,9 @@ class TransactionDetailsVC: UIViewController, SFSafariViewControllerDelegate{
         
         [mapTableView, transactionHistoryTableView].forEach({scrollView.addSubview($0)})
         
-        scrollView.anchor(top: heroImage.topAnchor, bottom: bottomView.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor)
+        scrollView.anchor(top: heroImage.bottomAnchor, bottom: bottomView.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor)
         
-        mapTableView.anchor(top: scrollView.topAnchor, bottom: nil, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor, constant: .init(top: mapTableViewHeight, left: sidePadding, bottom: 0, right: sidePadding), size: CGSize(width: view.frame.width - 2 * sidePadding, height: view.frame.height * 0.39))
+        mapTableView.anchor(top: scrollView.topAnchor, bottom: nil, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor, constant: .init(top: sidePadding, left: sidePadding, bottom: 0, right: sidePadding), size: CGSize(width: view.frame.width - 2 * sidePadding, height: view.frame.height * 0.39))
     
         
         transactionHistoryTableView.anchor(top: mapTableView.bottomAnchor, bottom: nil, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor, constant: .init(top: sidePadding, left: sidePadding, bottom: 0, right: sidePadding))

@@ -135,6 +135,7 @@ class MainViewController: UIViewController, TransactionCellDelegate{
         let dailyCash = UIAlertAction(title: "Daily Cash", style: .default) { action in
             let vc = DailyCashController()
             vc.transactions = self.transactions
+            vc.bottomTitle = "Total This Month"
             self.navigationController?.pushViewController(vc, animated: true)
         }
 

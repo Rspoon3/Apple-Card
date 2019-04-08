@@ -11,6 +11,7 @@ import UIKit
 class BaseView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
+        translatesAutoresizingMaskIntoConstraints = false
         setupViews()
     }
     
@@ -19,6 +20,5 @@ class BaseView: UIView {
     }
     
     func setupViews() {
-        translatesAutoresizingMaskIntoConstraints = false
     }
 }
