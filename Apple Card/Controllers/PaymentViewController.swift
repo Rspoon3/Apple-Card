@@ -98,7 +98,7 @@ class PaymentViewController: UIViewController{
     lazy var bottomCurvedLabel : CurvedLabel = {
         let label = CurvedLabel()
         label.textAlignment = .center
-        label.text = "NO INTREST CHARGES"
+        label.text = "INTREST CHARGE ON MARCH 31"
         label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.clockwise = false
@@ -199,10 +199,13 @@ extension PaymentViewController: RingDelegate {
     func changeText(color: String) {
         if color == "Red"{
             updateBottomText(string1: "Reduce Intrest Charges", string2: "\nPaying more than the minimum amount each month will help you reduce or even avoid intrest charges.")
+            bottomCurvedLabel.text = "INTREST CHARGE ON MARCH 31"
         } else if color == "Yellow"{
             updateBottomText(string1: "Start a 3-Month Payment Plan", string2: "\nPay the suggested amount every month and your balance can be paid off in just three months.")
+            bottomCurvedLabel.text = "INTREST CHARGE ON MARCH 31"
         } else{
             updateBottomText(string1: "Pay February Balance", string2: "\nPaying your monthly statement balance helps keep you financially healthy and and avoid intrest charges.")
+            bottomCurvedLabel.text = "NO INTREST CHARGES"
         }
     }
 }

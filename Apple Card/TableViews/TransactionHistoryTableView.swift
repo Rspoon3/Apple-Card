@@ -41,21 +41,20 @@ class TransactionHistoryTableView: UITableView, UITableViewDelegate, UITableView
         if indexPath.row == 0{
             cell.transaction = transaction
             hisotryDelegate.updateTotalAmount(price: transaction!.price)
-            return cell
         } else if indexPath.row == 1{
             transaction.date = "\(Int.random(in: 2...6)) Days Ago"
             transaction.price = transaction.price * 0.75
             cell.dailyCashPercentage.text = "1%"
             cell.transaction = transaction
             hisotryDelegate.updateTotalAmount(price: transaction!.price)
-            return cell
         } else {
             transaction.date = "A Week Ago"
             transaction.price = transaction.price * 0.88
             cell.transaction = transaction
             hisotryDelegate.updateTotalAmount(price: transaction!.price)
-            return cell
         }
+        cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

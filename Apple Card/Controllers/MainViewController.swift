@@ -12,8 +12,8 @@ import UIKit
 class MainViewController: UIViewController, TransactionCellDelegate{
 
     let transactions = [
-        Transaction(title: "Goodman Theatre", city: "Chicago", state: "IL", date: "Yesterday", price: 48.67, logo: #imageLiteral(resourceName: "Screen Shot 2019-03-30 at 2.38.35 AM"), heroImage: #imageLiteral(resourceName: "Screen Shot 2019-04-05 at 10.36.57 PM"), category: "ENTERTAINMENT"),
-        Transaction(title: "Whirlyball", city: "Chicago", state: "IL", date: "3 days ago", price: 42.88, logo: #imageLiteral(resourceName: "Screen Shot 2019-03-30 at 2.38.42 AM") , heroImage: #imageLiteral(resourceName: "Image"), category: "ENTERTAINMENT"),
+        Transaction(title: "Goodman Theatre", city: "Chicago", state: "IL", date: "Just now", price: 48.67, logo: #imageLiteral(resourceName: "Screen Shot 2019-03-30 at 2.38.35 AM"), heroImage: #imageLiteral(resourceName: "Screen Shot 2019-04-05 at 10.36.57 PM"), category: "ENTERTAINMENT"),
+        Transaction(title: "Whirlyball", city: "Chicago", state: "IL", date: "Yesterday", price: 42.88, logo: #imageLiteral(resourceName: "Screen Shot 2019-03-30 at 2.38.42 AM") , heroImage: #imageLiteral(resourceName: "Image"), category: "ENTERTAINMENT"),
         Transaction(title: "Game Room", city: "Chicago", state: "IL", date: "6 days ago", price: 45.71, logo: #imageLiteral(resourceName: "Entertainment"), heroImage: #imageLiteral(resourceName: "Image-1"), category: "ENTERTAINMENT"),
         Transaction(title: "The Second City", city: "Chicago", state: "IL", date: "3/16/19", price: 52.64, logo: #imageLiteral(resourceName: "Screen Shot 2019-03-30 at 2.38.50 AM"), heroImage: #imageLiteral(resourceName: "Image-2"), category: "ENTERTAINMENT"),
         Transaction(title: "Fandango", city: nil, state: nil, date: "3/9/19", price: 29.80, logo: #imageLiteral(resourceName: "Screen Shot 2019-03-30 at 2.38.58 AM"), heroImage: #imageLiteral(resourceName: "Image-3"), category: "MOVIES"),

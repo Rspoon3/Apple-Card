@@ -102,7 +102,7 @@ class TransactionCell: UITableViewCell {
         ]
         NSLayoutConstraint.activate(constraints)
         
-        dailyCashPercentage.anchor(top: priceLabel.bottomAnchor, bottom: nil, leading: nil, trailing: priceLabel.trailingAnchor)
+        dailyCashPercentage.anchor(top: detailTextLabel?.topAnchor, bottom: nil, leading: nil, trailing: priceLabel.trailingAnchor)
     }
 }
 

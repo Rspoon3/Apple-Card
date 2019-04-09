@@ -27,16 +27,9 @@ class SmallChartView : UIView{
         
         [label, imageView].forEach({addSubview($0)})
         
-        let constraints = [
-            label.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            
-            imageView.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 5),
-            imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: -2),
-            imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            imageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5),
-        ]
-        NSLayoutConstraint.activate(constraints)
+        label.anchor(top: topAnchor, bottom: nil, leading: leadingAnchor, trailing: nil, constant: .init(top: 10, left: 10, bottom: 0, right: 10))
+        
+        imageView.anchor(top: label.bottomAnchor, bottom: bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, constant: .init(top: 5, left: 2, bottom: 5, right: 10))
     }
     
     required init(coder: NSCoder) {

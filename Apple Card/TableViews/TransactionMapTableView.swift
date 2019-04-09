@@ -45,15 +45,13 @@ class TransactionMapTableView: UITableView, UITableViewDelegate, UITableViewData
             return cell
         default:
             let cell = UITableViewCell()
-            cell.isUserInteractionEnabled = false
             if let city = transaction.city{
-                if let state = transaction.state{
-                    cell.textLabel?.text = "\(city), \(state)"
-                }
+                cell.textLabel?.text = "\(transaction.title), \(city)"
             } else {
                 cell.textLabel?.text = "\(transaction.title)"
             }
             cell.accessoryType = .disclosureIndicator
+            cell.isUserInteractionEnabled = false
             return cell
         }
     }
