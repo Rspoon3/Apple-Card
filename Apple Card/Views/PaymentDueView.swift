@@ -61,8 +61,8 @@ class PaymentDueView : UIView{
             
             button.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
             button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            button.heightAnchor.constraint(equalTo: heightAnchor, multiplier: (1/3)),
-            button.widthAnchor.constraint(equalTo: heightAnchor, multiplier: (1/3))
+            button.heightAnchor.constraint(equalTo: heightAnchor, multiplier: (2/5)),
+            button.widthAnchor.constraint(equalTo: heightAnchor, multiplier: (2/5))
         ]
         NSLayoutConstraint.activate(constraints)
     }

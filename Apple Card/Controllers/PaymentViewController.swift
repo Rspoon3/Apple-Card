@@ -222,8 +222,6 @@ extension PaymentViewController: RingDelegate {
     
     func changeText(percent: CGFloat) {
         
-        print(percent)
-
         if case (0..<40) = percent{
             updateBottomText(string1: "Reduce Intrest Charges", string2: "\nPaying more than the minimum amount each month will help you reduce or even avoid intrest charges.")
             bottomCurvedLabel.text = "INTREST CHARGE ON MARCH 31"
