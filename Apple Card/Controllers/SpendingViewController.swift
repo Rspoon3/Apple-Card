@@ -141,6 +141,8 @@ extension SpendingViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! TransactionCell
         let cornerRadius: CGFloat = 10
         
+        cell.dailyCashPercentage.isHidden = true
+        cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         if indexPath.section == 0{
             cell.transaction = Transaction(title: "Daily Cash", city: "17 Transactions", state: nil, date: "", price: 14.99, logo: #imageLiteral(resourceName: "dailyCash") , heroImage: #imageLiteral(resourceName: "weekly spending copy"), category: "Daily Cash")
         } else {
