@@ -12,6 +12,7 @@
 		E02D3EBE225AE0380099F6CD /* ChartCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02D3EBD225AE0380099F6CD /* ChartCollectionView.swift */; };
 		E04EF4DA2252C32C0026F1FE /* VerticallyCenteredTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04EF4D92252C32C0026F1FE /* VerticallyCenteredTextView.swift */; };
 		E04EF4DC2252C3590026F1FE /* SupportMessageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04EF4DB2252C3590026F1FE /* SupportMessageHeader.swift */; };
+		E05EF1C3225CC86A00FD5BC8 /* DailyCashPercentageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05EF1C2225CC86A00FD5BC8 /* DailyCashPercentageLabel.swift */; };
 		E07813DF2258697500B68249 /* SpendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07813DE2258697500B68249 /* SpendingViewController.swift */; };
 		E080F8A3224F02DD004AF19F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E080F8A2224F02DD004AF19F /* AppDelegate.swift */; };
 		E080F8A5224F02DD004AF19F /* CategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E080F8A4224F02DD004AF19F /* CategoryController.swift */; };
@@ -63,6 +64,7 @@
 		E02D3EBD225AE0380099F6CD /* ChartCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartCollectionView.swift; sourceTree = "<group>"; };
 		E04EF4D92252C32C0026F1FE /* VerticallyCenteredTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticallyCenteredTextView.swift; sourceTree = "<group>"; };
 		E04EF4DB2252C3590026F1FE /* SupportMessageHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportMessageHeader.swift; sourceTree = "<group>"; };
+		E05EF1C2225CC86A00FD5BC8 /* DailyCashPercentageLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCashPercentageLabel.swift; sourceTree = "<group>"; };
 		E07813DE2258697500B68249 /* SpendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingViewController.swift; sourceTree = "<group>"; };
 		E080F89F224F02DD004AF19F /* Apple Card.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Apple Card.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E080F8A2224F02DD004AF19F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -134,7 +136,6 @@
 		E080F896224F02DD004AF19F = {
 			isa = PBXGroup;
 			children = (
-				E0B01988225BAFE700D78889 /* ChartCell.swift */,
 				E080F8A1224F02DD004AF19F /* Apple Card */,
 				E080F8A0224F02DD004AF19F /* Products */,
 			);
@@ -167,6 +168,7 @@
 		E080F8D0225052AB004AF19F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E05EF1C2225CC86A00FD5BC8 /* DailyCashPercentageLabel.swift */,
 				E02D3EBD225AE0380099F6CD /* ChartCollectionView.swift */,
 				E0DED4112252991000C99CFF /* BaseView.swift */,
 				E080F8BA224FB43F004AF19F /* BottomView.swift */,
@@ -230,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				E091901622519EE300184A00 /* CardInfoTableView.swift */,
+				E0B01988225BAFE700D78889 /* ChartCell.swift */,
 				E080F8BC224FB44B004AF19F /* TransactionCell.swift */,
 				E080F8DF22508AA7004AF19F /* TransactionHistoryCell.swift */,
 				E080F8D92250694E004AF19F /* TopTransactionDetailCell.swift */,
@@ -319,6 +322,7 @@
 				E080F8E222508AFB004AF19F /* TransactionHistoryTableView.swift in Sources */,
 				E080F8DE225079FE004AF19F /* HeroImageView.swift in Sources */,
 				E02D3EB9225ACE3C0099F6CD /* UIImageExtensions.swift in Sources */,
+				E05EF1C3225CC86A00FD5BC8 /* DailyCashPercentageLabel.swift in Sources */,
 				E080F8E022508AA7004AF19F /* TransactionHistoryCell.swift in Sources */,
 				E0DED4102252989800C99CFF /* KeyboardTextViewContainer.swift in Sources */,
 				E09190262251D43800184A00 /* BaseCollectionViewCell.swift in Sources */,

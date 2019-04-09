@@ -15,6 +15,8 @@ class TransactionCell: UITableViewCell {
             updateCell()
         }
     }
+    
+    lazy var dailyCashPercentage = DailyCashPercentageLabel(frame: frame)
 
     let priceLabel : UILabel = {
         let label = UILabel()
@@ -89,6 +91,8 @@ class TransactionCell: UITableViewCell {
     func setupViews(){
         addSubview(disclourseIcon)
         addSubview(priceLabel)
+        addSubview(dailyCashPercentage)
+        
         let constraints = [
             disclourseIcon.centerYAnchor.constraint(equalTo: textLabel!.centerYAnchor),
             disclourseIcon.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5),
@@ -97,6 +101,8 @@ class TransactionCell: UITableViewCell {
             priceLabel.trailingAnchor.constraint(equalTo: disclourseIcon.leadingAnchor, constant: 5),
         ]
         NSLayoutConstraint.activate(constraints)
+        
+        dailyCashPercentage.anchor(top: priceLabel.bottomAnchor, bottom: nil, leading: nil, trailing: priceLabel.trailingAnchor)
     }
 }
 

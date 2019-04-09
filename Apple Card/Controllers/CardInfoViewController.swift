@@ -23,11 +23,6 @@ class CardInfoViewController: UIViewController, CardInfoButtonsStackViewDelegate
     let phoneCallView = UIImageView(image: #imageLiteral(resourceName: "supportCallScreen"))
     var continuePlaying = true
 
-    override func viewDidLayoutSubviews() {
-        let scrollHeight = view.frame.height - tableView.bounds.height - headerImageView.bounds.height - cardInfoButtonsStackView.bounds.height
-        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + scrollHeight)
-    }
-    
     //MARK: view functions
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +56,12 @@ class CardInfoViewController: UIViewController, CardInfoButtonsStackViewDelegate
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.tintColor = UIView().tintColor
+        self.navigationController?.navigationBar.barStyle = .default
+    }
+    
+    override func viewDidLayoutSubviews() {
+        let scrollHeight = view.frame.height - tableView.bounds.height - headerImageView.bounds.height - cardInfoButtonsStackView.bounds.height
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + scrollHeight)
     }
     
     //MARK: private helper functions

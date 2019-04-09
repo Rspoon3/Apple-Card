@@ -8,15 +8,6 @@
 
 import UIKit
 
-class IntrinsicLabel: UILabel{
-    
-    override var intrinsicContentSize: CGSize{
-        let original = super.intrinsicContentSize
-        return CGSize(width: original.width + 10, height: original.height + 5)
-    }
-    
-}
-
 class TransactionHistoryCell: UITableViewCell {
     static let cellID = "TransactionHistoryCell"
     var transaction : Transaction?{
@@ -32,19 +23,8 @@ class TransactionHistoryCell: UITableViewCell {
         return label
     }()
     
-    let dailyCashPercentage : IntrinsicLabel = {
-        let label = IntrinsicLabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.sizeToFit()
-        label.font = UIFont.systemFont(ofSize: 10)
-        label.textColor = .gray
-        label.text = "2%"
-        label.textAlignment = .center
-        label.backgroundColor = UIColor.lightGray.withAlphaComponent(0.15)
-        label.roundCorners(radius: 5)
-        return label
-    }()
-    
+    lazy var dailyCashPercentage = DailyCashPercentageLabel(frame: frame)
+
     let disclourseIcon : UIButton = {
         let button = UIButton(type:.roundedRect)
         let disclosure = UITableViewCell()

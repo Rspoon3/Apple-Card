@@ -68,7 +68,7 @@ class MainViewController: UIViewController, TransactionCellDelegate{
         return button
     }()
     
-    lazy var tableView = TransactionTableView(frame: view.frame, style: .plain, transactions: transactions, sectionName: "Latest Transactions")
+    lazy var tableView = TransactionTableView(frame: view.frame, style: .plain, transactions: transactions, sectionName: "Latest Transactions", dailyCashPercentageIsHidden: false)
     lazy var miniViewsStack = MainPaymentStackView() //the three charts
     let scrollView = UIScrollView()
     

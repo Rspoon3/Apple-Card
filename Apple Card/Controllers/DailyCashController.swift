@@ -29,7 +29,7 @@ class DailyCashController: UIViewController, TransactionCellDelegate  {
     
     lazy var bottomView = BottomView(frame: view.frame)
     let scrollView = UIScrollView()
-    lazy var tableView = TransactionTableView(frame: view.frame, style: .plain, transactions: transactions, sectionName: "March 2019")
+    lazy var tableView = TransactionTableView(frame: view.frame, style: .plain, transactions: transactions, sectionName: "March 2019", dailyCashPercentageIsHidden: true)
     var bottomTitle : String!
     override func viewDidLoad() {
         super.viewDidLoad()

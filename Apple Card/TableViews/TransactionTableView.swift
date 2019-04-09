@@ -19,8 +19,10 @@ class TransactionTableView: UITableView, UITableViewDelegate, UITableViewDataSou
     
     let transactions : [Transaction]!
     var sectionName : String!
+    let dailyCashPercentageIsHidden : Bool!
     
-    init(frame: CGRect, style: UITableView.Style, transactions: [Transaction], sectionName: String) {
+    init(frame: CGRect, style: UITableView.Style, transactions: [Transaction], sectionName: String, dailyCashPercentageIsHidden: Bool) {
+        self.dailyCashPercentageIsHidden = dailyCashPercentageIsHidden
         self.transactions = transactions
         self.sectionName = sectionName
         super.init(frame: frame, style: .plain)
@@ -45,6 +47,9 @@ class TransactionTableView: UITableView, UITableViewDelegate, UITableViewDataSou
         let cell = tableView.dequeueReusableCell(withIdentifier: TransactionCell.cellID, for: indexPath) as! TransactionCell
         if indexPath.row == 0{
             cell.roundTopCorners(radius: 10)
+        }
+        if dailyCashPercentageIsHidden{
+            cell.dailyCashPercentage.isHidden = true
         }
         cell.transaction = transactions[indexPath.row]
         return cell

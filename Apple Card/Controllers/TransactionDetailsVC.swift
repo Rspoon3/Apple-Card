@@ -11,7 +11,7 @@ import SafariServices
 
 class TransactionDetailsVC: UIViewController, SFSafariViewControllerDelegate{
     
-    lazy var phoneBarButton : UIButton = {
+    lazy var phoneBarButton: UIButton = {
         let button = UIButton(type: .system)
         button.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
         button.roundCorners(radius: 15)
@@ -23,7 +23,7 @@ class TransactionDetailsVC: UIViewController, SFSafariViewControllerDelegate{
         
         let imageView = UIImageView()
         if let myImage = UIImage(named: "phone") {
-            let tintableImage = myImage.withRenderingMode(.alwaysOriginal)
+            let tintableImage = myImage.withRenderingMode(.alwaysTemplate)
             imageView.image = tintableImage
             imageView.tintColor = .white
         }
@@ -51,7 +51,7 @@ class TransactionDetailsVC: UIViewController, SFSafariViewControllerDelegate{
         
         let imageView = UIImageView()
         if let myImage = UIImage(named: "infoCircle") {
-            let tintableImage = myImage.withRenderingMode(.alwaysOriginal)
+            let tintableImage = myImage.withRenderingMode(.alwaysTemplate)
             imageView.image = tintableImage
             imageView.tintColor = .white
         }

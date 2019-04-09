@@ -56,6 +56,11 @@ class SupportMessagesCollectionViewController:  UIViewController, UICollectionVi
     var bottomConstraint    : NSLayoutConstraint?
     let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout.init())
 
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.barStyle = .black
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
