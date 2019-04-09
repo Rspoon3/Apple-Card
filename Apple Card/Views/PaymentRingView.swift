@@ -9,7 +9,7 @@
 import UIKit
 
 protocol RingDelegate {
-    func changeText(color: String)
+    func changeText(percent: CGFloat)
     func updatePercent(percent: CGFloat)
 }
 
@@ -212,12 +212,9 @@ class PaymentRingView: UIView {
         
         if case (dotPositions[0] - range)...(dotPositions[0] + range) = degrees{
             inRangeOfDot(&degrees, dotPositionNum: 0, color: dotColors[0])
-            ringDelegate.changeText(color: "Red")
         } else if case (dotPositions[1] - range)...(dotPositions[1] + range) = degrees{
             inRangeOfDot(&degrees, dotPositionNum: 1, color: dotColors[1])
-            ringDelegate.changeText(color: "Yellow")
         } else if case (dotPositions[2] - range)...(dotPositions[2] + range) = degrees{
-            ringDelegate.changeText(color: "Green")
             inRangeOfDot(&degrees, dotPositionNum: 2, color: dotColors[2])
         }  else {
             updatePathsAwayFromDots(ballX2, ballY2, angle)
@@ -235,6 +232,7 @@ class PaymentRingView: UIView {
         }
         
         addCheckmark(degrees, range, ballX2, ballY2)
+        ringDelegate.changeText(percent: percent)
         
     }
     

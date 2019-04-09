@@ -29,6 +29,8 @@ class PaymentViewController: UIViewController{
         return stack
     }()
     
+    var ring = PaymentRingView(frame: .zero, trackRadius: 0, ballRadius: 0, ballXOffset: 0, ballYOffset: 0)
+    
     let showKeyPad : UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Show Keypad", for: .normal)
@@ -71,12 +73,24 @@ class PaymentViewController: UIViewController{
     
     let totalBalance : CGFloat = 1682.55
     
+    
     lazy var priceLabel : UILabel = {
         let label = UILabel()
         var num = totalBalance * (40/360)
         num = (num * 100).rounded() / 100
         label.font = UIFont.init(name: "ArialRoundedMTBold", size: UIScreen.main.bounds.height * 0.06)!
         label.text = "$\(num)"
+        label.sizeToFit()
+        return label
+    }()
+    
+    lazy var intrestLabel : UILabel = {
+        let label = UILabel()
+        var num = totalBalance * (40/360) * 0.09
+        num = (num * 100).rounded() / 100
+        label.font = UIFont.init(name: "ArialRoundedMTBold", size: UIScreen.main.bounds.height * 0.03)!
+        label.text = "$\(num)"
+        label.textColor = ring.dotColors.first
         label.sizeToFit()
         return label
     }()
@@ -128,9 +142,12 @@ class PaymentViewController: UIViewController{
         
         [topLabel, bottomLabel, paymentButtonStack, showKeyPad, ringContainer, cancelButton].forEach({view.addSubview($0)})
         
-        [priceLabel, topCurvedLabel, bottomCurvedLabel].forEach({ringContainer.addSubview($0)})
+        [priceLabel, intrestLabel, topCurvedLabel, bottomCurvedLabel].forEach({ringContainer.addSubview($0)})
         
         priceLabel.anchorCenterSuperview()
+        
+        intrestLabel.anchor(top: priceLabel.bottomAnchor, bottom: nil, leading: nil, trailing: nil, constant: .init(top: view.frame.height * 0.02, left: 0, bottom: 0, right: 0))
+        intrestLabel.anchorCenterXToSuperview()
         
         cancelButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: nil, leading: view.leadingAnchor, trailing: nil, constant: .init(top: 0, left: 20, bottom: 0, right: 0))
         
@@ -153,7 +170,7 @@ class PaymentViewController: UIViewController{
     override func viewDidLayoutSubviews() {
         if hasLaidOutRing { return }
         let frame = CGRect(x: 0, y: 0, width: ringContainer.frame.width, height: ringContainer.frame.height)
-        let ring = PaymentRingView(frame: frame, trackRadius: view.frame.width * 0.37, ballRadius: 20, ballXOffset: 7, ballYOffset: 7)
+        ring = PaymentRingView(frame: frame, trackRadius: view.frame.width * 0.37, ballRadius: 20, ballXOffset: 7, ballYOffset: 7)
         ring.ringDelegate = self
         ringContainer.addSubview(ring)
         hasLaidOutRing = true
@@ -192,20 +209,35 @@ extension PaymentViewController: RingDelegate {
     func updatePercent(percent: CGFloat) {
         let roundedPercent = (percent).rounded() / 100
         var price = totalBalance * roundedPercent
+        var intrestPrice = (1 - (roundedPercent / 0.7)) * 0.09 * totalBalance
+
+
         price = (price * 100).rounded() / 100
+        intrestPrice = (intrestPrice * 100).rounded() / 100
+
         priceLabel.text = "$\(price)"
+        intrestLabel.text = "$\(intrestPrice)"
+        
     }
     
-    func changeText(color: String) {
-        if color == "Red"{
+    func changeText(percent: CGFloat) {
+        
+        print(percent)
+
+        if case (0..<40) = percent{
             updateBottomText(string1: "Reduce Intrest Charges", string2: "\nPaying more than the minimum amount each month will help you reduce or even avoid intrest charges.")
             bottomCurvedLabel.text = "INTREST CHARGE ON MARCH 31"
-        } else if color == "Yellow"{
+            intrestLabel.textColor = ring.dotColors.first
+            intrestLabel.isHidden = false
+        } else if case 40..<70 = percent{
             updateBottomText(string1: "Start a 3-Month Payment Plan", string2: "\nPay the suggested amount every month and your balance can be paid off in just three months.")
             bottomCurvedLabel.text = "INTREST CHARGE ON MARCH 31"
+            intrestLabel.textColor = ring.dotColors[1]
+            intrestLabel.isHidden = false
         } else{
             updateBottomText(string1: "Pay February Balance", string2: "\nPaying your monthly statement balance helps keep you financially healthy and and avoid intrest charges.")
             bottomCurvedLabel.text = "NO INTREST CHARGES"
+            intrestLabel.isHidden = true
         }
     }
 }
