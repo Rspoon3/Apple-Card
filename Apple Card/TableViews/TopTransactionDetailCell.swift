@@ -78,6 +78,7 @@ class TopTransactionDetailCell: UITableViewCell {
         detailTextLabel?.numberOfLines = 0
         detailTextLabel?.textColor = .gray
         textLabel?.text = transaction?.date
+        textLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         detailTextLabel?.text = "2% Daily Cash"
     }
     
