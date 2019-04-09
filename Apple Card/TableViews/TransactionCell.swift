@@ -75,6 +75,7 @@ class TransactionCell: UITableViewCell {
         detailTextLabel?.numberOfLines = 0
         detailTextLabel?.textColor = .gray
         textLabel?.text = transaction?.title
+        textLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         
         if let text = transaction?.city {
             detailText += text
