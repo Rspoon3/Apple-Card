@@ -42,7 +42,7 @@ class PaymentDueView : UIView{
         
         let attr2 : [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor.black,
-            .font: UIFont.boldSystemFont(ofSize: 35)
+            .font: UIFont.boldSystemFont(ofSize: 30)
         ]
         let attributedText2 = NSMutableAttributedString(string: "\n6 Days", attributes: attr2)
         text.append(attributedText2)

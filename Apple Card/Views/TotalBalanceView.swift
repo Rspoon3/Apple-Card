@@ -39,6 +39,8 @@ class TotalBalanceView : UIView{
         let attributedText3 = NSMutableAttributedString(string: "\n$8,317.45 Avaliable", attributes: attr3)
         text.append(attributedText3)
         
+        text.insert(NSAttributedString(string: ","), at: 16)
+        
         let label = UILabel()
         label.attributedText = text
         label.numberOfLines = 0

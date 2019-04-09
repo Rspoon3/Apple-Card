@@ -71,6 +71,7 @@ class SupportMessagesCollectionViewController:  UIViewController, UICollectionVi
         collectionView.dataSource = self
         collectionView.keyboardDismissMode = .interactive
         collectionView.register(SupportMessagesCell.self, forCellWithReuseIdentifier: supportMessagesCell.cellID)
+        collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerView")
         view.addSubview(collectionView)
         navigationController?.navigationBar.tintColor = .white
         view.addSubview(header)
@@ -134,7 +135,7 @@ class SupportMessagesCollectionViewController:  UIViewController, UICollectionVi
             keyboardTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             keyboardTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
-            collectionView.topAnchor.constraint(equalTo: header.safeAreaLayoutGuide.topAnchor),
+            collectionView.topAnchor.constraint(equalTo: header.safeAreaLayoutGuide.bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: keyboardTextView.topAnchor),
@@ -251,7 +252,31 @@ class SupportMessagesCollectionViewController:  UIViewController, UICollectionVi
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: 50)
+        return CGSize(width: UIScreen.main.bounds.width, height: 30)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerView", for: indexPath)
+        let label = UILabel()
+        let text = NSMutableAttributedString()
+        let attr1 : [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.gray,
+            .font: UIFont.boldSystemFont(ofSize: 12)
+        ]
+        let attr2 : [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.gray,
+            .font: UIFont.systemFont(ofSize: 12)
+        ]
+        let attributedText1 = NSMutableAttributedString(string: "Today", attributes: attr1)
+        let attributedText2 = NSMutableAttributedString(string: " 9:41 AM", attributes: attr2)
+        text.append(attributedText1)
+        text.append(attributedText2)
+        label.attributedText = text
+        label.textAlignment = .center
+        headerView.addSubview(label)
+        label.fillSuperview()
+        return headerView
+    }
+    
 
 }
