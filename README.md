@@ -18,5 +18,5 @@ This entire project was coded in Swift 5.
 
 
 ## Screenshots
-![alt text](screenshots/screenshot1.jpeg "Description goes here")
+![alt text](https://github.com/Rspoon3/Apple-Card/blob/master/Apple%20Card/Screenshots/screenshot1.jpg)
 
