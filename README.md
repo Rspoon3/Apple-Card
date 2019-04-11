@@ -18,5 +18,5 @@ This entire project was coded in Swift 5.
 
 
 ## Screenshots
-![alt text](screenshots/screenshot1.png "Description goes here")
+![alt text](screenshots/screenshot1.jpeg "Description goes here")
 
