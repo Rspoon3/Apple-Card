@@ -20,7 +20,6 @@ class TransactionHistoryTableView: UITableView, UITableViewDelegate, UITableView
     init(frame: CGRect, style: UITableView.Style, transaction: Transaction) {
         self.transaction = transaction
         super.init(frame: frame, style: .plain)
-        roundCorners(radius: 10)
         translatesAutoresizingMaskIntoConstraints = false
         delegate = self
         dataSource = self
@@ -36,11 +35,25 @@ class TransactionHistoryTableView: UITableView, UITableViewDelegate, UITableView
         return 3
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.sizeToFit()
+        label.text = "Transaction History"
+        backgroundColor = .clear
+        return label
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TransactionHistoryCell.cellID, for: indexPath) as! TransactionHistoryCell
         if indexPath.row == 0{
             cell.transaction = transaction
             hisotryDelegate.updateTotalAmount(price: transaction!.price)
+            cell.roundTopCorners(radius: 10)
         } else if indexPath.row == 1{
             transaction.date = "\(Int.random(in: 2...6)) Days Ago"
             transaction.price = transaction.price * 0.75
@@ -52,6 +65,7 @@ class TransactionHistoryTableView: UITableView, UITableViewDelegate, UITableView
             transaction.price = transaction.price * 0.88
             cell.transaction = transaction
             hisotryDelegate.updateTotalAmount(price: transaction!.price)
+            cell.roundBottomCorners(radius: 10)
         }
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         return cell

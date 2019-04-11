@@ -104,7 +104,7 @@ class TransactionDetailsVC: UIViewController, SFSafariViewControllerDelegate{
     }
     
     override func viewWillLayoutSubviews() {
-        let tableHeight = 44.0 * 1.9 * CGFloat(3)
+        let tableHeight = 44.0 * 1.9 * CGFloat(3) + 48
         transactionHistoryTableView.anchor(top: nil, bottom: scrollView.bottomAnchor, leading: nil, trailing: nil, size: CGSize(width: 0, height: tableHeight))
     }
     
