@@ -4,7 +4,7 @@ On March 25, 2019 Apple held an [event](https://www.apple.com/apple-events/march
 
 ### Getting Started
 
-All you need to do to use this application is to clone the project and change the developer team and hit run! 
+All you need to do to use this application is to clone the project, change the developer team, and hit run! 
 
 
 ### Language
@@ -14,7 +14,6 @@ This entire project was coded in Swift 5.
 ## Author
 
 [Ricky Witherspoon](https://twitter.com/rspoon_3)
-
 
 
 ## Screenshots
