@@ -6,6 +6,15 @@ On March 25, 2019 Apple held an [event](https://www.apple.com/apple-events/march
 
 All you need to do to use this application is to clone the project, change the developer team, and hit run! 
 
+## Features
+
+* Fully interactive UI
+  * Tapable buttons
+  * Scrollable lists
+  * Send demo support messages
+  * Demo phone call to support
+  
+
 
 ### Language
 
