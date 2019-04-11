@@ -25,5 +25,5 @@ This entire project was coded in Swift 5.
 
 <img src="https://github.com/Rspoon3/Apple-Card/blob/master/Apple%20Card/Screenshots/screenshot5.jpg" width="150" height="324.75">      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<img src="https://github.com/Rspoon3/Apple-Card/blob/master/Apple%20Card/Screenshots/screenshot6.jpg" width="150" height="324.75">
 
-<img src="https://github.com/Rspoon3/Apple-Card/blob/master/Apple%20Card/Screenshots/screenshot7.jpg" width="150" height="324.75">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;      <img src="https://github.com/Rspoon3/Apple-Card/blob/master/Apple%20Card/Screenshots/screenshot8.jpg" width="150" height="324.75">
+<img src="https://github.com/Rspoon3/Apple-Card/blob/master/Apple%20Card/Screenshots/screenshot7.jpg" width="150" height="324.75">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  <img src="https://github.com/Rspoon3/Apple-Card/blob/master/Apple%20Card/Screenshots/screenshot8.jpg" width="150" height="324.75">
 
