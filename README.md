@@ -8,11 +8,13 @@ All you need to do to use this application is to clone the project, change the d
 
 ## Features
 
-* Fully interactive UI
-  * Tapable buttons
-  * Scrollable lists
-  * Send demo support messages
-  * Demo phone call to support
+* Change payment amount
+* Send demo support messages
+* Demo phone call to support
+* Tapable buttons
+* Scrollable lists
+
+* Chang
   
 
 
