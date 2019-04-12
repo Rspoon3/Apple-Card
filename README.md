@@ -12,10 +12,7 @@ All you need to do to use this application is to clone the project, change the d
 * Send demo support messages
 * Demo phone call to support
 * Tapable buttons
-* Scrollable lists
-
-* Chang
-  
+* Scrollable lists  
 
 
 ### Language
