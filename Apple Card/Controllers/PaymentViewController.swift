@@ -13,7 +13,7 @@ class PaymentViewController: UIViewController{
 
     lazy var paymentButtonStack : UIStackView = {
         let payLater = UIButton(type: .system)
-        let payNow = UIButton(type: .system)
+        let payNow   = UIButton(type: .system)
         payLater.setTitle("Pay Later", for: .normal)
         payLater.setTitleColor(.black, for: .normal)
         payLater.backgroundColor = .white
@@ -46,8 +46,8 @@ class PaymentViewController: UIViewController{
         return button
     }()
     
-    let topText : NSMutableAttributedString = {
-        let text = NSMutableAttributedString()
+    let topText   : NSMutableAttributedString = {
+        let text  = NSMutableAttributedString()
         let attr1 : [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor.black,
             .font: UIFont.boldSystemFont(ofSize: 40)
@@ -66,14 +66,13 @@ class PaymentViewController: UIViewController{
     lazy var topLabel : UILabel = {
         let label = UILabel()
         label.attributedText = topText
-        label.numberOfLines = 0
-        label.textAlignment = .center
+        label.numberOfLines  = 0
+        label.textAlignment  = .center
         return label
     }()
     
     let totalBalance : CGFloat = 1682.55
-    
-    
+
     lazy var priceLabel : UILabel = {
         let label = UILabel()
         var num = totalBalance * (40/360)
@@ -129,7 +128,6 @@ class PaymentViewController: UIViewController{
         label.textAlignment = .center
         return label
     }()
-    
     
     let ringContainer = BaseView()
     
@@ -210,8 +208,7 @@ extension PaymentViewController: RingDelegate {
         let roundedPercent = (percent).rounded() / 100
         var price = totalBalance * roundedPercent
         var intrestPrice = (1 - (roundedPercent / 0.7)) * 0.09 * totalBalance
-
-
+        
         price = (price * 100).rounded() / 100
         intrestPrice = (intrestPrice * 100).rounded() / 100
 

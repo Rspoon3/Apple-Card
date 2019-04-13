@@ -16,29 +16,28 @@ protocol RingDelegate {
 //boss
 class PaymentRingView: UIView {
  
-    var ringDelegate : RingDelegate!
-    
+    var ringDelegate  : RingDelegate!
     lazy var midViewX : CGFloat = self.frame.midX
     lazy var midViewY : CGFloat = self.frame.midY
     
-    var mainPath = UIBezierPath()
+    var mainPath  = UIBezierPath()
     let mainLayer = CAShapeLayer()
     
-    var ballPath = UIBezierPath()
+    var ballPath  = UIBezierPath()
     var ballLayer = CAShapeLayer()
     
     var trackLayer = CAShapeLayer()
-    var trackPath = UIBezierPath()
+    var trackPath  = UIBezierPath()
     
     var trackOutlineLayer = CAShapeLayer()
-    var trackOutlinePath = UIBezierPath()
+    var trackOutlinePath  = UIBezierPath()
     
     var topBallLayer = CAShapeLayer()
-    var topBallPath = UIBezierPath()
+    var topBallPath  = UIBezierPath()
     
     let trackLineWidth : CGFloat = 30
-    let dotPositions : [CGFloat] = [40, 155, 250, 360]
-    let dotColors = [ #colorLiteral(red: 0.8067814708, green: 0.3228612542, blue: 0.3160231709, alpha: 1), #colorLiteral(red: 0.9953522086, green: 0.8220682144, blue: 0.2999364734, alpha: 1), #colorLiteral(red: 0.5126650929, green: 0.8883596063, blue: 0.4466395974, alpha: 1)]
+    let dotPositions   : [CGFloat] = [40, 155, 250, 360]
+    let dotColors      = [ #colorLiteral(red: 0.8067814708, green: 0.3228612542, blue: 0.3160231709, alpha: 1), #colorLiteral(red: 0.9953522086, green: 0.8220682144, blue: 0.2999364734, alpha: 1), #colorLiteral(red: 0.5126650929, green: 0.8883596063, blue: 0.4466395974, alpha: 1)]
     
     var tRadius : CGFloat!
     var bRadius : CGFloat!
@@ -66,7 +65,6 @@ class PaymentRingView: UIView {
         layer.lineWidth = lineWidth
         layer.lineCap = .round
         self.layer.addSublayer(layer)
-        
     }
     
     fileprivate func addGrayDots(ballXOffset: CGFloat, ballYOffset:CGFloat) {
@@ -120,7 +118,6 @@ class PaymentRingView: UIView {
        
         
         ballPath = UIBezierPath(arcCenter: CGPoint(x: ballX,y: ballY), radius: bRadius, startAngle: CGFloat(0), endAngle:CGFloat(Double.pi * 2), clockwise: true)
-        
     }
     
     init(frame: CGRect, trackRadius: CGFloat, ballRadius: CGFloat, ballXOffset: CGFloat, ballYOffset : CGFloat) {
@@ -233,7 +230,6 @@ class PaymentRingView: UIView {
         
         addCheckmark(degrees, range, ballX2, ballY2)
         ringDelegate.changeText(percent: percent)
-        
     }
     
     fileprivate func addCheckmark(_ degrees: CGFloat, _ range: CGFloat, _ ballX2: CGFloat, _ ballY2: CGFloat){
@@ -251,7 +247,6 @@ class PaymentRingView: UIView {
             checkmarkView.isHidden = true
         }
     }
-        
         
 }
 

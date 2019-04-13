@@ -29,28 +29,29 @@ class CardInfoButtonsStackView: UIStackView {
     
     func setupViews(){
         let messageView = UIView()
-        let callView = UIView()
-        let webView = UIView()
-        let allViews = [messageView, callView, webView]
-        let images : [UIImage] = [#imageLiteral(resourceName: "messageIcon"), #imageLiteral(resourceName: "phone"), #imageLiteral(resourceName: "safari")]
-        let text = ["Message", "Call", "Website"]
-        let messageTap = UITapGestureRecognizer(target: self, action: #selector(messageTapped))
-        let callTap = UITapGestureRecognizer(target: self, action: #selector(callTapped))
-        let webTap = UITapGestureRecognizer(target: self, action: #selector(webTapped))
+        let callView    = UIView()
+        let webView     = UIView()
+        let allViews    = [messageView, callView, webView]
+        let images      : [UIImage] = [#imageLiteral(resourceName: "messageIcon"), #imageLiteral(resourceName: "phone"), #imageLiteral(resourceName: "safari")]
+        let text        = ["Message", "Call", "Website"]
+        let messageTap  = UITapGestureRecognizer(target: self, action: #selector(messageTapped))
+        let callTap     = UITapGestureRecognizer(target: self, action: #selector(callTapped))
+        let webTap      = UITapGestureRecognizer(target: self, action: #selector(webTapped))
+        
         messageTap.numberOfTapsRequired = 1
-        callTap.numberOfTapsRequired = 1
-        webTap.numberOfTapsRequired = 1
+        callTap.numberOfTapsRequired    = 1
+        webTap.numberOfTapsRequired     = 1
         
         for (index, view) in allViews.enumerated(){
-            let label = UILabel()
-            let tintableImage = images[index].withRenderingMode(.alwaysTemplate)
-            let imageView = UIImageView()
-            imageView.image = tintableImage
-            imageView.tintColor = UIView().tintColor
+            let label             = UILabel()
+            let tintableImage     = images[index].withRenderingMode(.alwaysTemplate)
+            let imageView         = UIImageView()
+            imageView.image       = tintableImage
+            imageView.tintColor   = UIView().tintColor
             imageView.contentMode = .scaleAspectFit
-            label.text = text[index]
-            label.textAlignment = .center
-            label.textColor = UIView().tintColor
+            label.text            = text[index]
+            label.textAlignment   = .center
+            label.textColor       = UIView().tintColor
             
             let subStack = UIStackView(arrangedSubviews: [imageView,label])
             subStack.translatesAutoresizingMaskIntoConstraints = false

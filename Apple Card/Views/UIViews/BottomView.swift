@@ -10,7 +10,7 @@ import UIKit
 
 class BottomView : UIView{
     let label = UILabel()
-    var text = String()
+    var text  = String()
     
     let payButton : UIButton = {
         let button = UIButton(type: .system)
@@ -40,10 +40,10 @@ class BottomView : UIView{
             let attributedText2 = NSMutableAttributedString(string: formatted, attributes: attr2)
             text.append(attributedText2)
             
-            label.attributedText = text
+            label.attributedText  = text
             label.backgroundColor = .clear
-            label.textAlignment = .center
-            label.numberOfLines = 0
+            label.textAlignment   = .center
+            label.numberOfLines   = 0
             label.sizeToFit()
         }
     }
@@ -53,7 +53,7 @@ class BottomView : UIView{
         let size = frame.height * 0.075
         label.translatesAutoresizingMaskIntoConstraints = false
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = #colorLiteral(red: 0.9724542499, green: 0.972597301, blue: 0.9724345803, alpha: 1)
+        backgroundColor   = #colorLiteral(red: 0.9724542499, green: 0.972597301, blue: 0.9724345803, alpha: 1)
         layer.borderWidth = 0.5
         layer.borderColor = (UITableView().separatorColor)?.cgColor
         addSubview(label)

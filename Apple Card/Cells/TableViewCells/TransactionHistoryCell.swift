@@ -9,7 +9,9 @@
 import UIKit
 
 class TransactionHistoryCell: UITableViewCell {
+    
     static let cellID = "TransactionHistoryCell"
+    
     var transaction : Transaction?{
         didSet{
             updateCell()
@@ -73,9 +75,7 @@ class TransactionHistoryCell: UITableViewCell {
     }
     
     func setupViews(){
-        addSubview(disclourseIcon)
-        addSubview(priceLabel)
-        addSubview(dailyCashPercentage)
+        [disclourseIcon, priceLabel, dailyCashPercentage].forEach({addSubview($0)})
         
         let constraints = [
             disclourseIcon.centerYAnchor.constraint(equalTo: textLabel!.centerYAnchor),

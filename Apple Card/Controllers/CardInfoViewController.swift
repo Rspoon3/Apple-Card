@@ -14,13 +14,13 @@ import AVFoundation
 class CardInfoViewController: UIViewController, CardInfoButtonsStackViewDelegate {
     
     //MARK: ivar
-    var audioPlayer = AVAudioPlayer()
-    lazy var tableView = CardInfoTableView(frame: view.frame, style: .grouped)
+    var audioPlayer     = AVAudioPlayer()
+    lazy var tableView  = CardInfoTableView(frame: view.frame, style: .grouped)
     lazy var scrollView = UIScrollView(frame: view.frame)
     lazy var headerImageView = CardInfoTopImageView(frame: view.frame)
     lazy var cardInfoButtonsStackView = CardInfoButtonsStackView(frame: view.frame)
-    let containerView = UIView()
-    let phoneCallView = UIImageView(image: #imageLiteral(resourceName: "supportCallScreen"))
+    let containerView   = UIView()
+    let phoneCallView   = UIImageView(image: #imageLiteral(resourceName: "supportCallScreen"))
     var continuePlaying = true
 
     //MARK: view functions

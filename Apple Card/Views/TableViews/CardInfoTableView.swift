@@ -21,8 +21,8 @@ class CardInfoTableView: UITableView, UITableViewDelegate, UITableViewDataSource
         super.init(frame: frame, style: .grouped)
         roundCorners(radius: 10)
         translatesAutoresizingMaskIntoConstraints = false
-        delegate = self
-        dataSource = self
+        delegate        = self
+        dataSource      = self
         isScrollEnabled = false
         backgroundColor = .bgColor
         register(UITableViewCell.self, forCellReuseIdentifier: cellID)
@@ -105,7 +105,6 @@ class CardInfoTableView: UITableView, UITableViewDelegate, UITableViewDataSource
             cell.addSubview(mySeperator)
             mySeperator.anchor(top: nil, bottom: cell.bottomAnchor, leading: cell.leadingAnchor, trailing: cell.trailingAnchor, constant: .init(top: 0, left: 20, bottom: 0, right: -20), size: .init(width: 0, height: 0.3))
         }
-        
         return cell
     }
     
@@ -116,4 +115,3 @@ class CardInfoTableView: UITableView, UITableViewDelegate, UITableViewDataSource
     }
     
 }
-

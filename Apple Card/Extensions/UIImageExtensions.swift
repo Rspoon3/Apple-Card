@@ -25,7 +25,7 @@ extension UIImage {
     /// Returns a resized image that fits in rectSize, keeping it's aspect ratio
     /// Note that the new image size is not rectSize, but within it.
     func resizedImageWithinRect(rectSize: CGSize) -> UIImage {
-        let widthFactor = size.width / rectSize.width
+        let widthFactor  = size.width / rectSize.width
         let heightFactor = size.height / rectSize.height
         
         var resizeFactor = widthFactor

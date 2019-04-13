@@ -27,7 +27,7 @@ class SupportMessagesCell: BaseCollectionViewCell {
     static let receivingBubble = #imageLiteral(resourceName: "bubbleReceived").resizableImage(withCapInsets: UIEdgeInsets(top: 22, left: 26, bottom: 22, right: 26), resizingMode: .stretch).withRenderingMode(.alwaysTemplate)
     
     let messageView : UITextView = {
-        let view = UITextView()
+        let view  = UITextView()
         view.font = UIFont.systemFont(ofSize: 18)
         view.backgroundColor = .clear
         view.isEditable = false
@@ -40,8 +40,8 @@ class SupportMessagesCell: BaseCollectionViewCell {
     }()
     
     let bubbleImageView : UIImageView = {
-        let view = UIImageView()
-        view.image = SupportMessagesCell.receivingBubble
+        let view       = UIImageView()
+        view.image     = SupportMessagesCell.receivingBubble
         view.tintColor = UIColor(white: 0.95, alpha: 1)
         view.translatesAutoresizingMaskIntoConstraints  = false
         return view

@@ -36,15 +36,14 @@ class DailyCashController: UIViewController, TransactionCellDelegate  {
         let totalPrice = transactions.reduce(0, {$0 + $1.price})
         let headerView = HeaderView(frame: view.frame, image: #imageLiteral(resourceName: "dailyCash"), title: "Daily Cash", subTitle: "Apple Card")
         let padding : CGFloat = 20
-        bottomView.text = bottomTitle
-        bottomView.amount = totalPrice
-        tableView.mydelegate = self
+        bottomView.text       = bottomTitle
+        bottomView.amount     = totalPrice
+        tableView.mydelegate  = self
         view.addSubview(scrollView)
-        scrollView.addSubview(headerView)
-        scrollView.addSubview(tableView)
+        
+        [headerView, tableView].forEach({scrollView.addSubview($0)})
         view.addSubview(bottomView)
         view.backgroundColor = UIColor.bgColor
-        
         
         scrollView.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: bottomView.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor)
         

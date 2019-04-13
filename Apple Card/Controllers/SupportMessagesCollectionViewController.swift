@@ -52,11 +52,10 @@ class SupportMessagesCollectionViewController:  UIViewController, UICollectionVi
     }
 
     let supportMessagesCell = SupportMessagesCell()
-    var keyboardTextView : KeyboardTextViewContainer!
+    var keyboardTextView    : KeyboardTextViewContainer!
     var bottomConstraint    : NSLayoutConstraint?
-    let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout.init())
+    let collectionView      = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout.init())
 
-    
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.barStyle = .black
     }
@@ -67,7 +66,7 @@ class SupportMessagesCollectionViewController:  UIViewController, UICollectionVi
         let header = SupportMessageHeader(frame: view.frame)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .white
-        collectionView.delegate = self
+        collectionView.delegate   = self
         collectionView.dataSource = self
         collectionView.keyboardDismissMode = .interactive
         collectionView.register(SupportMessagesCell.self, forCellWithReuseIdentifier: supportMessagesCell.cellID)
@@ -85,7 +84,6 @@ class SupportMessagesCollectionViewController:  UIViewController, UICollectionVi
         appleLogoView.contentMode = .scaleAspectFit
         navigationItem.titleView = appleLogoView
         self.navigationItem.title = "Your Title"
-        
         
         let text = NSMutableAttributedString()
         
@@ -109,7 +107,6 @@ class SupportMessagesCollectionViewController:  UIViewController, UICollectionVi
         image2Attachment.image = #imageLiteral(resourceName: "rightArrow").resizedImage(newSize: CGSize(width: 10, height: 10))
         let imageString2 = NSAttributedString(attachment: image2Attachment)
         text.append(imageString2)
-
         
         let label = UILabel()
         label.attributedText = text
@@ -231,8 +228,8 @@ class SupportMessagesCollectionViewController:  UIViewController, UICollectionVi
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        let size = CGSize(width: 250, height: 1000)
-        let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
+        let size           = CGSize(width: 250, height: 1000)
+        let options        = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
         let estimatedFrame = NSString(string: sampleMessages[indexPath.item].message).boundingRect(with: size, options: options, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18)], context: nil)
         
         if indexPath.item == sampleMessages.count - 1{
@@ -277,6 +274,5 @@ class SupportMessagesCollectionViewController:  UIViewController, UICollectionVi
         label.fillSuperview()
         return headerView
     }
-    
 
 }

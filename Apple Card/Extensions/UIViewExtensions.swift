@@ -8,9 +8,6 @@
 
 import UIKit
 
-
-
-
 extension UIView {
     
     func roundCorners(radius: CGFloat){
@@ -30,7 +27,6 @@ extension UIView {
         layer.cornerRadius = radius
     }
     
-    
     //MARK: Anchor extensions
     func fillSuperview() {
         anchor(top: superview?.topAnchor, bottom: superview?.bottomAnchor, leading: superview?.leadingAnchor, trailing: superview?.trailingAnchor)
@@ -43,13 +39,13 @@ extension UIView {
         var trailingAnchor = superview?.trailingAnchor
         
         if safeTop{
-            topAnchor = superview?.safeAreaLayoutGuide.topAnchor
+            topAnchor      = superview?.safeAreaLayoutGuide.topAnchor
         }
         if safeBottom{
-            bottomAnchor = superview?.safeAreaLayoutGuide.bottomAnchor
+            bottomAnchor   = superview?.safeAreaLayoutGuide.bottomAnchor
         }
         if safeLeading{
-            leadingAnchor = superview?.safeAreaLayoutGuide.leadingAnchor
+            leadingAnchor  = superview?.safeAreaLayoutGuide.leadingAnchor
         }
         if safeTrialing{
             trailingAnchor = superview?.safeAreaLayoutGuide.trailingAnchor
@@ -96,10 +92,10 @@ extension UIView {
     }
     
     func anchorHegihtWidth(height: NSLayoutDimension?, heightConstant: CGFloat?, heightMulitplier: CGFloat?, width: NSLayoutDimension?, widthConstant: CGFloat?, widthMulitplier: CGFloat?){
-        var anchors = [NSLayoutConstraint]()
-        var hConstant : CGFloat = 0
+        var anchors     = [NSLayoutConstraint]()
+        var hConstant   : CGFloat = 0
         var hMultiplier : CGFloat = 1
-        var wConstant : CGFloat = 0
+        var wConstant   : CGFloat = 0
         var wMultiplier : CGFloat = 1
         
         translatesAutoresizingMaskIntoConstraints = false
@@ -129,7 +125,6 @@ extension UIView {
         }
         
         NSLayoutConstraint.activate(anchors)
-
     }
     
     public func anchorCenterXToSuperview(constant: CGFloat = 0) {

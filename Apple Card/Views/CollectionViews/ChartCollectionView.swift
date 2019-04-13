@@ -11,8 +11,8 @@ import UIKit
 class ChartCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     var padding : CGFloat!
-    let cellID = "ChartUICollectionView"
-    let dates = [
+    let cellID  = "ChartUICollectionView"
+    let dates   = [
         "",
         "March 4 - 10",
         "March 11 - 17",
@@ -27,7 +27,7 @@ class ChartCollectionView: UICollectionView, UICollectionViewDelegate, UICollect
             flowLayout.scrollDirection = .horizontal
             flowLayout.minimumInteritemSpacing = padding * 0.5
         }
-        delegate = self
+        delegate   = self
         dataSource = self
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .clear

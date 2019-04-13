@@ -37,11 +37,10 @@ class HeroImageView : UIView{
         let attributedText3 = NSMutableAttributedString(string: "\nPhoto from Yelp", attributes: attr3)
         text.append(attributedText3)
         
-        
         let label = UILabel()
         label.attributedText = text
-        label.textAlignment = .right
-        label.numberOfLines = 0
+        label.textAlignment  = .right
+        label.numberOfLines  = 0
         label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints = false
         

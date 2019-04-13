@@ -27,7 +27,6 @@ class TransactionDetailMapCell: UITableViewCell, MKMapViewDelegate {
         let myRegion = MKCoordinateRegion(center: c2D, latitudinalMeters: metersPerMile, longitudinalMeters: metersPerMile)
         let annotation = MKPointAnnotation()
         
-        
         annotation.title = "Rochester"
         view.setRegion(myRegion, animated: true)
         view.selectAnnotation(annotation, animated: true)
@@ -47,20 +46,13 @@ class TransactionDetailMapCell: UITableViewCell, MKMapViewDelegate {
     }
 
     func updateCell(){
-        lat = Double.random(in: 37...49)
+        lat  = Double.random(in: 37...49)
         long = Double.random(in: 66...80)
     }
     
     func setupViews(){
-      
         addSubview(mapView)
-        let constraints = [
-            mapView.topAnchor.constraint(equalTo: topAnchor),
-            mapView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            mapView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            mapView.trailingAnchor.constraint(equalTo: trailingAnchor),
-        ]
-        NSLayoutConstraint.activate(constraints)
+        mapView.fillSuperview()
     }
 }
 

@@ -12,19 +12,19 @@ import SafariServices
 class TransactionDetailsVC: UIViewController, SFSafariViewControllerDelegate{
     
     lazy var phoneBarButton: UIButton = {
-        let button = UIButton(type: .system)
+        let button   = UIButton(type: .system)
         button.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
         button.roundCorners(radius: 15)
         
         let blurEffect = UIBlurEffect(style: .regular)
-        let blurredEffectView = UIVisualEffectView(effect: blurEffect)
+        let blurredEffectView   = UIVisualEffectView(effect: blurEffect)
         blurredEffectView.frame = CGRect(x: -5, y: -5, width: 40, height: 40)
         button.addSubview(blurredEffectView)
         
         let imageView = UIImageView()
         if let myImage = UIImage(named: "phone") {
             let tintableImage = myImage.withRenderingMode(.alwaysTemplate)
-            imageView.image = tintableImage
+            imageView.image   = tintableImage
             imageView.tintColor = .white
         }
         imageView.frame = CGRect(x: 5, y: 5, width: 20, height: 20)
@@ -37,14 +37,14 @@ class TransactionDetailsVC: UIViewController, SFSafariViewControllerDelegate{
     
     lazy var infoCirleButton : UIButton = {
         let button = UIButton(type: .system)
-        let tap = UITapGestureRecognizer(target: self, action: #selector(getMoreInfo))
+        let tap    = UITapGestureRecognizer(target: self, action: #selector(getMoreInfo))
         tap.numberOfTapsRequired = 1
         
         button.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
         button.roundCorners(radius: 15)
         
         let blurEffect = UIBlurEffect(style: .regular)
-        let blurredEffectView = UIVisualEffectView(effect: blurEffect)
+        let blurredEffectView   = UIVisualEffectView(effect: blurEffect)
         blurredEffectView.frame = CGRect(x: -5, y: -5, width: 40, height: 40)
         blurredEffectView.addGestureRecognizer(tap)
         button.addSubview(blurredEffectView)
@@ -65,14 +65,13 @@ class TransactionDetailsVC: UIViewController, SFSafariViewControllerDelegate{
     let scrollView = UIScrollView()
     lazy var bottomView = BottomView(frame: view.frame)
 
-
     lazy var transactionHistoryTableView = TransactionHistoryTableView(frame: view.frame, style: .plain, transaction: transaction)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let phoneBarButtonItem : UIBarButtonItem = .init(customView: phoneBarButton)
+        let phoneBarButtonItem  : UIBarButtonItem = .init(customView: phoneBarButton)
         let infoCirleButtonItem : UIBarButtonItem = .init(customView: infoCirleButton)
-        bottomView.text = "Total This Month"
+        bottomView.text   = "Total This Month"
         bottomView.amount = transaction.price
         transactionHistoryTableView.hisotryDelegate = self
         
@@ -81,26 +80,21 @@ class TransactionDetailsVC: UIViewController, SFSafariViewControllerDelegate{
         navigationItem.rightBarButtonItems = [infoCirleButtonItem, phoneBarButtonItem]
         
         let mapTableView = TransactionMapTableView(frame: view.frame, style: .plain, transaction: transaction)
-        let heroImage = HeroImageView(frame: view.frame, transaction: transaction)
-        let sidePadding : CGFloat = 20
-        view.addSubview(scrollView)
-        view.addSubview(heroImage)
-        view.addSubview(bottomView)
-        
+        let heroImage    = HeroImageView(frame: view.frame, transaction: transaction)
+        let sidePadding  : CGFloat = 20
+        [scrollView, heroImage, bottomView ].forEach({view.addSubview($0)})
+
         [mapTableView, transactionHistoryTableView].forEach({scrollView.addSubview($0)})
         
         scrollView.anchor(top: heroImage.bottomAnchor, bottom: bottomView.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor)
         
         mapTableView.anchor(top: scrollView.topAnchor, bottom: nil, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor, constant: .init(top: sidePadding, left: sidePadding, bottom: 0, right: sidePadding), size: CGSize(width: view.frame.width - 2 * sidePadding, height: view.frame.height * 0.39))
-    
         
         transactionHistoryTableView.anchor(top: mapTableView.bottomAnchor, bottom: nil, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor, constant: .init(top: sidePadding, left: sidePadding, bottom: 0, right: sidePadding))
-       
         
         bottomView.anchor(top: nil, bottom: view.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, size: CGSize(width: 0, height: view.frame.height * (1/6)))
         
         heroImage.anchor(top: view.topAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, size: CGSize(width: 0, height: view.frame.height * 0.25))
-    
     }
     
     override func viewWillLayoutSubviews() {
@@ -109,19 +103,19 @@ class TransactionDetailsVC: UIViewController, SFSafariViewControllerDelegate{
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        navigationController?.navigationBar.tintColor = view.tintColor
+        navigationController?.navigationBar.tintColor     = view.tintColor
         self.navigationController?.navigationBar.barStyle = .default
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.tintColor = UIColor.white
+        navigationController?.navigationBar.tintColor      = UIColor.white
         self.navigationController?.navigationBar.barStyle = .black
     }
     
     @objc func getMoreInfo(){
         let searchTerm = transaction.title
-        let newString = searchTerm.replacingOccurrences(of: " ", with: "+", options: .literal, range: nil)
-        var urlString = "http://www.google.com/search?q=" + (newString)
+        let newString  = searchTerm.replacingOccurrences(of: " ", with: "+", options: .literal, range: nil)
+        var urlString  = "http://www.google.com/search?q=" + (newString)
         
         if let city = transaction.city{
             if let state = transaction.state{
@@ -129,7 +123,7 @@ class TransactionDetailsVC: UIViewController, SFSafariViewControllerDelegate{
             }
         }
         
-        let url = NSURL(string: urlString)! as URL
+        let url    = NSURL(string: urlString)! as URL
         let config = SFSafariViewController.Configuration()
         config.entersReaderIfAvailable = false
         
@@ -149,6 +143,3 @@ extension TransactionDetailsVC: TransactionHistoryTableViewDelgate{
         bottomView.amount = totalPrice
     }
 }
-
-
-

@@ -14,7 +14,6 @@ class PaymentDueView : UIView{
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "payFromMainScreen"), object: nil)
     }
     
-    
     lazy var button : UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false

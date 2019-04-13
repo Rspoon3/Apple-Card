@@ -18,7 +18,7 @@ class CategoryController: UIViewController, TransactionCellDelegate  {
         self.navigationController?.pushViewController(destinationVC, animated: true)
     }
     
-    let scrollView = UIScrollView()
+    let scrollView     = UIScrollView()
     lazy var tableView = TransactionTableView(frame: view.frame, style: .plain, transactions: transactions, sectionName: "March 2019", dailyCashPercentageIsHidden: true)
 
     override func viewDidLoad() {
@@ -26,16 +26,15 @@ class CategoryController: UIViewController, TransactionCellDelegate  {
         let totalPrice = transactions.reduce(0, {$0 + $1.price})
         let headerView = HeaderView(frame: view.frame, image: #imageLiteral(resourceName: "Entertainment"), title: "Entertainment", subTitle: "\(transactions.count) Transactions")
         let bottomView = BottomView(frame: view.frame)
-        let padding : CGFloat = 20
+        let padding    : CGFloat = 20
 
-        bottomView.text = "Total This Month"
-        bottomView.amount = totalPrice
+        bottomView.text      = "Total This Month"
+        bottomView.amount    = totalPrice
         tableView.mydelegate = self
         
         
         view.addSubview(scrollView)
-        scrollView.addSubview(headerView)
-        scrollView.addSubview(tableView)
+        [headerView, tableView].forEach({scrollView.addSubview($0)})
         view.addSubview(bottomView)
         view.backgroundColor = UIColor.bgColor
         

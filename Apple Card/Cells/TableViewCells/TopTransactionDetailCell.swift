@@ -33,7 +33,7 @@ class TopTransactionDetailCell: UITableViewCell {
     }()
     
     let disclourseIcon : UIButton = {
-        let button = UIButton(type:.roundedRect)
+        let button     = UIButton(type:.roundedRect)
         let disclosure = UITableViewCell()
         button.sizeToFit()
         disclosure.frame = button.bounds

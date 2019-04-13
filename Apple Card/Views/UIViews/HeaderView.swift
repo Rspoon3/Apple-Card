@@ -41,10 +41,10 @@ class HeaderView : UIView{
         mainImageView.translatesAutoresizingMaskIntoConstraints = false
         
         let label = UILabel()
-        label.attributedText = text
+        label.attributedText  = text
         label.backgroundColor = UIColor.bgColor
-        label.textAlignment = .center
-        label.numberOfLines = 0
+        label.textAlignment   = .center
+        label.numberOfLines   = 0
         label.sizeToFit()
         
         label.translatesAutoresizingMaskIntoConstraints = false

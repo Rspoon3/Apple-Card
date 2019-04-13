@@ -179,12 +179,12 @@
 			path = TableViewCells;
 			sourceTree = "<group>";
 		};
-		E057387922615B63005788C7 /* Buttons */ = {
+		E057387922615B63005788C7 /* Button */ = {
 			isa = PBXGroup;
 			children = (
 				E08F31642253AEFD007BA64D /* TintableImageButton.swift */,
 			);
-			path = Buttons;
+			path = Button;
 			sourceTree = "<group>";
 		};
 		E057387A22615B6F005788C7 /* TextView */ = {
@@ -276,7 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				E080F8D622505497004AF19F /* TableViews */,
-				E057387922615B63005788C7 /* Buttons */,
+				E057387922615B63005788C7 /* Button */,
 				E057387A22615B6F005788C7 /* TextView */,
 				E057387B22615B77005788C7 /* Labels */,
 				E057387C22615B86005788C7 /* CollectionViews */,

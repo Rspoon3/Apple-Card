@@ -17,7 +17,6 @@ class ChartCell: BaseCollectionViewCell {
         return label
     }()
     
-    
     let chartContainer : BaseView = {
         let view = BaseView()
         view.backgroundColor = .white

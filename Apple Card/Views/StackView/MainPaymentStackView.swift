@@ -14,18 +14,18 @@ class MainPaymentStackView : UIStackView{
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        let totalBalance = TotalBalanceView(frame: frame, amount: 1682.55)
-        let paymentDueView = PaymentDueView(frame: frame)
-        let subStack = UIStackView(arrangedSubviews: [totalBalance, smallChartView])
-        subStack.axis = .vertical
+        let totalBalance      = TotalBalanceView(frame: frame, amount: 1682.55)
+        let paymentDueView    = PaymentDueView(frame: frame)
+        let subStack          = UIStackView(arrangedSubviews: [totalBalance, smallChartView])
+        subStack.axis         = .vertical
         subStack.distribution = .fillEqually
-        subStack.spacing = 15
+        subStack.spacing      = 15
         
         [subStack, paymentDueView].forEach({addArrangedSubview($0)})
         
-        axis = .horizontal
+        axis         = .horizontal
         distribution = .fillEqually
-        spacing = 15
+        spacing      = 15
         translatesAutoresizingMaskIntoConstraints = false
     }
     

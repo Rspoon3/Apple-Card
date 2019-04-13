@@ -25,10 +25,10 @@ class MainViewController: UIViewController, TransactionCellDelegate{
     
     lazy var containerHeaderView : UIView = {
         let view = UIView()
-        view.layer.shadowColor = UIColor.gray.cgColor
+        view.layer.shadowColor   = UIColor.gray.cgColor
         view.layer.shadowOpacity = 0.8
-        view.layer.shadowOffset = CGSize.zero
-        view.layer.shadowRadius = 7
+        view.layer.shadowOffset  = CGSize.zero
+        view.layer.shadowRadius  = 7
         view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(headerImageView)
         let constraints = [
@@ -42,7 +42,7 @@ class MainViewController: UIViewController, TransactionCellDelegate{
     }()
     
     let headerImageView : UIImageView = {
-        let view = UIImageView()
+        let view   = UIImageView()
         view.image = #imageLiteral(resourceName: "theCard")
         view.roundCorners(radius: 10)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -50,16 +50,16 @@ class MainViewController: UIViewController, TransactionCellDelegate{
     }()
     
     lazy var custuomBarButton : UIButton = {
-        let button = UIButton(type: .system)
+        let button   = UIButton(type: .system)
         button.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
         button.backgroundColor = .black
         button.roundCorners(radius: 15)
         button.addTarget(self, action: #selector(actionSheet), for: .touchUpInside)
         
-        let imageView = UIImageView()
+        let imageView  = UIImageView()
         if let myImage = UIImage(named: "3dots") {
-            let tintableImage = myImage.withRenderingMode(.alwaysTemplate) //has to be alwaysTemplate 
-            imageView.image = tintableImage
+            let tintableImage   = myImage.withRenderingMode(.alwaysTemplate) //has to be alwaysTemplate
+            imageView.image     = tintableImage
             imageView.tintColor = .white
         }
         imageView.frame = CGRect(x: 5, y: 5, width: 20, height: 20)
@@ -74,7 +74,7 @@ class MainViewController: UIViewController, TransactionCellDelegate{
     
     fileprivate func setupNavigationItem(){
         navigationItem.rightBarButtonItem = .init(customView: custuomBarButton)
-        navigationItem.leftBarButtonItem = .init(barButtonSystemItem: .done, target: self, action: nil)
+        navigationItem.leftBarButtonItem  = .init(barButtonSystemItem: .done, target: self, action: nil)
         navigationItem.leftBarButtonItem?.tintColor = .black
     }
 
@@ -149,10 +149,7 @@ class MainViewController: UIViewController, TransactionCellDelegate{
             self.navigationController?.pushViewController(CardInfoViewController(), animated: true)
         }
 
-        actionSheet.addAction(dailyCash)
-        actionSheet.addAction(categories)
-        actionSheet.addAction(support)
-        actionSheet.addAction(cancel)
+        [dailyCash, categories, support, cancel].forEach({actionSheet.addAction($0)})
 
         present(actionSheet, animated: true, completion: nil)
         actionSheet.view.subviews.flatMap({$0.constraints}).filter{ (one: NSLayoutConstraint)-> (Bool)  in

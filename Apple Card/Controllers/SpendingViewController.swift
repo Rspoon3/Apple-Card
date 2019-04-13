@@ -22,11 +22,11 @@ class SpendingViewController: UIViewController{
     ]
 
     let scrollView = UIScrollView()
-    let cellID = "SpendingViewController"
-    let chartView = BaseView()
-    let padding : CGFloat = 20
+    let cellID     = "SpendingViewController"
+    let chartView  = BaseView()
+    let padding    : CGFloat = 20
     lazy var collectionView = ChartCollectionView(frame: view.frame, collectionViewLayout: UICollectionViewFlowLayout(), padding: padding)
-    lazy var tableView = CardInfoTableView(frame: view.frame, style: .grouped)
+    lazy var tableView  = CardInfoTableView(frame: view.frame, style: .grouped)
     lazy var bottomView = BottomView(frame: view.frame)
 
     let chart : UIImageView = {
@@ -47,22 +47,19 @@ class SpendingViewController: UIViewController{
         super.viewDidLoad()
         bottomView.payButton.addTarget(self, action: #selector(presentPaymentScreen), for: .touchUpInside)
         navigationItem.rightBarButtonItem = .init(customView: custuomBarButton)
-        bottomView.text = "February Balance"
+        bottomView.text   = "February Balance"
         bottomView.amount = 687.81
         bottomView.payButton.isHidden = false
-        view.backgroundColor = .bgColor
-        tableView.delegate = self
-        tableView.dataSource = self
+        view.backgroundColor     = .bgColor
+        tableView.delegate       = self
+        tableView.dataSource     = self
         tableView.separatorStyle = .none
         tableView.register(TransactionCell.self, forCellReuseIdentifier: cellID)
         
-        view.addSubview(scrollView)
-        view.addSubview(bottomView)
-        
-        scrollView.addSubview(collectionView)
-        scrollView.addSubview(tableView)
+        [scrollView, bottomView].forEach({view.addSubview($0)})
+        [collectionView, tableView].forEach({scrollView.addSubview($0)})
+
         scrollView.fillSafeSuperview(safeTop: true, safeBottom: false, safeLeading: false, safeTrialing: false)
-        
         
         collectionView.anchor(top: scrollView.topAnchor, bottom: nil, leading: scrollView.leadingAnchor, trailing: nil, size: .init(width: view.frame.width, height: 225 + 50 + 5))
         
@@ -88,8 +85,6 @@ class SpendingViewController: UIViewController{
         }
         
     }
-    
-
 }
 
 extension SpendingViewController: UITableViewDelegate, UITableViewDataSource {
@@ -127,10 +122,9 @@ extension SpendingViewController: UITableViewDelegate, UITableViewDataSource {
             rightText.sizeToFit()
             rightText.text = "Show Merchants"
             rightText.textColor = container.tintColor
-            
-            container.addSubview(title)
-            container.addSubview(rightText)
-            
+        
+            [title, rightText].forEach({container.addSubview($0)})
+        
             title.anchor(top: container.topAnchor, bottom: container.bottomAnchor, leading: container.leadingAnchor, trailing: nil)
             rightText.anchor(top: container.topAnchor, bottom: container.bottomAnchor, leading: nil, trailing: container.trailingAnchor)
         }
@@ -138,7 +132,7 @@ extension SpendingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! TransactionCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as!     TransactionCell
         let cornerRadius: CGFloat = 10
         
         cell.dailyCashPercentage.isHidden = true
@@ -201,7 +195,7 @@ extension SpendingViewController: UITableViewDelegate, UITableViewDataSource {
                         
             let destinationVC = DailyCashController()
             destinationVC.transactions = mainTransactions
-            destinationVC.bottomTitle = dates.first
+            destinationVC.bottomTitle  = dates.first
             self.navigationController?.pushViewController(destinationVC, animated: true)
         }
     }
