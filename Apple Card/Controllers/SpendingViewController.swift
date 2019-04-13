@@ -153,15 +153,15 @@ extension SpendingViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
     
-        
-       if indexPath.section == 1{
+        if indexPath.section == 0{
+            cell.roundCorners(radius: cornerRadius)
+        } else {
             if indexPath.row == 0{
                 cell.roundTopCorners(radius: cornerRadius)
             } else if indexPath.row == transactions.count - 1{
                 cell.roundBottomCorners(radius: cornerRadius)
             }
         }
-        
         
         if (indexPath.section == 1 && indexPath.row != transactions.count - 1){
             let mySeperator = UIView()

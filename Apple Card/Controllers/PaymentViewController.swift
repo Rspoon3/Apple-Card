@@ -85,10 +85,8 @@ class PaymentViewController: UIViewController{
     
     lazy var intrestLabel : UILabel = {
         let label = UILabel()
-        var num = totalBalance * (40/360) * 0.09
-        num = (num * 100).rounded() / 100
         label.font = UIFont.init(name: "ArialRoundedMTBold", size: UIScreen.main.bounds.height * 0.03)!
-        label.text = "$\(num)"
+        label.text = "$121.14"
         label.textColor = ring.dotColors.first
         label.sizeToFit()
         return label
