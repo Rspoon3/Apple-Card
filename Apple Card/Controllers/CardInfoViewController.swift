@@ -85,7 +85,7 @@ class CardInfoViewController: UIViewController, CardInfoButtonsStackViewDelegate
         tap.numberOfTapsRequired = 1
 
         view.addSubview(phoneCallView)
-        phoneCallView.contentMode = .scaleAspectFit
+        phoneCallView.contentMode = .scaleAspectFill
         phoneCallView.frame = CGRect(x: view.center.x, y: view.center.y, width: 0, height: 0)
         continuePlaying = true
 
