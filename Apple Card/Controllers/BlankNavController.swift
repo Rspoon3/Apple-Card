@@ -27,5 +27,4 @@ class BlankNavController : UINavigationController {
         navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationBar.shadowImage = UIImage()
     }
-    
 }
