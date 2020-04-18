@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "AppIcon_40-1.png",
+      "filename" : "AppIcon_40-2.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "20x20"
@@ -31,7 +31,7 @@
       "size" : "29x29"
     },
     {
-      "filename" : "AppIcon_80-1.png",
+      "filename" : "AppIcon_80.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "40x40"
@@ -91,13 +91,13 @@
       "size" : "29x29"
     },
     {
-      "filename" : "AppIcon_40-2.png",
+      "filename" : "AppIcon_40-1.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "40x40"
     },
     {
-      "filename" : "AppIcon_80.png",
+      "filename" : "AppIcon_80-1.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "40x40"
